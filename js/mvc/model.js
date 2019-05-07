@@ -1,6 +1,10 @@
 class Model extends Observable{
     constructor(boards=[]) {
         super();
-        this.boards = boards;    
+        this.boardManager = new TitledEntityManager(null, boards, Board);
+    }
+    
+    get boards() {
+        return this.boardManager.childEntities;
     }
 }
