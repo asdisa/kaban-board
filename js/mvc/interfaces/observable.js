@@ -1,7 +1,15 @@
 class Observable {
-    constructor() {    
+    constructor() {
+        this._observers = [];
     }
 
-    update(data) {
+    registerObserver(observer) {
+        this._observers.push(observer);
+    }
+
+    notifyAll() {
+        this.observers.forEach((observer) => {
+            observer.update(this);
+        });
     }
 }
