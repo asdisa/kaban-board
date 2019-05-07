@@ -10,7 +10,7 @@ class TitledEntityManager extends TitledEntity {
     }
 
     get childEntityCreator() {
-        return this.__childEntityCreator;
+        return this._childEntityCreator;
     }
 
     placeChildEntity(childEntity, index=null) {

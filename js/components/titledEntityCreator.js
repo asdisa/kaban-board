@@ -1,15 +1,15 @@
 class TitledEntityCreator {
-    constructor(className, faceText, inputPlaceholder, addButtonText) {
+    constructor(className, facadeText, inputPlaceholder, addButtonText) {
         this._className = className;
-        this._faceText = faceText;
+        this._facadeText = facadeText;
         this._inputPlaceholder = inputPlaceholder;
         this._addButtonText = addButtonText;
         this.addSectionInsidesShown = false;
         this.titleInput = '';
     }
 
-    get faceText() {
-        return this._faceText;
+    get facadeText() {
+        return this._facadeText;
     }
 
     get inputPlaceholder() {
@@ -29,19 +29,19 @@ const TitledEntityCreatorFactory = {
 
     registeredClassNames: new Map([
         [Card, {
-            'faceText': 'Добавить еще одну карточку',
+            'facadeText': 'Добавить еще одну карточку',
             'inputPlaceholder': 'Введите название карточки',
             'addButtonText': 'Добавить карточку',
         }],
         [Board, {
-            'faceText': 'Добавить еще одну колонку',
+            'facadeText': 'Добавить еще одну колонку',
             'inputPlaceholder': 'Введите название колонки',
             'addButtonText': 'Добавить колонку',
         }]
     ]),
 
     create(className) {
-        let { faceText, inputPlaceholder, addButtonText } = this.registeredClassNames.get(className);
-        return new TitledEntityCreator(className, faceText, inputPlaceholder, addButtonText);
+        let { facadeText, inputPlaceholder, addButtonText } = this.registeredClassNames.get(className);
+        return new TitledEntityCreator(className, facadeText, inputPlaceholder, addButtonText);
     }
 }
