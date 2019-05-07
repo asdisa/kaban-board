@@ -15,23 +15,33 @@
 
                 <h3 class="board-title">Tasks to Do</h3>
 
-                <ul class="cards">
-                    <li class="card">Complete mock-up for client website</li>
-                    <li class="card">Email mock-up to client for feedback</li>
-                    <li class="card">Update personal website header background image</li>
-                    <li class="card">Update personal website heading fonts</li>
-                    <li class="card">Add google map to personal website</li>
-                    <li class="card">Begin draft of CSS Grid article</li>
-                    <li class="card">Read new CSS-Tricks articles</li>
-                    <li class="card">Read new Smashing Magazine articles</li>
-                    <li class="card">Read other bookmarked articles</li>
-                    <li class="card">Look through portfolios to gather inspiration</li>
-                    <li class="card">Create something cool for CodePen</li>
-                    <li class="card">Post latest CodePen work on Twitter</li>
-                </ul>
+                <ol class="cards">
+                    <li draggable="true" class="card">Complete mock-up for client website</li>
+                    <li draggable="true" class="card">Email mock-up to client for feedback</li>
+                    <li draggable="true" class="card">Update personal website header background image</li>
+                    <li draggable="true" class="card">Update personal website heading fonts</li>
+                    <li draggable="true" class="card">Add google map to personal website</li>
+                    <li draggable="true" class="card">Begin draft of CSS Grid article</li>
+                    <li draggable="true" class="card">Read new CSS-Tricks articles</li>
+                    <li draggable="true" class="card">Read new Smashing Magazine articles</li>
+                    <li draggable="true" class="card">Read other bookmarked articles</li>
+                    <li draggable="true" class="card">Look through portfolios to gather inspiration</li>
+                    <li draggable="true" class="card">Create something cool for CodePen</li>
+                    <li draggable="true" class="card">
+                        <form class="add-form" method="get" id="form1">
+                            <input class="add-form-title-input" placeholder="Введите название колонки" type="text">
+                        </form>
+                    </li>
+                </ol>
                 <div class="add-section">
+                
+                    <div class="add-section-facade">
+                        <img src="img/plus.svg">
+                        <p class="add-section-text">Добавить еще одну карточку</p>
+                    </div>
+                
                     <div class="add-section-insides">
-                        <button class="add-btn">Добавить карточку</button>
+                        <button type="submit" form="form1" class="add-btn">Добавить карточку</button>
                         <input class="cross" type="image" src="img/cross.svg">
                     </div>
                 </div>

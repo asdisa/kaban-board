@@ -23,7 +23,8 @@ button {
     cursor: pointer;
 }
 
-body, p, .board, .board-title,
+body, p, form,
+.board, .board-title,
 .cards, .card,
 .btn {
     margin: 0;
@@ -124,8 +125,21 @@ body, p, .board, .board-title,
     margin-bottom: 0;
 }
 
-.card:hover {
-    background-color: #eee;
+.add-form {
+    width: inherit;
+}
+
+.add-form-title-input {
+    border: 0;
+    padding: 0;
+    line-height: 1.9rem;
+    font-size: 1.3rem;
+    font-family: 'Montserrat', sans-serif;
+    width: 100%;
+}
+
+.titleInput ::-webkit-input-placeholder {
+    color: #B8B9BB;
 }
 
 /* Add sections styles */
@@ -152,7 +166,7 @@ body, p, .board, .board-title,
 }
 
 .add-section-insides:hover {
-    /*background-color: rgb(235, 98, 98);*/
+    background-color: rgb(235, 98, 98);
 }
 
 .add-section-text {

@@ -1,4 +1,4 @@
-class Card extends TitledEntity{
+class Card extends TitledEntity {
     constructor(title) {
         super(title);
     }
