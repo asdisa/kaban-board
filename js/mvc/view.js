@@ -3,5 +3,10 @@ class View extends Observer {
         super();
         this._controller = controller; 
         this._controller.model.registerObserver(this);
+        this._wall = document.getElementsByClassName('wall')[0];
+    }
+
+    update(data) {
+        console.log(data);
     }
 }

@@ -42,6 +42,6 @@ const TitledEntityCreatorFactory = {
 
     create(className) {
         let { faceText, inputPlaceholder, addButtonText } = this.registeredClassNames.get(className);
-        return TitledEntityCreator(className, faceText, inputPlaceholder, addButtonText);
+        return new TitledEntityCreator(className, faceText, inputPlaceholder, addButtonText);
     }
 }

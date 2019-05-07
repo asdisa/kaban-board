@@ -1,7 +1,7 @@
 class Board extends TitledEntity {
-    constructor(title) {
+    constructor(title, cards=[]) {
         super(title);
-        this._cards = [];
+        this._cards = cards;
         this._cardCreator = TitledEntityCreatorFactory.create(Card)
     }
 

@@ -1,5 +1,6 @@
 class Model extends Observable{
-    constructor(boards) {    
+    constructor(boards=[]) {
         super();
+        this.boards = boards;    
     }
 }

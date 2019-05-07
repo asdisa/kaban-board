@@ -8,7 +8,7 @@ class Observable {
     }
 
     notifyAll() {
-        this.observers.forEach((observer) => {
+        this._observers.forEach((observer) => {
             observer.update(this);
         });
     }
