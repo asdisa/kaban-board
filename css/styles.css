@@ -1,201 +1,207 @@
 /* Base styles */
 
 :root {
-    font-size: 10px;
-    font-family: 'Montserrat', sans-serif;
-    font-style: normal;
+  font-size: 10px;
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
 }
 
 body {
-    background: url("http://b.webpurr.com/lRzz.webp") no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+  background: url("http://b.webpurr.com/lRzz.webp") no-repeat center center
+    fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 button {
-    padding: 0;
-    border: none;
-    font: inherit;
-    color: inherit;
-    background-color: transparent;
-    cursor: pointer;
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  cursor: pointer;
 }
 
-body, p, form,
-.board, .board-title,
-.cards, .card,
+body,
+p,
+form,
+.board,
+.board-title,
+.cards,
+.card,
 .btn {
-    margin: 0;
+  margin: 0;
 }
 
 /* Grid styles */
 
 .wall {
-    display: grid;
-    grid-auto-columns: 27.2rem;
-    grid-auto-flow: column;
-    grid-column-gap: 1.2rem;
+  display: grid;
+  grid-auto-columns: 27.2rem;
+  grid-auto-flow: column;
+  grid-column-gap: 1.2rem;
 }
 
 .board {
-    display: grid;
-    grid-template-rows: auto minmax(auto, 1fr) auto;
+  display: grid;
+  grid-template-rows: auto minmax(auto, 1fr) auto;
 }
 
 .cards {
-    list-style-type: none;
-    display: grid;
-    grid-row-gap: 0.8rem;
-    grid-template-rows: repeat(10, minmax(3.5rem));
+  list-style-type: none;
+  display: grid;
+  grid-row-gap: 0.8rem;
+  grid-template-rows: repeat(10, minmax(3.5rem));
 }
 
 /* Wall styles */
 
 .wall::-webkit-scrollbar {
-    height: 1px;
+  height: 1px;
 }
 
 .wall::-webkit-scrollbar-thumb {
-    background-color: #66a3c7;
+  background-color: #66a3c7;
 }
 
 .wall {
-    margin: 2rem;
-    margin-top: 2.1rem;
-    align-items: start;
-    overflow-x: auto;
-    height: calc(100vh - 4rem - 1px);
+  margin: 2rem;
+  margin-top: 2.1rem;
+  align-items: start;
+  overflow-x: auto;
+  height: calc(100vh - 4rem - 1px);
 }
 
 /* Board styles */
 
 .board {
-    padding: 1.2rem;
-    padding-top: 0rem;
-    padding-bottom: 0rem;
+  padding: 1.2rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
 
-    background-color: #e2e4e6;
-    max-height: calc(100vh - 4rem - 2px);
-    background: #DFE3E6;
-    border-radius: 0.3rem;
+  background-color: #e2e4e6;
+  max-height: calc(100vh - 4rem - 2px);
+  background: #dfe3e6;
+  border-radius: 0.3rem;
 }
 
 .board:last-of-type {
-    margin-right: 0;
+  margin-right: 0;
 }
 
 .board-title {
-    padding-top: 0.8rem;
-    padding-bottom: 1.2rem;
-    font-size: 1.3rem;
-    font-weight: bold;
-    color: #000;
+  padding-top: 0.8rem;
+  padding-bottom: 1.2rem;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #000;
 }
 
 /* Cards styles */
 
 .cards {
-    padding: 0;
-    flex-direction: column;
-    align-content: start;
-    overflow-x:hidden;
-    overflow-y:scroll;
+  padding: 0;
+  flex-direction: column;
+  align-content: start;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 .cards::-webkit-scrollbar {
-    background:transparent;
-    width: 0px;
+  background: transparent;
+  width: 0px;
 }
 
 /* Card styles */
 
 .card {
-    display: inline-block;
-    font-weight: normal;
-    font-size: 1.3rem;
-    background: #FFFFFF;
-    padding: 0.8rem 1.2rem;
-    box-shadow: 0 0.1rem 0.4rem rgba(9, 45, 66, 0.25);
-    border-radius: 0.3rem;
-    word-wrap: break-word;
-    line-height: 1.9rem;
+  display: inline-block;
+  font-weight: normal;
+  font-size: 1.3rem;
+  background: #ffffff;
+  padding: 0.8rem 1.2rem;
+  box-shadow: 0 0.1rem 0.4rem rgba(9, 45, 66, 0.25);
+  border-radius: 0.3rem;
+  word-wrap: break-word;
+  line-height: 1.9rem;
 }
 
 .card:last-of-type {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .title-textarea {
-    resize: none;
-    width: inherit;
-    border: 0;
-    padding: 0;
-    line-height: 1.9rem;
-    font-size: 1.3rem;
-    font-family: 'Montserrat', sans-serif;
-    width: 100%;
+  resize: none;
+  width: inherit;
+  border: 0;
+  padding: 0;
+  line-height: 1.9rem;
+  font-size: 1.3rem;
+  font-family: "Montserrat", sans-serif;
+  width: 100%;
 }
 
 .title-textarea:focus {
-    outline: 0;
+  outline: 0;
 }
 
 .title-textarea ::-webkit-input-placeholder {
-    color: #B8B9BB;
+  color: #b8b9bb;
 }
 
 /* Add sections styles */
 
-.add-section-insides, .add-section-facade {
-    display: flex;
-    font-size: 1.3rem;
-    border-radius: 0.3rem;
+.add-section-insides,
+.add-section-facade {
+  display: flex;
+  font-size: 1.3rem;
+  border-radius: 0.3rem;
 }
 
 .cvg-ico:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .add-section-facade {
-    padding-bottom: 1.2rem;
-    padding-top: 1.2rem;
-    padding: 0, 1.2rem;
+  padding-bottom: 1.2rem;
+  padding-top: 1.2rem;
+  padding: 0, 1.2rem;
 }
 
-.add-section-facade:hover{
-    cursor: pointer;    
+.add-section-facade:hover {
+  cursor: pointer;
 }
 
 .add-section-insides {
-    justify-content: space-between;
+  justify-content: space-between;
 }
 
 .add-section-facade-text {
-    padding-left: 0.8rem;
-    color: #6B808C;
-    line-height: 1.9rem;
+  padding-left: 0.8rem;
+  color: #6b808c;
+  line-height: 1.9rem;
 }
 
 /* Add sections' children styles */
 
 .add-btn {
-    font-weight: 700;
-    background: #39C071;
-    color: #eee;
-    height: 3rem;
-    padding: 0.8rem;
-    border-radius: 3px;
-    border: 0;
-    font-weight: bold;
-    cursor: pointer;
+  font-weight: 700;
+  background: #39c071;
+  color: #eee;
+  height: 3rem;
+  padding: 0.8rem;
+  border-radius: 3px;
+  border: 0;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .add-btn:hover {
-    background: rgb(56, 177, 106);
+  background: rgb(56, 177, 106);
 }
 
 .add-btn:active {
-    background: rgb(48, 172, 99);
+  background: rgb(48, 172, 99);
 }
