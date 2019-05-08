@@ -126,6 +126,6 @@ class View extends Observer {
             wall.appendChild(this.makeBoardElement(board, i));
         }
 
-        wall.appendChild(this.makeBoardElement(data.boardManager, "board-manager"));
+        wall.appendChild(this.makeBoardElement(data.boardManager, "boardManager"));
     }
 }
