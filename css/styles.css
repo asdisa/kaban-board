@@ -26,7 +26,6 @@ button {
 
 body,
 p,
-form,
 .board,
 .board-title,
 .cards,
@@ -79,10 +78,8 @@ form,
 .board {
   padding: 1.2rem;
   padding-top: 0rem;
-  padding-bottom: 0rem;
-
   background-color: #e2e4e6;
-  max-height: calc(100vh - 4rem - 2px);
+  max-height: calc(100vh - 5.2rem - 2px);
   background: #dfe3e6;
   border-radius: 0.3rem;
 }
@@ -165,9 +162,7 @@ form,
 }
 
 .add-section-facade {
-  padding-bottom: 1.2rem;
   padding-top: 1.2rem;
-  padding: 0, 1.2rem;
 }
 
 .add-section-facade:hover {
