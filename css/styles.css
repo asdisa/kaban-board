@@ -121,7 +121,6 @@ body, p, form,
     box-shadow: 0 0.1rem 0.4rem rgba(9, 45, 66, 0.25);
     border-radius: 0.3rem;
     word-wrap: break-word;
-    cursor: pointer;
     line-height: 1.9rem;
 }
 
@@ -152,6 +151,9 @@ body, p, form,
     display: flex;
     font-size: 1.3rem;
     border-radius: 0.3rem;
+}
+
+.cvg-ico:hover {
     cursor: pointer;
 }
 
@@ -162,28 +164,23 @@ body, p, form,
 }
 
 .add-section-facade:hover{
-    text-decoration: underline; 
+    cursor: pointer;    
 }
 
 .add-section-insides {
     justify-content: space-between;
 }
 
-.add-section-insides:hover {
-    text-decoration: underline; 
-}
-
 .add-section-facade-text {
     padding-left: 0.8rem;
     color: #6B808C;
     line-height: 1.9rem;
-    cursor: pointer;
 }
 
 /* Add sections' children styles */
 
 .add-btn {
-    font-weight: bold;
+    font-weight: 700;
     background: #39C071;
     color: #eee;
     height: 3rem;
@@ -200,8 +197,4 @@ body, p, form,
 
 .add-btn:active {
     background: rgb(48, 172, 99);
-}
-
-.add-btn:focus {
-    border: #00c; /* here configure as your needs */
 }
