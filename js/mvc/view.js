@@ -6,46 +6,41 @@ class View extends Observer {
     }
 
     makeCardsElement(cards) {
-        const cards_element = document.createElement("OL");
-        cards_element.setAttribute("class", "cards");
+        const cardsElement = document.createElement("OL");
+        cardsElement.setAttribute("class", "cards");
         for (let card of cards) {
-            let card_element = document.createElement("LI");
-            card_element.setAttribute("class", "card");
-            card_element.setAttribute("draggable", "true");
-            card_element.innerText = card.title;
+            let cardElement = document.createElement("LI");
+            cardElement.setAttribute("class", "card");
+            cardElement.setAttribute("draggable", "true");
+            cardElement.innerText = card.title;
 
-            cards_element.appendChild(card_element);
+            cardsElement.appendChild(cardElement);
         }
-        return cards_element;
+        return cardsElement;
     }
 
-    makeAddFormListItem(entityCreator, index) {
-        const card_element = document.createElement("LI");
+    makeTitleTextareaListItem(entityCreator, index) {
+        const titleTextareaElement = document.createElement("textarea");
+        titleTextareaElement.setAttribute("id", `textarea-${index}`);
+        titleTextareaElement.setAttribute("class", "title-textarea");
+        titleTextareaElement.setAttribute("placeholder", entityCreator.titleTextareaElementPlaceholder)
+        titleTextareaElement.setAttribute("rows", "2");
+        
+        const cardElement = document.createElement("LI");
+        cardElement.appendChild(titleTextareaElement);
 
-        let inputType = "text";
         if (!entityCreator.addSectionInsidesShown) {
-            inputType = "hidden";
-            card_element.setAttribute("style", "display:none;");
+            cardElement.setAttribute("style", "display:none;");
         }
-;
-        const input = document.createElement("input");
-        input.setAttribute("class", "add-form-title-input");
-        input.setAttribute("placeholder", entityCreator.inputPlaceholder)
-        input.setAttribute("type", inputType);
-        
-        const form = document.createElement("form")
-        form.setAttribute("id", `form-${index}`);
-        form.appendChild(input);
-        
-        card_element.appendChild(form);
-        return card_element;
+
+        return cardElement;
     }
 
     makeAddSectionInsidesListItem(entityCreator, index) {
         const addButtonElement = document.createElement("button");
+        addButtonElement.setAttribute("id", `add-${index}`);
         addButtonElement.setAttribute("class", "add-btn");
         addButtonElement.setAttribute("type", "submit");
-        addButtonElement.setAttribute("form", `form-${index}`);
         addButtonElement.innerText = entityCreator.addButtonText;
         
         const crossInputElement = document.createElement("input");
@@ -107,11 +102,11 @@ class View extends Observer {
             boardElement.appendChild(titleElement);
         }
         
-        const addFormListItem = this.makeAddFormListItem(entityManager.childEntityCreator, index);
+        const titleTextareaListItem = this.makeTitleTextareaListItem(entityManager.childEntityCreator, index);
         const addSectionInsidesListItem = this.makeAddSectionInsidesListItem(entityManager.childEntityCreator, index);
         
         const cardsElement = this.makeCardsElement(cards);
-        cardsElement.appendChild(addFormListItem);
+        cardsElement.appendChild(titleTextareaListItem);
         cardsElement.appendChild(addSectionInsidesListItem);
 
         const addSectionFacadeElement = this.makeAddSectionFacadeElement(entityManager.childEntityCreator, index);

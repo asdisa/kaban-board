@@ -30,7 +30,6 @@ body, p, form,
     margin: 0;
 }
 
-
 /* Grid styles */
 
 .wall {
@@ -128,11 +127,9 @@ body, p, form,
     margin-bottom: 0;
 }
 
-.add-form {
+.title-textarea {
+    resize: none;
     width: inherit;
-}
-
-.add-form-title-input {
     border: 0;
     padding: 0;
     line-height: 1.9rem;
@@ -141,7 +138,11 @@ body, p, form,
     width: 100%;
 }
 
-.titleInput ::-webkit-input-placeholder {
+.title-textarea:focus {
+    outline: 0;
+}
+
+.title-textarea ::-webkit-input-placeholder {
     color: #B8B9BB;
 }
 
