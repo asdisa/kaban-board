@@ -52,17 +52,14 @@ p,
   list-style-type: none;
   display: grid;
   grid-row-gap: 0.8rem;
-  grid-template-rows: repeat(10, minmax(3.5rem));
+  grid-auto-columns: 24.8rem;
 }
 
 /* Wall styles */
 
 .wall::-webkit-scrollbar {
-  height: 1px;
-}
-
-.wall::-webkit-scrollbar-thumb {
-  background-color: #66a3c7;
+  background: transparent;
+  height: 0px;
 }
 
 .wall {
@@ -70,7 +67,7 @@ p,
   margin-top: 2.1rem;
   align-items: start;
   overflow-x: auto;
-  height: calc(100vh - 4rem - 1px);
+  height: calc(100vh - 4.1rem);
 }
 
 /* Board styles */
@@ -79,7 +76,7 @@ p,
   padding: 1.2rem;
   padding-top: 0rem;
   background-color: #e2e4e6;
-  max-height: calc(100vh - 5.2rem - 2px);
+  max-height: calc(100vh - 5.3rem);
   background: #dfe3e6;
   border-radius: 0.3rem;
 }
@@ -114,7 +111,7 @@ p,
 /* Card styles */
 
 .card {
-  display: inline-block;
+  display: block;
   font-weight: normal;
   font-size: 1.3rem;
   background: #ffffff;

@@ -5,7 +5,6 @@ class TitledEntityCreator {
         this._inputPlaceholder = inputPlaceholder;
         this._addButtonText = addButtonText;
         this.addSectionInsidesShown = false;
-        this.titleInput = '';
     }
 
     get facadeText() {
@@ -20,8 +19,8 @@ class TitledEntityCreator {
         return this._addButtonText;
     }
 
-    create() {
-        return new this._className(this.titleInput);
+    create(title) {
+        return new this._className(title);
     }
 }
 

@@ -18,7 +18,7 @@ class TitledEntityManager extends TitledEntity {
         this._childEntities.splice(index, 0, childEntity);
     }
 
-    addChildEntity() {
-        this.placechildEntity(this.childEntityCreator.create());
+    addChildEntity(childEntity) {
+        this.placeChildEntity(childEntity);
     }
 }
