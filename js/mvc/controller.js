@@ -7,18 +7,27 @@ class Controller {
         return this._model;
     }
 
+    getEntityManagerWithIndex(index) {
+        if (index < 0) {
+            return this.model.boardManager;
+        }
+        return this.model.boards[index];
+    }
+
     handleFacadeClick(index) {
-        this.model.boards[index].childEntityCreator.addSectionInsidesShown = true;
+        this.getEntityManagerWithIndex(index).childEntityCreator.addSectionInsidesShown = true;
         this.model.notifyAll();
     }
 
     handleCrossClick(index) {
-        this.model.boards[index].childEntityCreator.addSectionInsidesShown = false;
+        this.getEntityManagerWithIndex(index).childEntityCreator.addSectionInsidesShown = false;
         this.model.notifyAll();
     }
 
     handleAddButtonClick(index, title) {
-        this.model.addCardToBoardWithIndex(index, title);
+        const entityManager = this.getEntityManagerWithIndex(index);
+        this.model.addEntity(entityManager, title);
+        entityManager.childEntityCreator.addSectionInsidesShown = false;
         this.model.notifyAll();
     }
 }

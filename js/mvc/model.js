@@ -9,14 +9,10 @@ class Model extends Observable {
         return this.boardManager.childEntities;
     }
 
-    addBoard(title) {
-        console.log(this.boardCreator.create(title));
-    }
-
-    addCardToBoardWithIndex(index, title) {
-        let cardCreator = this.boards[index].childEntityCreator;
-        let card = cardCreator.create(title);
-        this.boards[index].addChildEntity(card);
+    addEntity(entityManager, title) {
+        let entrineCreator = entityManager.childEntityCreator;
+        let entity = entrineCreator.create(title);
+        entityManager.addChildEntity(entity);
     }
 
     notifyAll() {

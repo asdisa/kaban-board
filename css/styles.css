@@ -87,7 +87,6 @@ p,
 
 .board-title {
   padding-top: 0.8rem;
-  padding-bottom: 1.2rem;
   font-size: 1.3rem;
   font-weight: bold;
   color: #000;
@@ -97,6 +96,7 @@ p,
 
 .cards {
   padding: 0;
+  padding-top: 1.2rem;
   flex-direction: column;
   align-content: start;
   overflow-x: hidden;
