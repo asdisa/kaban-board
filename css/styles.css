@@ -63,8 +63,8 @@ p,
 }
 
 .wall {
-  margin: 2rem;
-  margin-top: 2.1rem;
+  padding: 2rem;
+  padding-top: 2.1rem;
   align-items: start;
   overflow-x: auto;
   height: calc(100vh - 4.1rem);

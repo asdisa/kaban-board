@@ -5,23 +5,53 @@ class View extends Observer {
         this._controller.model.registerObserver(this);
     }
 
+    setAttributes(element, attrDict) {
+        for (let attr in attrDict) {
+            element.setAttribute(attr, attrDict[attr]);
+        }
+    }
+
+    focusElement(element) {
+        setTimeout(() => {
+            element.focus();
+        }, 0);
+    }
+
+    submitTitle(index, title) {
+        if (!title) {
+            this.meep_moop();
+        } else {
+            this._controller.handleSubmitTitle(index, title);
+        }
+    }
+
     meep_moop(index) {
         let textareaElement = document.getElementById(`textarea-${index}`);
+        console.log(textareaElement);
         (async () => {
             textareaElement.style.webkitTransform = "rotate(-4deg)";
             await new Promise(r => setTimeout(r, 150));
             textareaElement.style.webkitTransform = "rotate(2deg)";
             await new Promise(r => setTimeout(r, 100));
             textareaElement.style.webkitTransform = "rotate(0deg)";
-        })()
+        })();
     }
 
     makeTitleTextareaListItem(entityCreator, index) {
         const titleTextareaElement = document.createElement("textarea");
-        titleTextareaElement.setAttribute("id", `textarea-${index}`);
-        titleTextareaElement.setAttribute("class", "title-textarea");
-        titleTextareaElement.setAttribute("placeholder", entityCreator.inputPlaceholder)
-        titleTextareaElement.setAttribute("rows", "2");
+        this.setAttributes(titleTextareaElement, {
+            "id": `textarea-${index}`,
+            "class": "title-textarea",
+            "placeholder": entityCreator.inputPlaceholder,
+            "rows": "2",
+        });
+
+        titleTextareaElement.addEventListener("keypress", (e) => {
+            if (e.key === 'Enter') {
+                console.log("enter")
+                this.submitTitle(index, titleTextareaElement.value);
+            }
+        });
 
         const cardElement = document.createElement("LI");
         cardElement.setAttribute("class", "card");
@@ -30,9 +60,7 @@ class View extends Observer {
         if (!entityCreator.addSectionInsidesShown) {
             cardElement.setAttribute("style", "display:none;");
         } else {
-            setTimeout(() => {
-                titleTextareaElement.focus();
-            }, 0);
+            this.focusElement(titleTextareaElement);
         }
 
         return cardElement;
@@ -40,25 +68,26 @@ class View extends Observer {
 
     makeAddSectionInsidesListItem(entityCreator, index) {
         const addButtonElement = document.createElement("button");
-        addButtonElement.setAttribute("id", `add-${index}`);
-        addButtonElement.setAttribute("class", "add-btn");
-        addButtonElement.setAttribute("type", "submit");
+        this.setAttributes(addButtonElement, {
+            "id": `add-${index}`,
+            "class": "add-btn",
+            "type": "submit",
+        });
+
         addButtonElement.innerText = entityCreator.addButtonText;
         addButtonElement.addEventListener("click", (e) => {
             let title = document.getElementById(`textarea-${index}`).value;
-            if (title) {
-                this._controller.handleAddButtonClick(index, title);
-            } else {
-                this.meep_moop(index);
-            }
+            this.submitTitle(index, title);
         });
 
         const crossInputElement = document.createElement("input");
-        crossInputElement.setAttribute("id", `cross-${index}`);
-        crossInputElement.setAttribute("class", "svg-ico cross-ico");
-        crossInputElement.setAttribute("type", "image");
-        crossInputElement.setAttribute("alt", "X");
-        crossInputElement.setAttribute("src", "img/cross.svg");
+        this.setAttributes(crossInputElement, {
+            "id": `cross-${index}`,
+            "class": "svg-ico cross-ico",
+            "type": "image",
+            "alt": "X",
+            "src": "img/cross.svg",
+        });
         crossInputElement.addEventListener("click", (e) =>
             this._controller.handleCrossClick(index));
 

@@ -24,7 +24,7 @@ class Controller {
         this.model.notifyAll();
     }
 
-    handleAddButtonClick(index, title) {
+    handleSubmitTitle(index, title) {
         const entityManager = this.getEntityManagerWithIndex(index);
         this.model.addEntity(entityManager, title);
         entityManager.childEntityCreator.addSectionInsidesShown = false;
