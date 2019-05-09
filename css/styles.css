@@ -203,7 +203,7 @@ p,
 }
 
 .empty-slot {
-  color: #c9d2d9;
+  color: transparent;
   background: #c9d2d9;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
@@ -211,5 +211,12 @@ p,
 }
 
 .over {
-    background: black
+  background: black;
+}
+
+.ghost {
+  opacity: 1;
+  max-width: 22.4rem;
+  background-image: url('../img/black.jpg');  
+  transform: translateX(-500px);
 }

@@ -39,6 +39,11 @@ class Controller {
 
     handleDragStart(e) {
         console.log(this, e.target);
+        var crt = e.target.cloneNode(true);
+        crt.classList.add("card");
+        crt.classList.add("ghost");
+        document.body.appendChild(crt);
+        e.dataTransfer.setDragImage(crt, 0, 0);
         // Target (this) element is the source node.
         e.target.classList.add("empty-slot");
 
