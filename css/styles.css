@@ -7,7 +7,7 @@
 }
 
 body {
-  background: url("http://b.webpurr.com/lRzz.webp") no-repeat center center
+  background: url("../img/background-md.webp") no-repeat center center
     fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -217,6 +217,7 @@ p,
 .ghost {
   opacity: 1;
   max-width: 22.4rem;
-  background-image: url('../img/black.jpg');  
-  transform: translateX(-500px);
+  background: white;
+  position: absolute;
+  top: -1000px;
 }

@@ -1,53 +1,71 @@
 class Controller {
     constructor(model) {
         this._model = model;
-        this._dragSrcEl  = null;
+        this._draggedCardElement  = null;
     }
 
     get model() {
         return this._model;
     }
 
-    getEntityManagerWithIndex(index) {
-        if (index < 0) {
+    getEntityManagerWithIndex(boardIndex) {
+        if (boardIndex < 0) {
             return this.model.boardManager;
         }
-        return this.model.boards[index];
+        return this.model.boards[boardIndex];
     }
 
-    handleFacadeClick(index) {
-        this.getEntityManagerWithIndex(index).childEntityCreator.addSectionInsidesShown = true;
-        this.model.notifyAll();
+    getCardPosition(cardElement) {
+        const boardIndex = parseInt(cardElement.id.split('-')[1]); 
+        const cardIndex = parseInt(cardElement.id.split('-')[2]);
+        return [boardIndex, cardIndex];
     }
 
-    handleCrossClick(index) {
-        this.getEntityManagerWithIndex(index).childEntityCreator.addSectionInsidesShown = false;
-        this.model.notifyAll();
-    }
-
-    handleSubmitTitle(index, title) {
-        const entityManager = this.getEntityManagerWithIndex(index);
-        this.model.addEntity(entityManager, title);
+    incertEntity(boardIndex, cardIndex, title) {
+        const entityManager = this.getEntityManagerWithIndex(boardIndex);
+        this.model.incertEntity(entityManager, title, cardIndex);
         entityManager.childEntityCreator.addSectionInsidesShown = false;
+    }
+
+    deleteCard(boardIndex, cardIndex) {
+        this.getEntityManagerWithIndex(boardIndex).deleteChildEntityWithIndex(cardIndex);
+    }
+
+    handleFacadeClick(boardIndex) {
+        this.getEntityManagerWithIndex(boardIndex).childEntityCreator.addSectionInsidesShown = true;
         this.model.notifyAll();
     }
 
-    handleDeleteCard(boardindex, cardIndex) { 
-        this.getEntityManagerWithIndex(boardindex).deleteChildEntityWithIndex(cardIndex);
+    handleCrossClick(boardIndex) {
+        this.getEntityManagerWithIndex(boardIndex).childEntityCreator.addSectionInsidesShown = false;
+        this.model.notifyAll();
+    }
+
+    handleIncertEntity(boardIndex, cardIndex, title) {
+        this.incertEntity(boardIndex, cardIndex, title);
+        this.model.notifyAll();
+    }
+
+    handleSubmitTitle(boardIndex, title) {
+        this.handleIncertEntity(boardIndex, null, title);
+    }
+
+    handleDeleteCard(boardIndex, cardIndex) { 
+        this.deleteCard(boardIndex, cardIndex);
         this.model.notifyAll();
     }
 
     handleDragStart(e) {
-        console.log(this, e.target);
+        this._draggedCardElement  = e.target;
+
+        console.log(this.getCardPosition(this._draggedCardElement))
         var crt = e.target.cloneNode(true);
-        crt.classList.add("card");
         crt.classList.add("ghost");
         document.body.appendChild(crt);
         e.dataTransfer.setDragImage(crt, 0, 0);
         // Target (this) element is the source node.
         e.target.classList.add("empty-slot");
 
-        this._dragSrcEl  = e.target;
 
         e.dataTransfer.effectAllowed = "move";
         e.dataTransfer.setData("text/html", e.target.innerHTML);
@@ -65,7 +83,9 @@ class Controller {
 
     handleDragEnter(e) {
         // this / e.target is the current hover target.
-        e.target.classList.add("over");
+        e.target.classList.add("over");  // this / e.target is previous target element.
+
+
     }
 
     handleDragLeave(e) {
@@ -79,11 +99,17 @@ class Controller {
             e.stopPropagation(); // Stops some browsers from redirecting.
         }
 
-        // Don"t do anything if dropping the same column we"re dragging.
-        if (this._dragSrcEl  != this) {
-            // Set the source column"s HTML to the HTML of the column we dropped on.
-            this._dragSrcEl.innerHTML = e.target.innerHTML;
-            e.target.innerHTML = e.dataTransfer.getData("text/html");
+        const targetCardElement = e.target;
+        if (this._draggedCardElement !== targetCardElement) {
+            const[targetBoardIndex, targetCardIndex] = this.getCardPosition(targetCardElement); 
+            const draggedTitle = this._draggedCardElement.innerHTML;
+
+            const[draggedBoardIndex, draggedCardIndex] = this.getCardPosition(this._draggedCardElement); 
+            console.log(draggedBoardIndex, draggedCardIndex);
+            this.deleteCard(draggedBoardIndex, draggedCardIndex);
+            this.incertEntity(targetBoardIndex, targetCardIndex, draggedTitle);
+
+            this._model.notifyAll();
         }
 
         return false;

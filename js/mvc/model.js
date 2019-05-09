@@ -9,10 +9,14 @@ class Model extends Observable {
         return this.boardManager.childEntities;
     }
 
-    addEntity(entityManager, title) {
+    incertEntity(entityManager, title, index) {
         let entrineCreator = entityManager.childEntityCreator;
         let entity = entrineCreator.create(title);
-        entityManager.addChildEntity(entity);
+        entityManager.incertChildEntity(entity, index);
+    }
+
+    addEntity(entityManager, title) {
+        this.incertEntity(entityManager, title, null);
     }
 
     notifyAll() {
