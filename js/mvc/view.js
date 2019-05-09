@@ -24,7 +24,7 @@ class View extends Observer {
 
     makeTitleTextareaListItem(entityCreator, index) {
         const titleTextareaElement = document.createElement("textarea");
-        this.setAttributes(titleTextareaElement, {
+        setAttributes(titleTextareaElement, {
             "id": `textarea-${index}`,
             "class": "title-textarea",
             "placeholder": entityCreator.inputPlaceholder,
@@ -32,7 +32,7 @@ class View extends Observer {
         });
 
         const cardElement = document.createElement("LI");
-        this.setAttributes(cardElement, {
+        setAttributes(cardElement, {
             "id": `card-${index}-titleInput`,
             "class": "card",    
         });
@@ -40,7 +40,7 @@ class View extends Observer {
         if (!entityCreator.addSectionInsidesShown) {
             cardElement.setAttribute("style", "display:none;");
         } else {
-            this.focusElement(titleTextareaElement);
+            focusElement(titleTextareaElement);
         }
 
         cardElement.appendChild(titleTextareaElement);
@@ -50,7 +50,7 @@ class View extends Observer {
 
     makeAddSectionInsidesListItem(entityCreator, index) {
         const addButtonElement = document.createElement("button");
-        this.setAttributes(addButtonElement, {
+        setAttributes(addButtonElement, {
             "id": `addBtn-${index}`,
             "class": "add-btn",
             "type": "submit",
@@ -63,7 +63,7 @@ class View extends Observer {
         });
 
         const crossInputElement = document.createElement("input");
-        this.setAttributes(crossInputElement, {
+        setAttributes(crossInputElement, {
             "id": `cross-${index}`,
             "class": "svg-ico cross-ico",
             "type": "image",
@@ -75,7 +75,7 @@ class View extends Observer {
 
         const insidesElement = document.createElement("li");
         const hideInsides = !entityCreator.addSectionInsidesShown;
-        this.setAttributes(insidesElement, {
+        setAttributes(insidesElement, {
             "id": `card-${index}-insides`,
             "class": "add-section-insides",
             "style": hideInsides ? "display:none;" : "",    
@@ -89,14 +89,14 @@ class View extends Observer {
 
     makeCardsElement(cards, entityCreator, index) {
         const cardsElement = document.createElement("OL");
-        this.setAttributes(cardsElement, {
+        setAttributes(cardsElement, {
             "id": `cards-${index}`,
             "class": "cards",
         });
         
         for (let j = 0; j < cards.length; j ++) {
             let cardElement = document.createElement("LI");
-            this.setAttributes(cardElement, {
+            setAttributes(cardElement, {
                 "id": `card-${index}-${j}`,
                 "class": "card",
                 "draggable": "true",
@@ -120,7 +120,7 @@ class View extends Observer {
 
     makeAddSectionFacadeElement(entityCreator, index) {
         const plusInputElement = document.createElement("input");
-        this.setAttributes(plusInputElement, {
+        setAttributes(plusInputElement, {
             "class": "svg-ico plus-ico",
             "type": "image",
             "alt": "+",
