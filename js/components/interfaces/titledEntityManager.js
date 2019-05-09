@@ -21,4 +21,8 @@ class TitledEntityManager extends TitledEntity {
     addChildEntity(childEntity) {
         this.placeChildEntity(childEntity);
     }
+
+    deleteChildEntityWithIndex(index) {
+        this._childEntities.splice(index, 1);
+    }
 }

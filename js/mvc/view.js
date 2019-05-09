@@ -5,34 +5,21 @@ class View extends Observer {
         this._controller.model.registerObserver(this);
     }
 
-    setAttributes(element, attrDict) {
-        for (let attr in attrDict) {
-            element.setAttribute(attr, attrDict[attr]);
-        }
-    }
-
-    focusElement(element) {
-        setTimeout(() => {
-            element.focus();
-        }, 0);
-    }
-
     submitTitle(index, title) {
         if (!title.replace(/\s/g,'')) {
-            this.meep_moop(document.getElementById(`card-${index}-titleInput`));
+            meep_moop(document.getElementById(`card-${index}-titleInput`));
         } else {
             this._controller.handleSubmitTitle(index, title);
         }
     }
 
-    meep_moop(element) {
-        (async () => {
-            element.style.webkitTransform = "rotate(-4deg)";
-            await new Promise(r => setTimeout(r, 150));
-            element.style.webkitTransform = "rotate(2deg)";
-            await new Promise(r => setTimeout(r, 100));
-            element.style.webkitTransform = "rotate(0deg)";
-        })();
+    deleteCard(boardIndex, cardIndex) {
+        const cardElement = document.getElementById(`card-${boardIndex}-${cardIndex}`);
+        if (isInteger(boardIndex) && isInteger(cardIndex)) {
+            this._controller.deleteCard(boardIndex, cardIndex);
+        } else {
+            meep_moop(cardElement);
+        }
     }
 
     makeTitleTextareaListItem(entityCreator, index) {
@@ -103,8 +90,8 @@ class View extends Observer {
     makeCardsElement(cards, entityCreator, index) {
         const cardsElement = document.createElement("OL");
         this.setAttributes(cardsElement, {
-            "class": "cards",
             "id": `cards-${index}`,
+            "class": "cards",
         });
         
         for (let j = 0; j < cards.length; j ++) {

@@ -30,4 +30,9 @@ class Controller {
         entityManager.childEntityCreator.addSectionInsidesShown = false;
         this.model.notifyAll();
     }
+
+    handleDeleteCard(boardindex, cardIndex) { 
+        this.getEntityManagerWithIndex(boardindex).deleteChildEntityWithIndex(cardIndex);
+        this.model.notifyAll();
+    }
 }
