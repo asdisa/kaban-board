@@ -8,6 +8,10 @@ class Controller {
         return this._model;
     }
 
+    handleSave() {
+        this.model.saveBoardsState();
+    }
+
     getEntityManagersDict() {
         let entityManagersDict = { null: this.model.boardManager };
         for (let i = 0; i < this.model.boards.length; i++) {

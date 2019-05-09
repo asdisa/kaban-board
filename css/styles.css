@@ -77,10 +77,9 @@ p,
 /* Board styles */
 
 .board {
-  padding: 1.2rem;
-  padding-top: 0rem;
+  padding: 0rem;
   background-color: #e2e4e6;
-  max-height: calc(100vh - 5.3rem);
+  max-height: calc(100vh - 4.1rem);
   background: #dfe3e6;
   border-radius: 0.3rem;
 }
@@ -90,7 +89,9 @@ p,
 }
 
 .board-title {
+  padding: 1.2rem;
   padding-top: 0.8rem;
+  padding-bottom: 0;
   font-size: 1.3rem;
   font-weight: bold;
   color: #000;
@@ -100,8 +101,8 @@ p,
 
 .cards {
   cursor: pointer;
-  padding: 0;
-  padding-top: 1.2rem;
+  padding: 1.2rem;
+  padding-bottom: 0rem;
   flex-direction: column;
   align-content: start;
   overflow-x: hidden;
@@ -121,6 +122,7 @@ p,
   font-size: 1.3rem;
   background: #ffffff;
   padding: 0.8rem 1.2rem;
+  padding-bottom: 0.8rem 1.2rem;
   box-shadow: 0 0.1rem 0.4rem rgba(9, 45, 66, 0.25);
   border-radius: 0.3rem;
   word-wrap: break-word;
@@ -158,6 +160,7 @@ p,
   display: flex;
   font-size: 1.3rem;
   border-radius: 0.3rem;
+  padding-bottom: 1.2rem; 
 }
 
 .cvg-ico:hover {
@@ -165,7 +168,7 @@ p,
 }
 
 .add-section-facade {
-  padding-top: 1.2rem;
+  padding: 1.2rem;
 }
 
 .add-section-facade:hover {

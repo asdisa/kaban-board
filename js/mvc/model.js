@@ -9,6 +9,10 @@ class Model extends Observable {
         return this.boardManager.childEntities;
     }
 
+    saveBoardsState() {
+        LocalStorageManager.saveBoards(this.boards);
+    }
+
     incertEntity(entityManager, title, index) {
         let entrineCreator = entityManager.childEntityCreator;
         let entity = entrineCreator.create(title);
@@ -21,6 +25,5 @@ class Model extends Observable {
 
     notifyAll() {
         super.notifyAll();
-        LocalStorageManager.saveBoards(this.boards);
     }
 }

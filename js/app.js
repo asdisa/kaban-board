@@ -1,5 +1,5 @@
 function main() {
-    LocalStorageManager.removeBoardsFromStorage();
+    //LocalStorageManager.removeBoardsFromStorage();
     const storedBoards = LocalStorageManager.loadBoards();
     const boards = storedBoards != null ?
         storedBoards :

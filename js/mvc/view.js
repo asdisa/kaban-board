@@ -1,5 +1,5 @@
 class View extends Observer {
-    
+
     constructor(controller) {
         super();
         this._controller = controller;
@@ -8,7 +8,7 @@ class View extends Observer {
     }
 
     submitTitle(index, title) {
-        const titleWithoutWitespaces = title.replace(/\s/g,"");
+        const titleWithoutWitespaces = title.replace(/\s/g, "");
         if (!titleWithoutWitespaces) {
             meep_moop(document.getElementById(`card-${index}-titleInput`));
         } else {
@@ -44,7 +44,7 @@ class View extends Observer {
         const cardElement = document.createElement("LI");
         setAttributes(cardElement, {
             "id": `card-${index}-titleInput`,
-            "class": "card",    
+            "class": "card",
         });
 
         if (!entityCreator.addSectionInsidesShown) {
@@ -88,7 +88,7 @@ class View extends Observer {
         setAttributes(insidesElement, {
             "id": `card-${index}-insides`,
             "class": "add-section-insides",
-            "style": hideInsides ? "display:none;" : "",    
+            "style": hideInsides ? "display:none;" : "",
         });
         insidesElement.appendChild(addButtonElement);
         insidesElement.appendChild(crossInputElement);
@@ -103,8 +103,8 @@ class View extends Observer {
             "id": `cards-${index}`,
             "class": "cards",
         });
-        
-        for (let j = 0; j < cards.length; j ++) {
+
+        for (let j = 0; j < cards.length; j++) {
             let cardElement = document.createElement("LI");
             setAttributes(cardElement, {
                 "id": `card-${index}-${j}`,
@@ -140,7 +140,7 @@ class View extends Observer {
             "class": "svg-ico plus-ico",
             "type": "image",
             "alt": "+",
-            "src": "img/plus.svg",    
+            "src": "img/plus.svg",
         });
 
         const facadeTextElement = document.createElement("p");
@@ -157,9 +157,9 @@ class View extends Observer {
             facadeElement.addEventListener("dragover", (e) => this._controller.handleDragOver(e));
             facadeElement.addEventListener("dragleave", (e) => this._controller.handleDragLeave(e));
             facadeElement.addEventListener("drop", (e) => this._controller.handleDrop(e));
-            facadeElement.addEventListener("dragend", (e) => this._controller.handleDragEnd(e));    
+            facadeElement.addEventListener("dragend", (e) => this._controller.handleDragEnd(e));
         }
-        
+
         if (entityCreator.addSectionInsidesShown) {
             facadeElement.setAttribute("style", "display:none;");
         }
@@ -196,16 +196,24 @@ class View extends Observer {
 
     update(data) {
 
-        const wall = document.getElementsByClassName("wall")[0];
-        while (wall.firstChild) {
-            wall.removeChild(wall.firstChild);
+        const wallElement = document.getElementsByClassName("wall")[0];
+        while (wallElement.firstChild) {
+            wallElement.removeChild(wallElement.firstChild);
         }
 
         for (let i = 0; i < data.boards.length; i++) {
             let board = data.boards[i];
-            wall.appendChild(this.makeBoardElement(board, i));
+            wallElement.appendChild(this.makeBoardElement(board, i));
         }
 
-        wall.appendChild(this.makeBoardElement(data.boardManager, null));
+        wallElement.appendChild(this.makeBoardElement(data.boardManager, null));
+
+        document.onkeydown = (e) => {
+            console.log("!!");
+            if ((window.navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey) && e.keyCode == 83) {
+                e.preventDefault();
+                this._controller.handleSave();
+            }
+        };
     }
 }
