@@ -1,112 +1,118 @@
 class Controller {
     constructor(model) {
         this._model = model;
-        this._draggedCardElement  = null;
+        this._draggedCardElement = null;
     }
 
     get model() {
         return this._model;
     }
 
-    getEntityManagerWithIndex(boardIndex) {
-        if (boardIndex < 0) {
-            return this.model.boardManager;
+    getEntityManagersDict() {
+        let entityManagersDict = { null: this.model.boardManager };
+        for (let i = 0; i < this.model.boards.length; i++) {
+            entityManagersDict[i] = this.model.boards[i];
         }
-        return this.model.boards[boardIndex];
+        return entityManagersDict;
     }
 
-    getCardPosition(cardElement) {
-        const boardIndex = parseInt(cardElement.id.split('-')[1]); 
-        const cardIndex = parseInt(cardElement.id.split('-')[2]);
-        return [boardIndex, cardIndex];
+    getEntityManagerWithIndex(parentIndex) {
+        return this.getEntityManagersDict()[parentIndex];
     }
 
-    incertEntity(boardIndex, cardIndex, title) {
-        const entityManager = this.getEntityManagerWithIndex(boardIndex);
-        this.model.incertEntity(entityManager, title, cardIndex);
+    getEntityPosition(cardElement) {
+        let parentIndex = parseInt(cardElement.id.split('-')[1]);
+        let childIndex = parseInt(cardElement.id.split('-')[2]);
+        childIndex = childIndex === childIndex ? childIndex : null;
+        return [parentIndex, childIndex];
+    }
+
+    incertEntity(parentIndex, childIndex, title) {
+        const entityManager = this.getEntityManagerWithIndex(parentIndex);
+        this.model.incertEntity(entityManager, title, childIndex);
         entityManager.childEntityCreator.addSectionInsidesShown = false;
     }
 
-    deleteCard(boardIndex, cardIndex) {
-        this.getEntityManagerWithIndex(boardIndex).deleteChildEntityWithIndex(cardIndex);
+    deleteEntity(parentIndex, childIndex) {
+        this.getEntityManagerWithIndex(parentIndex).deleteChildEntityWithIndex(childIndex);
     }
 
-    handleFacadeClick(boardIndex) {
-        this.getEntityManagerWithIndex(boardIndex).childEntityCreator.addSectionInsidesShown = true;
+    handleFacadeClick(parentIndex) {
+        const entityManagerDict = this.getEntityManagersDict();
+        for (let index of Object.keys(entityManagerDict)) {
+            entityManagerDict[index].childEntityCreator.addSectionInsidesShown = index === String(parentIndex);  
+        }
+
         this.model.notifyAll();
     }
 
-    handleCrossClick(boardIndex) {
-        this.getEntityManagerWithIndex(boardIndex).childEntityCreator.addSectionInsidesShown = false;
+    handleCrossClick(parentIndex) {
+        this.getEntityManagerWithIndex(parentIndex).childEntityCreator.addSectionInsidesShown = false;
         this.model.notifyAll();
     }
 
-    handleIncertEntity(boardIndex, cardIndex, title) {
-        this.incertEntity(boardIndex, cardIndex, title);
+    handleIncertEntity(parentIndex, childIndex, title) {
+        this.incertEntity(parentIndex, childIndex, title);
         this.model.notifyAll();
     }
 
-    handleSubmitTitle(boardIndex, title) {
-        this.handleIncertEntity(boardIndex, null, title);
+    handleSubmitTitle(parentIndex, title) {
+        this.handleIncertEntity(parentIndex, null, title);
     }
 
-    handleDeleteCard(boardIndex, cardIndex) { 
-        this.deleteCard(boardIndex, cardIndex);
+    handleDeleteEntity(parentIndex, childIndex) {
+        this.deleteEntity(parentIndex, childIndex);
         this.model.notifyAll();
     }
 
     handleDragStart(e) {
-        this._draggedCardElement  = e.target;
+        const targetElement = e.target;
+        this._draggedCardElement = targetElement;
 
-        console.log(this.getCardPosition(this._draggedCardElement))
-        var crt = e.target.cloneNode(true);
-        crt.classList.add("ghost");
-        document.body.appendChild(crt);
-        e.dataTransfer.setDragImage(crt, 0, 0);
-        // Target (this) element is the source node.
-        e.target.classList.add("empty-slot");
+        var ghostElement = targetElement.cloneNode(true);
+        ghostElement.classList.add("ghost");
+        document.body.appendChild(ghostElement);
+        e.dataTransfer.setDragImage(ghostElement, 0, 0);
 
-
+        targetElement.classList.add("empty-slot");
         e.dataTransfer.effectAllowed = "move";
-        e.dataTransfer.setData("text/html", e.target.innerHTML);
+        e.dataTransfer.setData("text/html", targetElement.innerHTML);
     }
 
     handleDragOver(e) {
         if (e.preventDefault) {
-            e.preventDefault(); // Necessary. Allows us to drop.
+            e.preventDefault();
         }
-
-        e.dataTransfer.dropEffect = "move";  // See the section on the DataTransfer object.
-
+        e.dataTransfer.dropEffect = "move";
         return false;
     }
 
     handleDragEnter(e) {
-        // this / e.target is the current hover target.
-        e.target.classList.add("over");  // this / e.target is previous target element.
-
-
+        const targetElement = e.target;
+        if (targetElement.id) {
+            targetElement.classList.add("over");
+        }
     }
 
     handleDragLeave(e) {
-        e.target.classList.remove("over");  // this / e.target is previous target element.
+        const targetElement = e.target;
+        if (targetElement.id) {
+            targetElement.classList.remove("over");
+        }
     }
 
     handleDrop(e) {
-        // this/e.target is current target element.
-
         if (e.stopPropagation) {
-            e.stopPropagation(); // Stops some browsers from redirecting.
+            e.stopPropagation();
         }
 
-        const targetCardElement = e.target;
-        if (this._draggedCardElement !== targetCardElement) {
-            const[targetBoardIndex, targetCardIndex] = this.getCardPosition(targetCardElement); 
+        const targetElement = e.target;
+        if (this._draggedCardElement !== targetElement && targetElement.id) {
+            const [targetBoardIndex, targetCardIndex] = this.getEntityPosition(targetElement);
             const draggedTitle = this._draggedCardElement.innerHTML;
 
-            const[draggedBoardIndex, draggedCardIndex] = this.getCardPosition(this._draggedCardElement); 
-            console.log(draggedBoardIndex, draggedCardIndex);
-            this.deleteCard(draggedBoardIndex, draggedCardIndex);
+            const [draggedBoardIndex, draggedCardIndex] = this.getEntityPosition(this._draggedCardElement);
+            this.deleteEntity(draggedBoardIndex, draggedCardIndex);
             this.incertEntity(targetBoardIndex, targetCardIndex, draggedTitle);
 
             this._model.notifyAll();
@@ -116,12 +122,10 @@ class Controller {
     }
 
     handleDragEnd(e) {
-        // this/e.target is the source node.
-        e.target.classList.remove("empty-slot");  // this / e.target is previous target element.
+        e.target.classList.remove("empty-slot");
         var cards = document.querySelectorAll(".card");
         [].forEach.call(cards, (card) => {
             card.classList.remove("over");
         });
     }
-
 }

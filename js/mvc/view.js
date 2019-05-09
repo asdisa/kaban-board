@@ -8,7 +8,7 @@ class View extends Observer {
     }
 
     submitTitle(index, title) {
-        const titleWithoutWitespaces = title.replace(/\s/g,'')
+        const titleWithoutWitespaces = title.replace(/\s/g,"");
         if (!titleWithoutWitespaces) {
             meep_moop(document.getElementById(`card-${index}-titleInput`));
         } else {
@@ -32,6 +32,13 @@ class View extends Observer {
             "class": "title-textarea",
             "placeholder": entityCreator.inputPlaceholder,
             "rows": "2",
+        });
+        titleTextareaElement.addEventListener("keypress", (e) => {
+            console.log(e);
+            if (e.key === "Enter" && !e.shiftKey) {
+                e.preventDefault();
+                this.submitTitle(index, titleTextareaElement.value);
+            }
         });
 
         const cardElement = document.createElement("LI");
@@ -104,12 +111,12 @@ class View extends Observer {
                 "class": "card",
                 "draggable": "true",
             });
-            cardElement.addEventListener('dragstart', (e) => this._controller.handleDragStart(e), false);
-            cardElement.addEventListener('dragenter', (e) => this._controller.handleDragEnter(e), false)
-            cardElement.addEventListener('dragover', (e) => this._controller.handleDragOver(e), false);
-            cardElement.addEventListener('dragleave', (e) => this._controller.handleDragLeave(e), false);
-            cardElement.addEventListener('drop', (e) => this._controller.handleDrop(e), false);
-            cardElement.addEventListener('dragend', (e) => this._controller.handleDragEnd(e), false);
+            cardElement.addEventListener("dragstart", (e) => this._controller.handleDragStart(e), false);
+            cardElement.addEventListener("dragenter", (e) => this._controller.handleDragEnter(e), false)
+            cardElement.addEventListener("dragover", (e) => this._controller.handleDragOver(e), false);
+            cardElement.addEventListener("dragleave", (e) => this._controller.handleDragLeave(e), false);
+            cardElement.addEventListener("drop", (e) => this._controller.handleDrop(e), false);
+            cardElement.addEventListener("dragend", (e) => this._controller.handleDragEnd(e), false);
             cardElement.innerText = cards[j].title;
 
             cardsElement.appendChild(cardElement);
@@ -142,9 +149,17 @@ class View extends Observer {
 
         const facadeElement = document.createElement("div");
         facadeElement.setAttribute("class", "add-section-facade");
+        facadeElement.setAttribute("id", `facade-${index}`);
         facadeElement.appendChild(plusInputElement);
         facadeElement.appendChild(facadeTextElement);
-
+        if (index !== null) {
+            facadeElement.addEventListener("dragenter", (e) => this._controller.handleDragEnter(e))
+            facadeElement.addEventListener("dragover", (e) => this._controller.handleDragOver(e));
+            facadeElement.addEventListener("dragleave", (e) => this._controller.handleDragLeave(e));
+            facadeElement.addEventListener("drop", (e) => this._controller.handleDrop(e));
+            facadeElement.addEventListener("dragend", (e) => this._controller.handleDragEnd(e));    
+        }
+        
         if (entityCreator.addSectionInsidesShown) {
             facadeElement.setAttribute("style", "display:none;");
         }
@@ -191,6 +206,6 @@ class View extends Observer {
             wall.appendChild(this.makeBoardElement(board, i));
         }
 
-        wall.appendChild(this.makeBoardElement(data.boardManager, -1));
+        wall.appendChild(this.makeBoardElement(data.boardManager, null));
     }
 }

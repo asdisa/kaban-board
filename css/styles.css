@@ -7,8 +7,7 @@
 }
 
 body {
-  background: url("../img/background-md.webp") no-repeat center center
-    fixed;
+  background: url("../img/background-md.webp") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -32,6 +31,11 @@ p,
 .card,
 .btn {
   margin: 0;
+}
+
+:focus {
+  outline: 0;
+  border: 0.1rem solid #c9d2d9;
 }
 
 /* Grid styles */
@@ -95,6 +99,7 @@ p,
 /* Cards styles */
 
 .cards {
+  cursor: pointer;
   padding: 0;
   padding-top: 1.2rem;
   flex-direction: column;
@@ -139,6 +144,7 @@ p,
 
 .title-textarea:focus {
   outline: 0;
+  border: 0;
 }
 
 .title-textarea ::-webkit-input-placeholder {
@@ -198,9 +204,12 @@ p,
   background: rgb(48, 172, 99);
 }
 
-.hovered {
-  border: dotted 5px black;
+.add-btn:focus {
+  border: 0.1rem solid green;
+  padding-top: 0.7rem;
+  padding-left: 0.7rem;
 }
+
 
 .empty-slot {
   color: transparent;
@@ -211,7 +220,7 @@ p,
 }
 
 .over {
-  background: black;
+  border-top: 0.2rem solid #c9d2d9;
 }
 
 .ghost {
