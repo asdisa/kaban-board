@@ -1,12 +1,15 @@
 class View extends Observer {
+    
     constructor(controller) {
         super();
         this._controller = controller;
         this._controller.model.registerObserver(this);
+        //this._dndHandler = new DragAndDropEventsHandler();
     }
 
     submitTitle(index, title) {
-        if (!title.replace(/\s/g,'')) {
+        const titleWithoutWitespaces = title.replace(/\s/g,'')
+        if (!titleWithoutWitespaces) {
             meep_moop(document.getElementById(`card-${index}-titleInput`));
         } else {
             this._controller.handleSubmitTitle(index, title);
@@ -101,6 +104,12 @@ class View extends Observer {
                 "class": "card",
                 "draggable": "true",
             });
+            cardElement.addEventListener('dragstart', (e) => this._controller.handleDragStart(e), false);
+            cardElement.addEventListener('dragenter', (e) => this._controller.handleDragEnter(e), false)
+            cardElement.addEventListener('dragover', (e) => this._controller.handleDragOver(e), false);
+            cardElement.addEventListener('dragleave', (e) => this._controller.handleDragLeave(e), false);
+            cardElement.addEventListener('drop', (e) => this._controller.handleDrop(e), false);
+            cardElement.addEventListener('dragend', (e) => this._controller.handleDragEnd(e), false);
             cardElement.innerText = cards[j].title;
 
             cardsElement.appendChild(cardElement);

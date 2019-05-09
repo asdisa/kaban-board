@@ -197,3 +197,19 @@ p,
 .add-btn:active {
   background: rgb(48, 172, 99);
 }
+
+.hovered {
+  border: dotted 5px black;
+}
+
+.empty-slot {
+  color: #c9d2d9;
+  background: #c9d2d9;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+.over {
+    background: black
+}
