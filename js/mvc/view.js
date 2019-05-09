@@ -18,22 +18,20 @@ class View extends Observer {
     }
 
     submitTitle(index, title) {
-        if (!title) {
-            this.meep_moop();
+        if (!title.replace(/\s/g,'')) {
+            this.meep_moop(document.getElementById(`card-${index}-titleInput`));
         } else {
             this._controller.handleSubmitTitle(index, title);
         }
     }
 
-    meep_moop(index) {
-        let textareaElement = document.getElementById(`textarea-${index}`);
-        console.log(textareaElement);
+    meep_moop(element) {
         (async () => {
-            textareaElement.style.webkitTransform = "rotate(-4deg)";
+            element.style.webkitTransform = "rotate(-4deg)";
             await new Promise(r => setTimeout(r, 150));
-            textareaElement.style.webkitTransform = "rotate(2deg)";
+            element.style.webkitTransform = "rotate(2deg)";
             await new Promise(r => setTimeout(r, 100));
-            textareaElement.style.webkitTransform = "rotate(0deg)";
+            element.style.webkitTransform = "rotate(0deg)";
         })();
     }
 
@@ -46,16 +44,11 @@ class View extends Observer {
             "rows": "2",
         });
 
-        titleTextareaElement.addEventListener("keypress", (e) => {
-            if (e.key === 'Enter') {
-                console.log("enter")
-                this.submitTitle(index, titleTextareaElement.value);
-            }
-        });
-
         const cardElement = document.createElement("LI");
-        cardElement.setAttribute("class", "card");
-        cardElement.appendChild(titleTextareaElement);
+        this.setAttributes(cardElement, {
+            "id": `card-${index}-titleInput`,
+            "class": "card",    
+        });
 
         if (!entityCreator.addSectionInsidesShown) {
             cardElement.setAttribute("style", "display:none;");
@@ -63,13 +56,15 @@ class View extends Observer {
             this.focusElement(titleTextareaElement);
         }
 
+        cardElement.appendChild(titleTextareaElement);
+
         return cardElement;
     }
 
     makeAddSectionInsidesListItem(entityCreator, index) {
         const addButtonElement = document.createElement("button");
         this.setAttributes(addButtonElement, {
-            "id": `add-${index}`,
+            "id": `addBtn-${index}`,
             "class": "add-btn",
             "type": "submit",
         });
@@ -92,13 +87,14 @@ class View extends Observer {
             this._controller.handleCrossClick(index));
 
         const insidesElement = document.createElement("li");
-        insidesElement.setAttribute("class", "add-section-insides");
+        const hideInsides = !entityCreator.addSectionInsidesShown;
+        this.setAttributes(insidesElement, {
+            "id": `card-${index}-insides`,
+            "class": "add-section-insides",
+            "style": hideInsides ? "display:none;" : "",    
+        });
         insidesElement.appendChild(addButtonElement);
         insidesElement.appendChild(crossInputElement);
-
-        if (!entityCreator.addSectionInsidesShown) {
-            insidesElement.setAttribute("style", "display:none;");
-        }
 
         return insidesElement;
     }
@@ -106,13 +102,19 @@ class View extends Observer {
 
     makeCardsElement(cards, entityCreator, index) {
         const cardsElement = document.createElement("OL");
-        cardsElement.setAttribute("class", "cards");
-
-        for (let card of cards) {
+        this.setAttributes(cardsElement, {
+            "class": "cards",
+            "id": `cards-${index}`,
+        });
+        
+        for (let j = 0; j < cards.length; j ++) {
             let cardElement = document.createElement("LI");
-            cardElement.setAttribute("class", "card");
-            cardElement.setAttribute("draggable", "true");
-            cardElement.innerText = card.title;
+            this.setAttributes(cardElement, {
+                "id": `card-${index}-${j}`,
+                "class": "card",
+                "draggable": "true",
+            });
+            cardElement.innerText = cards[j].title;
 
             cardsElement.appendChild(cardElement);
         }
@@ -131,10 +133,12 @@ class View extends Observer {
 
     makeAddSectionFacadeElement(entityCreator, index) {
         const plusInputElement = document.createElement("input");
-        plusInputElement.setAttribute("class", "svg-ico plus-ico");
-        plusInputElement.setAttribute("type", "image");
-        plusInputElement.setAttribute("alt", "+");
-        plusInputElement.setAttribute("src", "img/plus.svg");
+        this.setAttributes(plusInputElement, {
+            "class": "svg-ico plus-ico",
+            "type": "image",
+            "alt": "+",
+            "src": "img/plus.svg",    
+        });
 
         const facadeTextElement = document.createElement("p");
         facadeTextElement.setAttribute("class", "add-section-facade-text");
