@@ -42,6 +42,7 @@ class Controller {
     }
 
     deleteEntity(parentIndex, childIndex) {
+        this.model.saveBoardsState();
         this.model.deleteChildEntity(this.getEntityManagerWithIndex(parentIndex), childIndex);
     }
 
@@ -65,6 +66,7 @@ class Controller {
     }
 
     handleSubmitTitle(parentIndex, title) {
+        this.model.saveBoardsState();
         this.handleIncertEntity(parentIndex, null, title);
     }
 
@@ -117,13 +119,12 @@ class Controller {
         const targetElement = e.target;
         if (this._draggedCardElement !== targetElement && targetElement.id) {
             const [targetBoardIndex, targetCardIndex] = this.getEntityPosition(targetElement);
+            const [draggedBoardIndex, draggedCardIndex] = this.getEntityPosition(this._draggedCardElement);
             const draggedTitle = this._draggedCardElement.innerHTML;
 
-            const [draggedBoardIndex, draggedCardIndex] = this.getEntityPosition(this._draggedCardElement);
             this.deleteEntity(draggedBoardIndex, draggedCardIndex);
             this.incertEntity(targetBoardIndex, targetCardIndex, draggedTitle);
-
-            this._model.notifyAll();
+            this.model.notifyAll();
         }
 
         return false;

@@ -89,7 +89,7 @@ class View extends Observer {
         });
         insidesElement.appendChild(addButtonElement);
         insidesElement.appendChild(crossInputElement);
-        insidesElement.addEventListener("click", (e) =>
+        insidesElement.addEventListener("click", (e) => 
             this._controller.handleCrossClick(index));
 
         return insidesElement;
@@ -109,7 +109,13 @@ class View extends Observer {
                 "id": `card-${index}-${j}`,
                 "class": "card",
                 "draggable": "true",
+                "tabindex": "-1",
             });
+            cardElement.addEventListener("click", (e) => {
+                e.stopPropagation();
+                e.target.focus();
+            });
+
             cardElement.addEventListener("dragstart",
                 (e) => this._controller.handleDragStart(e), false);
             cardElement.addEventListener("dragenter",
@@ -184,7 +190,15 @@ class View extends Observer {
 
     makeBoardElement(entityManager, index) {
         const boardElement = document.createElement("div");
-        boardElement.setAttribute("class", "board");
+        setAttributes(boardElement, {
+            "id": `board-${index}`,
+            "class": "board",
+            "tabindex": "-2",
+        });
+        boardElement.addEventListener("click", (e) => {
+            e.stopPropagation();
+            e.target.focus();
+        });
 
         let cards = [];
         if (entityManager.title != null) {

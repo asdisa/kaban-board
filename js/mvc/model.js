@@ -19,7 +19,6 @@ class Model extends Observable {
     }
 
     loadPreviousBoardsState() {
-        console.log(this.previousBoardsState, this.boards)
         if (this.previousBoardsState !== this.boards) {
             this.boardManager = new TitledEntityManager(null, this.previousBoardsState, Board);
             this.boardCreator = this.boardManager.childEntityCreator;
@@ -28,12 +27,10 @@ class Model extends Observable {
     }
 
     deleteChildEntity(entityManager, childIndex) {
-        this.saveBoardsState()
         entityManager.deleteChildEntityWithIndex(childIndex);
     }
 
     incertEntity(entityManager, title, childIndex) {
-        this.saveBoardsState()
 
         let entrineCreator = entityManager.childEntityCreator;
         let entity = entrineCreator.create(title);
@@ -41,7 +38,6 @@ class Model extends Observable {
     }
 
     addEntity(entityManager, title) {
-        this.saveBoardsState()
         this.incertEntity(entityManager, title, null);
     }
 }

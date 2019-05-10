@@ -84,6 +84,11 @@ p,
   border-radius: 0.3rem;
 }
 
+.board:focus {
+  border: 0;
+  box-shadow: 0.3rem 0.4rem 0.6rem black;
+}
+
 .board:last-of-type {
   margin-right: 0;
 }
@@ -128,6 +133,12 @@ p,
   word-wrap: break-word;
   line-height: 1.9rem;
 }
+
+.card:focus {
+  border: 0;
+  box-shadow: 0 0.1rem 0.4rem black
+}
+
 
 .card:last-of-type {
   margin-bottom: 0;
@@ -219,7 +230,7 @@ p,
   background: #c9d2d9;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
-  box-shadow: none;
+  box-shadow: none !important;
 }
 
 .over {
