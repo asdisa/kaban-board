@@ -29,10 +29,16 @@ class Controller {
         this.loadBoardsState(LocalStorageManager.loadBoards());
     }
 
+    loadInitialBoardsState() {
+        this.saveBoardsState();
+        const initialBoardState = LocalStorageManager.deserializeBoards(initialState["boards"])
+        this.loadBoardsState(initialBoardState);
+    }
+
     loadPreviousBoardsState() {
         this.loadBoardsState(this.model.previousBoardsState);
     }
-    
+
     getEntityManagersDict() {
         let entityManagersDict = { null: this.model.boardManager };
         for (let i = 0; i < this.model.boards.length; i++) {

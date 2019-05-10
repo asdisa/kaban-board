@@ -261,6 +261,9 @@ class View extends Observer {
                     case 76:
                         this._controller.loadBoardsStateFromLocalStorage();
                         break;
+                    case 73:
+                        this._controller.loadInitialBoardsState();
+                        break;
                 }
             };
         }

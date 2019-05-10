@@ -1,19 +1,46 @@
 const initialState = {
   "boards": [
     {
-      "title": "ora ora",
+      "title": "Не очевидный реализованный функционал",
       "cards": [
-        { "title": "Complete mock-up for client website" },
-        { "title": "Email mock-up to client for feedback" },
-        { "title": "Update personal website header background image" },
-        { "title": "Update personal website heading fonts" },
-        { "title": "Add google map to personal website" },
-        { "title": "Begin draft of CSS Grid article" },
-        { "title": "Read new CSS-Tricks articles" },
-        { "title": "Read new Smashing Magazine articles" },
-        { "title": "Read other bookmarked articles" },
-        { "title": "Look through portfolios to gather inspiration" },
-        { "title": "Create something cool for CodePen" }
+        { "title": "Tab как средство перемещения по кнопкам" },
+        { "title": "Скролл мыши с зажатым Stift позволяет перемещаться горизонтально" },
+        { "title": "Клик по Доске/Карточке выделяет сответвующий объект" },
+        { "title": "Delete удаляет выделенный объект" },
+        { "title": "Ctrl+Z отменяет одно последнее действие" },
+        { "title": "Ctrl+S сохраняет текущее состояние Досок в LocalStorage" },
+        { "title": "Ctrl+L загружет последнее сохраненное состояние Досок" },
+        { "title": "Ctrl+I загружает исходное состояние Досок" },
+      ]
+    }, 
+    {
+      "title": "Нереализованный функционал",
+      "cards": [
+        { "title": "Непрозрачная наклоненная перемещаемая карточка" },
+        { "title": "Mobile-first адаптив" },
+      ]
+    },
+    {
+      "title": "Сделано",
+      "cards": [
+        { "title": "Сделать тестовое" },
+        { "title": "Проверить метрики Lighthouse" },
+        { "title": "Залить на гитхаб, захостить на Pages" },
+        { "title": "Написать CV" },
+      ]
+    }, 
+    {
+      "title": "Не сделано",
+      "cards": [
+        { "title": "Диплом" },
+        { "title": "Повторить структуры данных" },
+        { "title": "Повторить алгоритмы" },
+        { "title": "Порешать Codeforces" },
+        { "title": "Зарашить курсик по реакту" },
+        { "title": "Поверстать без бутстрапов" },
+        { "title": "Дочитать Secrets of the JavaScript Ninja" },
+        { "title": "Понять кложур" },
+        { "title": "Понять дзен" },
       ]
     }
   ]
