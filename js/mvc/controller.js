@@ -102,6 +102,7 @@ class Controller {
     }
 
     handleDragEnter(e) {
+        console.log(e.target);
         const targetElement = e.target;
         if (targetElement.id) {
             targetElement.classList.add("over");

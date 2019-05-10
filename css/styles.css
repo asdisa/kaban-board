@@ -136,9 +136,8 @@ p,
 
 .card:focus {
   border: 0;
-  box-shadow: 0 0.1rem 0.4rem black
+  box-shadow: 0 0.1rem 0.4rem black;
 }
-
 
 .card:last-of-type {
   margin-bottom: 0;
@@ -171,7 +170,7 @@ p,
   display: flex;
   font-size: 1.3rem;
   border-radius: 0.3rem;
-  padding-bottom: 1.2rem; 
+  padding-bottom: 1.2rem;
 }
 
 .cvg-ico:hover {
@@ -194,6 +193,7 @@ p,
   padding-left: 0.8rem;
   color: #6b808c;
   line-height: 1.9rem;
+  pointer-events: none;
 }
 
 /* Add sections' children styles */
@@ -224,7 +224,6 @@ p,
   padding-left: 0.7rem;
 }
 
-
 .empty-slot {
   color: transparent;
   background: #c9d2d9;
@@ -243,4 +242,13 @@ p,
   background: white;
   position: absolute;
   top: -1000px;
+}
+
+.unselectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none; 
+  -ms-user-select: none; 
+  user-select: none; 
 }

@@ -84,7 +84,7 @@ class View extends Observer {
         const crossInputElement = document.createElement("input");
         setAttributes(crossInputElement, {
             "id": `cross-${index}`,
-            "class": "svg-ico cross-ico",
+            "class": "svg-ico cross-ico unselectable",
             "type": "image",
             "alt": "X",
             "src": "img/cross.svg",
@@ -164,14 +164,14 @@ class View extends Observer {
     makeFacadeElement(entityCreator, index) {
         const plusInputElement = document.createElement("input");
         setAttributes(plusInputElement, {
-            "class": "svg-ico plus-ico",
+            "class": "svg-ico plus-ico unselectable",
             "type": "image",
             "alt": "+",
             "src": "img/plus.svg",
         });
 
         const facadeTextElement = document.createElement("p");
-        facadeTextElement.setAttribute("class", "add-section-facade-text");
+        facadeTextElement.setAttribute("class", "add-section-facade-text unselectable");
         facadeTextElement.innerText = entityCreator.facadeText;
 
         const facadeElement = document.createElement("div");
@@ -180,15 +180,15 @@ class View extends Observer {
 
         if (index !== null) {
             facadeElement.addEventListener("dragenter",
-                (e) => this._controller.handleDragEnter(e))
+                (e) => this._controller.handleDragEnter(e), true);
             facadeElement.addEventListener("dragover",
-                (e) => this._controller.handleDragOver(e));
+                (e) => this._controller.handleDragOver(e), true);
             facadeElement.addEventListener("dragleave",
-                (e) => this._controller.handleDragLeave(e));
+                (e) => this._controller.handleDragLeave(e), true);
             facadeElement.addEventListener("drop",
-                (e) => this._controller.handleDrop(e));
+                (e) => this._controller.handleDrop(e), true);
             facadeElement.addEventListener("dragend",
-                (e) => this._controller.handleDragEnd(e));
+                (e) => this._controller.handleDragEnd(e), true);
         }
 
         facadeElement.appendChild(plusInputElement);
@@ -227,7 +227,7 @@ class View extends Observer {
             cards = entityManager.childEntities;
 
             const titleElement = document.createElement("h3");
-            titleElement.setAttribute("class", "board-title");
+            titleElement.setAttribute("class", "board-title unselectable");
             titleElement.innerText = entityManager.title;
 
             boardElement.appendChild(titleElement);
