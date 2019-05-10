@@ -26,14 +26,6 @@ class View extends Observer {
         }
     }
 
-    deleteCard(boardIndex, cardIndex) {
-        const cardElement = document.getElementById(`card-${boardIndex}-${cardIndex}`);
-        if (Number.isInteger(boardIndex) && Number.isInteger(cardIndex)) {
-        } else {
-            meep_moop(cardElement);
-        }
-    }
-
     makeTitleTextareaListItem(entityCreator, index) {
         const titleTextareaElement = document.createElement("textarea");
         setAttributes(titleTextareaElement, {
@@ -100,7 +92,7 @@ class View extends Observer {
         insidesElement.appendChild(addButtonElement);
         insidesElement.appendChild(crossInputElement);
         insidesElement.addEventListener("click", (e) => 
-            this._controller.handleCrossClick(index));
+            this._controller.handleCrossClick(e));
 
         return insidesElement;
     }
@@ -199,7 +191,7 @@ class View extends Observer {
         }
 
         facadeElement.addEventListener("click", (e) =>
-            this._controller.handleFacadeClick(index));
+            this._controller.handleFacadeClick(e));
 
         return facadeElement;
     }
@@ -261,13 +253,13 @@ class View extends Observer {
                 e.preventDefault();
                 switch (e.keyCode) {
                     case 83:
-                        this._controller.handleSave();
+                        this._controller.saveBoardsStateToLocalStorage();
                         break;
                     case 90:
-                        this._controller.handleUndoChange();
+                        this._controller.loadPreviousBoardsState();
                         break;
                     case 76:
-                        this._controller.handleLoadSavedBoardsState();
+                        this._controller.loadBoardsStateFromLocalStorage();
                         break;
                 }
             };

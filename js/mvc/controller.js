@@ -8,18 +8,31 @@ class Controller {
         return this._model;
     }
 
-    handleSave() {
-        this.model.saveBoardsStateToLocalStorage();
+    saveBoardsState() {
+        this.model.previousBoardsState = LocalStorageManager.deserializeBoards(LocalStorageManager.serializeBoards(this.model.boards)); 
     }
 
-    handleLoadSavedBoardsState() {
-        this.model.loadBoardsStateFromLocalStorage();
+    saveBoardsStateToLocalStorage() {
+        LocalStorageManager.saveBoards(this.model.boards);
     }
 
-    handleUndoChange() {
-        this.model.loadPreviousBoardsState();
+    loadBoardsState(boardsState) {
+        if (boardsState !== this.boards) {
+            this.model.boardManager = new TitledEntityManager(null, boardsState, Board);
+            this.model.boardCreator = this.model.boardManager.childEntityCreator;
+            this.model.notifyAll();     
+        }
     }
 
+    loadBoardsStateFromLocalStorage() {
+        this.saveBoardsState();
+        this.loadBoardsState(LocalStorageManager.loadBoards());
+    }
+
+    loadPreviousBoardsState() {
+        this.loadBoardsState(this.model.previousBoardsState);
+    }
+    
     getEntityManagersDict() {
         let entityManagersDict = { null: this.model.boardManager };
         for (let i = 0; i < this.model.boards.length; i++) {
@@ -41,16 +54,21 @@ class Controller {
 
     incertEntity(parentIndex, childIndex, title) {
         const entityManager = this.getEntityManagerWithIndex(parentIndex);
-        this.model.incertEntity(entityManager, title, childIndex);
+        let entityCreator = entityManager.childEntityCreator;
+        let entity = entityCreator.create(title);
+        entityManager.incertChildEntity(entity, childIndex);
         entityManager.childEntityCreator.addSectionInsidesShown = false;
     }
 
     deleteEntity(parentIndex, childIndex) {
-        this.model.saveBoardsState();
-        this.model.deleteChildEntity(this.getEntityManagerWithIndex(parentIndex), childIndex);
+        this.saveBoardsState();
+        const entityManager = this.getEntityManagerWithIndex(parentIndex);
+        entityManager.deleteChildEntityWithIndex(childIndex);
     }
 
-    handleFacadeClick(parentIndex) {
+    handleFacadeClick(e) {
+        let parentIndex = parseInt(e.target.id.split("-")[1]); 
+        parentIndex = parentIndex === parentIndex ? parentIndex : null;
         const entityManagerDict = this.getEntityManagersDict();
         for (let index of Object.keys(entityManagerDict)) {
             entityManagerDict[index].childEntityCreator.addSectionInsidesShown = index === String(parentIndex);  
@@ -59,19 +77,16 @@ class Controller {
         this.model.notifyAll();
     }
 
-    handleCrossClick(parentIndex) {
+    handleCrossClick(e) {
+        const parentIndex = parseInt(e.target.id.split("-")[1]); 
         this.getEntityManagerWithIndex(parentIndex).childEntityCreator.addSectionInsidesShown = false;
         this.model.notifyAll();
     }
 
-    handleIncertEntity(parentIndex, childIndex, title) {
-        this.incertEntity(parentIndex, childIndex, title);
-        this.model.notifyAll();
-    }
-
     handleSubmitTitle(parentIndex, title) {
-        this.model.saveBoardsState();
-        this.handleIncertEntity(parentIndex, null, title);
+        this.saveBoardsState();
+        this.incertEntity(parentIndex, null, title);
+        this.model.notifyAll();
     }
 
     handleDeleteEntity(parentIndex, childIndex) {
@@ -102,7 +117,6 @@ class Controller {
     }
 
     handleDragEnter(e) {
-        console.log(e.target);
         const targetElement = e.target;
         if (targetElement.id) {
             targetElement.classList.add("over");
