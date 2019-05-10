@@ -66,6 +66,7 @@ class View extends Observer {
 
         addButtonElement.innerText = entityCreator.addButtonText;
         addButtonElement.addEventListener("click", (e) => {
+            e.stopPropagation();
             let title = document.getElementById(`textarea-${index}`).value;
             this.submitTitle(index, title);
         });
@@ -78,8 +79,6 @@ class View extends Observer {
             "alt": "X",
             "src": "img/cross.svg",
         });
-        crossInputElement.addEventListener("click", (e) =>
-            this._controller.handleCrossClick(index));
 
         const insidesElement = document.createElement("li");
         const hideInsides = !entityCreator.addSectionInsidesShown;
@@ -90,6 +89,8 @@ class View extends Observer {
         });
         insidesElement.appendChild(addButtonElement);
         insidesElement.appendChild(crossInputElement);
+        insidesElement.addEventListener("click", (e) =>
+            this._controller.handleCrossClick(index));
 
         return insidesElement;
     }

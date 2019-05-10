@@ -102,7 +102,7 @@ p,
 .cards {
   cursor: pointer;
   padding: 1.2rem;
-  padding-bottom: 0rem;
+  padding-bottom: 0.3rem;
   flex-direction: column;
   align-content: start;
   overflow-x: hidden;
