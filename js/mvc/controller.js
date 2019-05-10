@@ -12,6 +12,10 @@ class Controller {
         this.model.saveBoardsStateToLocalStorage();
     }
 
+    handleLoadSavedBoardsState() {
+        this.model.loadBoardsStateFromLocalStorage();
+    }
+
     handleUndoChange() {
         this.model.loadPreviousBoardsState();
     }

@@ -18,12 +18,21 @@ class Model extends Observable {
         LocalStorageManager.saveBoards(this.boards);
     }
 
-    loadPreviousBoardsState() {
-        if (this.previousBoardsState !== this.boards) {
-            this.boardManager = new TitledEntityManager(null, this.previousBoardsState, Board);
+    loadBoardsState(boardsState) {
+        if (this.boardsState !== this.boards) {
+            this.boardManager = new TitledEntityManager(null, boardsState, Board);
             this.boardCreator = this.boardManager.childEntityCreator;
             this.notifyAll();     
         }
+    }
+
+    loadBoardsStateFromLocalStorage() {
+        this.saveBoardsState();
+        this.loadBoardsState(LocalStorageManager.loadBoards());
+    }
+
+    loadPreviousBoardsState() {
+        this.loadBoardsState(this.previousBoardsState);
     }
 
     deleteChildEntity(entityManager, childIndex) {

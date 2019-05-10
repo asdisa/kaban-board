@@ -15,10 +15,20 @@ class View extends Observer {
         }
     }
 
+    deleteEntityById(elementId) {
+        const [entityType, boardIndex, cardIndex=null] = elementId.split("-");
+        if (entityType === "card") {
+            this._controller.handleDeleteEntity(parseInt(boardIndex), parseInt(cardIndex));
+        } else if (entityType === "board" && boardIndex != "null") {
+            this._controller.handleDeleteEntity(null, parseInt(boardIndex));
+        } else {
+            meep_moop(document.getElementById(elementId));
+        }
+    }
+
     deleteCard(boardIndex, cardIndex) {
         const cardElement = document.getElementById(`card-${boardIndex}-${cardIndex}`);
-        if (isInteger(boardIndex) && isInteger(cardIndex)) {
-            this._controller.deleteCard(boardIndex, cardIndex);
+        if (Number.isInteger(boardIndex) && Number.isInteger(cardIndex)) {
         } else {
             meep_moop(cardElement);
         }
@@ -114,6 +124,12 @@ class View extends Observer {
             cardElement.addEventListener("click", (e) => {
                 e.stopPropagation();
                 e.target.focus();
+            });            
+            cardElement.addEventListener("keydown", (e) => {
+                e.stopPropagation();                
+                if (e.key === "Delete") {
+                    this.deleteEntityById(e.target.id);
+                }
             });
 
             cardElement.addEventListener("dragstart",
@@ -199,6 +215,12 @@ class View extends Observer {
             e.stopPropagation();
             e.target.focus();
         });
+        boardElement.addEventListener("keydown", (e) => {
+            e.stopPropagation();                
+            if (e.key === "Delete") {
+                this.deleteEntityById(e.target.id);
+            }
+        });
 
         let cards = [];
         if (entityManager.title != null) {
@@ -243,6 +265,9 @@ class View extends Observer {
                         break;
                     case 90:
                         this._controller.handleUndoChange();
+                        break;
+                    case 76:
+                        this._controller.handleLoadSavedBoardsState();
                         break;
                 }
             };
