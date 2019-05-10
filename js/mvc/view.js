@@ -110,12 +110,18 @@ class View extends Observer {
                 "class": "card",
                 "draggable": "true",
             });
-            cardElement.addEventListener("dragstart", (e) => this._controller.handleDragStart(e), false);
-            cardElement.addEventListener("dragenter", (e) => this._controller.handleDragEnter(e), false)
-            cardElement.addEventListener("dragover", (e) => this._controller.handleDragOver(e), false);
-            cardElement.addEventListener("dragleave", (e) => this._controller.handleDragLeave(e), false);
-            cardElement.addEventListener("drop", (e) => this._controller.handleDrop(e), false);
-            cardElement.addEventListener("dragend", (e) => this._controller.handleDragEnd(e), false);
+            cardElement.addEventListener("dragstart",
+                (e) => this._controller.handleDragStart(e), false);
+            cardElement.addEventListener("dragenter",
+                (e) => this._controller.handleDragEnter(e), false)
+            cardElement.addEventListener("dragover",
+                (e) => this._controller.handleDragOver(e), false);
+            cardElement.addEventListener("dragleave",
+                (e) => this._controller.handleDragLeave(e), false);
+            cardElement.addEventListener("drop",
+                (e) => this._controller.handleDrop(e), false);
+            cardElement.addEventListener("dragend",
+                (e) => this._controller.handleDragEnd(e), false);
             cardElement.innerText = cards[j].title;
 
             cardsElement.appendChild(cardElement);
@@ -133,7 +139,7 @@ class View extends Observer {
         return cardsElement;
     }
 
-    makeAddSectionFacadeElement(entityCreator, index) {
+    makeFacadeElement(entityCreator, index) {
         const plusInputElement = document.createElement("input");
         setAttributes(plusInputElement, {
             "class": "svg-ico plus-ico",
@@ -151,13 +157,18 @@ class View extends Observer {
         facadeElement.setAttribute("id", `facade-${index}`);
 
         if (index !== null) {
-            facadeElement.addEventListener("dragenter", (e) => this._controller.handleDragEnter(e))
-            facadeElement.addEventListener("dragover", (e) => this._controller.handleDragOver(e));
-            facadeElement.addEventListener("dragleave", (e) => this._controller.handleDragLeave(e));
-            facadeElement.addEventListener("drop", (e) => this._controller.handleDrop(e));
-            facadeElement.addEventListener("dragend", (e) => this._controller.handleDragEnd(e));
+            facadeElement.addEventListener("dragenter",
+                (e) => this._controller.handleDragEnter(e))
+            facadeElement.addEventListener("dragover",
+                (e) => this._controller.handleDragOver(e));
+            facadeElement.addEventListener("dragleave",
+                (e) => this._controller.handleDragLeave(e));
+            facadeElement.addEventListener("drop",
+                (e) => this._controller.handleDrop(e));
+            facadeElement.addEventListener("dragend",
+                (e) => this._controller.handleDragEnd(e));
         }
-        
+
         facadeElement.appendChild(plusInputElement);
         facadeElement.appendChild(facadeTextElement);
 
@@ -187,10 +198,10 @@ class View extends Observer {
         }
 
         const cardsElement = this.makeCardsElement(cards, entityManager.childEntityCreator, index);
-        const addSectionFacadeElement = this.makeAddSectionFacadeElement(entityManager.childEntityCreator, index);
+        const facadeElement = this.makeFacadeElement(entityManager.childEntityCreator, index);
 
         boardElement.appendChild(cardsElement);
-        boardElement.appendChild(addSectionFacadeElement);
+        boardElement.appendChild(facadeElement);
 
         return boardElement;
     }
@@ -210,11 +221,17 @@ class View extends Observer {
         wallElement.appendChild(this.makeBoardElement(data.boardManager, null));
 
         document.onkeydown = (e) => {
-            console.log("!!");
-            if ((window.navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey) && e.keyCode == 83) {
+            if ((window.navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)) {
                 e.preventDefault();
-                this._controller.handleSave();
-            }
-        };
+                switch (e.keyCode) {
+                    case 83:
+                        this._controller.handleSave();
+                        break;
+                    case 90:
+                        this._controller.handleUndoChange();
+                        break;
+                }
+            };
+        }
     }
 }

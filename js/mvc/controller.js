@@ -9,7 +9,11 @@ class Controller {
     }
 
     handleSave() {
-        this.model.saveBoardsState();
+        this.model.saveBoardsStateToLocalStorage();
+    }
+
+    handleUndoChange() {
+        this.model.loadPreviousBoardsState();
     }
 
     getEntityManagersDict() {
@@ -38,7 +42,7 @@ class Controller {
     }
 
     deleteEntity(parentIndex, childIndex) {
-        this.getEntityManagerWithIndex(parentIndex).deleteChildEntityWithIndex(childIndex);
+        this.model.deleteChildEntity(this.getEntityManagerWithIndex(parentIndex), childIndex);
     }
 
     handleFacadeClick(parentIndex) {
