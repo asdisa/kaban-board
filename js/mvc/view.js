@@ -4,7 +4,6 @@ class View extends Observer {
         super();
         this._controller = controller;
         this._controller.model.registerObserver(this);
-        //this._dndHandler = new DragAndDropEventsHandler();
     }
 
     submitTitle(index, title) {
@@ -34,7 +33,6 @@ class View extends Observer {
             "rows": "2",
         });
         titleTextareaElement.addEventListener("keypress", (e) => {
-            console.log(e);
             if (e.key === "Enter" && !e.shiftKey) {
                 e.preventDefault();
                 this.submitTitle(index, titleTextareaElement.value);
@@ -150,8 +148,7 @@ class View extends Observer {
         const facadeElement = document.createElement("div");
         facadeElement.setAttribute("class", "add-section-facade");
         facadeElement.setAttribute("id", `facade-${index}`);
-        facadeElement.appendChild(plusInputElement);
-        facadeElement.appendChild(facadeTextElement);
+
         if (index !== null) {
             facadeElement.addEventListener("dragenter", (e) => this._controller.handleDragEnter(e))
             facadeElement.addEventListener("dragover", (e) => this._controller.handleDragOver(e));
@@ -159,6 +156,9 @@ class View extends Observer {
             facadeElement.addEventListener("drop", (e) => this._controller.handleDrop(e));
             facadeElement.addEventListener("dragend", (e) => this._controller.handleDragEnd(e));
         }
+        
+        facadeElement.appendChild(plusInputElement);
+        facadeElement.appendChild(facadeTextElement);
 
         if (entityCreator.addSectionInsidesShown) {
             facadeElement.setAttribute("style", "display:none;");
