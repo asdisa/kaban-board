@@ -77,7 +77,7 @@ class Controller {
     }
 
     handleFacadeClick(e) {
-        let parentIndex = parseInt(e.target.id.split("-")[1]); 
+        let parentIndex = parseIntRespectingNull(e.target.id.split("-")[1]); 
         parentIndex = parentIndex === parentIndex ? parentIndex : null;
         const entityManagerDict = this.getEntityManagersDict();
         for (let index of Object.keys(entityManagerDict)) {
@@ -88,7 +88,8 @@ class Controller {
     }
 
     handleCrossClick(e) {
-        const parentIndex = parseInt(e.target.id.split("-")[1]); 
+        const parentIndex = parseIntRespectingNull(e.target.id.split("-")[1]); 
+        console.log(parentIndex);
         this.getEntityManagerWithIndex(parentIndex).childEntityCreator.addSectionInsidesShown = false;
         this.model.notifyAll();
     }

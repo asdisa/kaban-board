@@ -23,3 +23,7 @@ function meep_moop(element) {
         element.style.webkitTransform = "rotate(0deg)";
     })();
 }
+
+function scrollToBottom(element){
+    element.scrollTop = element.scrollHeight - element.clientHeight;
+}

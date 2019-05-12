@@ -86,8 +86,8 @@ class View extends Observer {
         const insidesElement = document.createElement("li");
         const hideInsides = !entityCreator.addSectionInsidesShown;
         setAttributes(insidesElement, {
-            "id": `card-${index}-insides`,
-            "class": "add-section-insides",
+            "id": `insides-${index}`,
+            "class": "add-section-insides unselectable",
             "style": hideInsides ? "display:none;" : "",
         });
         insidesElement.appendChild(addButtonElement);
@@ -192,8 +192,11 @@ class View extends Observer {
             facadeElement.setAttribute("style", "display:none;");
         }
 
-        facadeElement.addEventListener("click", (e) =>
-            this._controller.handleFacadeClick(e));
+        facadeElement.addEventListener("click", (e) => {
+            this._controller.handleFacadeClick(e)
+            const index = e.target.id.split("-")[1];
+            scrollToBottom(document.getElementById(`cards-${index}`));
+        });
 
         return facadeElement;
     }
