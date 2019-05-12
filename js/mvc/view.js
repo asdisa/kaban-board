@@ -215,7 +215,6 @@ class View extends Observer {
             e.stopPropagation();
             const targeElementType = e.target.id.split("-")[0];                
             if (e.key === "Delete" && targeElementType !== "textarea") {
-                console.log(e.target.id)
                 this.deleteEntityById(e.target.id);
             }
         });

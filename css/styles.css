@@ -140,7 +140,7 @@ p,
 
 .card:focus {
   border: 0;
-  box-shadow: 0 0.1rem 0.4rem black;
+  box-shadow: 0 0.1rem 0.3rem black;
 }
 
 .card:last-of-type {
