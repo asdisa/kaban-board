@@ -6,12 +6,14 @@ class View extends Observer {
         this._controller.model.registerObserver(this);
     }
 
-    submitTitle(index, title) {
+    addChildEntity(parentIndex, title) {
         const titleWithoutWitespaces = title.replace(/\s/g, "");
         if (!titleWithoutWitespaces) {
-            meep_moop(document.getElementById(`card-${index}-titleInput`));
+            meep_moop(document.getElementById(`titleInput-${parentIndex}`));
         } else {
-            this._controller.handleSubmitTitle(index, title);
+            this._controller.addChildEntity(parentIndex, title);
+            const addedChildIndex = this._controller.lastChildIndex(parentIndex)
+            focusElement(document.getElementById(`entity-${String(parentIndex)}-${addedChildIndex}`));
         }
     }
 
@@ -37,13 +39,13 @@ class View extends Observer {
         titleTextareaElement.addEventListener("keypress", (e) => {
             if (e.key === "Enter" && !e.shiftKey) {
                 e.preventDefault();
-                this.submitTitle(index, titleTextareaElement.value);
+                this.addChildEntity(index, titleTextareaElement.value);
             }
         });
 
         const cardElement = document.createElement("LI");
         setAttributes(cardElement, {
-            "id": `card-${index}-titleInput`,
+            "id": `titleInput-${index}`,
             "class": "card",
         });
 
@@ -70,7 +72,7 @@ class View extends Observer {
         addButtonElement.addEventListener("click", (e) => {
             e.stopPropagation();
             let title = document.getElementById(`textarea-${index}`).value;
-            this.submitTitle(index, title);
+            this.addChildEntity(index, title);
         });
 
         const crossInputElement = document.createElement("input");
@@ -108,7 +110,7 @@ class View extends Observer {
         for (let j = 0; j < cards.length; j++) {
             let cardElement = document.createElement("LI");
             setAttributes(cardElement, {
-                "id": `card-${index}-${j}`,
+                "id": `entity-${index}-${j}`,
                 "class": "card",
                 "draggable": "true",
                 "tabindex": "-1",
@@ -156,6 +158,7 @@ class View extends Observer {
     makeFacadeElement(entityCreator, index) {
         const plusInputElement = document.createElement("input");
         setAttributes(plusInputElement, {
+            "id": `plus-${index}`,
             "class": "svg-ico plus-ico unselectable",
             "type": "image",
             "alt": "+",
@@ -199,7 +202,7 @@ class View extends Observer {
     makeBoardElement(entityManager, index) {
         const boardElement = document.createElement("div");
         setAttributes(boardElement, {
-            "id": `board-${index}`,
+            "id": `entity-null-${index}`,
             "class": "board",
             "tabindex": "-2",
         });

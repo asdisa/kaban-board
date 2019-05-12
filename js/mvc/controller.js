@@ -51,6 +51,10 @@ class Controller {
         return this.getEntityManagersDict()[parentIndex];
     }
 
+    lastChildIndex(parentIndex) {
+        return this.getEntityManagersDict()[parentIndex].childEntities.length - 1;
+    }
+
     getEntityPosition(cardElement) {
         let parentIndex = parseInt(cardElement.id.split('-')[1]);
         let childIndex = parseInt(cardElement.id.split('-')[2]);
@@ -89,7 +93,7 @@ class Controller {
         this.model.notifyAll();
     }
 
-    handleSubmitTitle(parentIndex, title) {
+    addChildEntity(parentIndex, title) {
         this.saveBoardsState();
         this.incertEntity(parentIndex, null, title);
         this.model.notifyAll();
