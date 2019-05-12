@@ -1,3 +1,7 @@
+function parseIntRespectingNull(str) {
+    return parsed = str == "null" ? null : parseInt(str); 
+}
+
 function focusElement(element) {
     setTimeout(() => {
         element.focus();

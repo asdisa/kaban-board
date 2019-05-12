@@ -18,11 +18,10 @@ class View extends Observer {
     }
 
     deleteEntityById(elementId) {
-        const [entityType, boardIndex, cardIndex=null] = elementId.split("-");
-        if (entityType === "card") {
-            this._controller.handleDeleteEntity(parseInt(boardIndex), parseInt(cardIndex));
-        } else if (entityType === "board" && boardIndex != "null") {
-            this._controller.handleDeleteEntity(null, parseInt(boardIndex));
+        const [elementType, parentIndex, childIndex] = elementId.split("-");
+        console.log(parentIndex, childIndex === "null");
+        if (elementType === "entity" && childIndex !== "null") {
+            this._controller.handleDeleteEntity(parseIntRespectingNull(parentIndex), parseIntRespectingNull(childIndex));
         } else {
             meep_moop(document.getElementById(elementId));
         }
