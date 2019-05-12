@@ -87,7 +87,7 @@ class View extends Observer {
         const hideInsides = !entityCreator.addSectionInsidesShown;
         setAttributes(insidesElement, {
             "id": `insides-${index}`,
-            "class": "add-section-insides unselectable",
+            "class": "add-section-insides last-card unselectable",
             "style": hideInsides ? "display:none;" : "",
         });
         insidesElement.appendChild(addButtonElement);
@@ -110,7 +110,7 @@ class View extends Observer {
             let cardElement = document.createElement("LI");
             setAttributes(cardElement, {
                 "id": `entity-${index}-${j}`,
-                "class": "card",
+                "class": `card${j === cards.length - 1 && !entityCreator.addSectionInsidesShown ? " last-card" : ""}`,
                 "draggable": "true",
                 "tabindex": "-1",
             });

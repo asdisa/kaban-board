@@ -107,7 +107,7 @@ p,
 .cards {
   cursor: pointer;
   padding: 1.2rem;
-  padding-bottom: 0.3rem;
+  padding-bottom: 0rem;
   flex-direction: column;
   align-content: start;
   overflow-x: hidden;
@@ -117,6 +117,10 @@ p,
 .cards::-webkit-scrollbar {
   background: transparent;
   width: 0px;
+}
+
+.last-card {
+  margin-bottom: 0.3rem;
 }
 
 /* Card styles */
