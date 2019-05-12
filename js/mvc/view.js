@@ -19,7 +19,6 @@ class View extends Observer {
 
     deleteEntityById(elementId) {
         const [elementType, parentIndex, childIndex] = elementId.split("-");
-        console.log(parentIndex, childIndex === "null");
         if (elementType === "entity" && childIndex !== "null") {
             this._controller.handleDeleteEntity(parseIntRespectingNull(parentIndex), parseIntRespectingNull(childIndex));
         } else {
@@ -213,8 +212,10 @@ class View extends Observer {
             e.target.focus();
         });
         boardElement.addEventListener("keydown", (e) => {
-            e.stopPropagation();                
-            if (e.key === "Delete") {
+            e.stopPropagation();
+            const targeElementType = e.target.id.split("-")[0];                
+            if (e.key === "Delete" && targeElementType !== "textarea") {
+                console.log(e.target.id)
                 this.deleteEntityById(e.target.id);
             }
         });

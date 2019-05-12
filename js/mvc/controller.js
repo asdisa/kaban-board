@@ -89,7 +89,6 @@ class Controller {
 
     handleCrossClick(e) {
         const parentIndex = parseIntRespectingNull(e.target.id.split("-")[1]); 
-        console.log(parentIndex);
         this.getEntityManagerWithIndex(parentIndex).childEntityCreator.addSectionInsidesShown = false;
         this.model.notifyAll();
     }
