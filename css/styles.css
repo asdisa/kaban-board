@@ -242,7 +242,7 @@ p,
 
 .ghost {
   opacity: 1;
-  max-width: 22.4rem;
+  width: 22.4rem;
   background: white;
   position: absolute;
   top: -1000px;
