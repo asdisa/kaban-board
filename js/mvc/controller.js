@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 class Controller {
   constructor(model) {
     this._model = model;
