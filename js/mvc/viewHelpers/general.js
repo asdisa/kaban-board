@@ -1,8 +1,3 @@
-/* eslint-disable no-param-reassign */
-/* eslint-disable no-restricted-syntax */
-/* eslint-disable radix */
-/* eslint-disable no-unused-vars */
-
 function parseIntRespectingNull(str) {
   return str === 'null' ? null : parseInt(str);
 }

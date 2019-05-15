@@ -12,5 +12,9 @@
         "ecmaVersion": 2018
     },
     "rules": {
+        "no-param-reassign":"off",
+        "no-restricted-syntax":"off",
+        "radix":"off",
+        "no-unused-vars":"off"
     }
 }
