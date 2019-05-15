@@ -41,7 +41,7 @@ class Controller {
 
   getEntityManagersDict() {
     const entityManagersDict = { null: this.model.boardManager };
-    for (let i = 0; i < this.model.boards.length; i++) {
+    for (let i = 0; i < this.model.boards.length; i += 1) {
       entityManagersDict[i] = this.model.boards[i];
     }
     return entityManagersDict;
@@ -75,23 +75,25 @@ class Controller {
     this.model.notifyAll();
   }
 
-  deleteEntityAndUpdateView(parentIndex, childIndex) {
+  deleteEntityAndUpdateView(entityIndices) {
+    const [parentIndex, childIndex] = entityIndices;
     this.deleteEntity(parentIndex, childIndex);
     this.model.notifyAll();
   }
 
   handleFacadeClick(e) {
-    const parentIndex = parseIntRespectingNull(e.target.id.split('-')[1]);
+    const parentIndex = parseIntOrNull(e.target.id.split('-')[1]);
     const entityManagerDict = this.getEntityManagersDict();
     for (const index of Object.keys(entityManagerDict)) {
-      entityManagerDict[index].childEntityCreator.addSectionInsidesShown = index === String(parentIndex);
+      entityManagerDict[index].childEntityCreator
+        .addSectionInsidesShown = index === String(parentIndex);
     }
 
     this.model.notifyAll();
   }
 
   handleCrossClick(e) {
-    const parentIndex = parseIntRespectingNull(e.target.id.split('-')[1]);
+    const parentIndex = parseIntOrNull(e.target.id.split('-')[1]);
     this.getEntityManagerWithIndex(parentIndex).childEntityCreator.addSectionInsidesShown = false;
     this.model.notifyAll();
   }
