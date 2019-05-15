@@ -9,7 +9,7 @@ class View extends Observer {
     addChildEntity(parentIndex, title) {
         const titleWithoutWitespaces = title.replace(/\s/g, "");
         if (!titleWithoutWitespaces) {
-            meep_moop(document.getElementById(`titleInput-${parentIndex}`));
+            wiggleElement(document.getElementById(`titleInput-${parentIndex}`));
         } else {
             this._controller.addChildEntity(parentIndex, title);
             const addedChildIndex = this._controller.lastChildIndex(parentIndex)
@@ -20,9 +20,9 @@ class View extends Observer {
     deleteEntityById(elementId) {
         const [elementType, parentIndex, childIndex] = elementId.split("-");
         if (elementType === "entity" && childIndex !== "null") {
-            this._controller.handleDeleteEntity(parseIntRespectingNull(parentIndex), parseIntRespectingNull(childIndex));
+            this._controller.deleteEntityAndUpdateView(parseIntRespectingNull(parentIndex), parseIntRespectingNull(childIndex));
         } else {
-            meep_moop(document.getElementById(elementId));
+            wiggleElement(document.getElementById(elementId));
         }
     }
 

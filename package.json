@@ -1,0 +1,28 @@
+{
+  "name": "vk",
+  "version": "1.0.0",
+  "description": "Test project for vk internship",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asdisa/kaban-board.git"
+  },
+  "author": "asdisa",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/asdisa/kaban-board/issues"
+  },
+  "homepage": "https://github.com/asdisa/kaban-board#readme",
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-node": "^9.0.1",
+    "eslint-plugin-promise": "^4.1.1",
+    "eslint-plugin-standard": "^4.0.0"
+  }
+}
