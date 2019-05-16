@@ -1,4 +1,6 @@
-/* eslint-disable class-methods-use-this */
+/*
+Handles events passed by View by manipulating the state of the application.
+*/
 class Controller {
   constructor(model) {
     this._model = model;
@@ -9,8 +11,8 @@ class Controller {
     return this._model;
   }
 
-  saveBoardsState() {
-    this.model.previousBoardsState = LocalStorageManager.deserializeBoards(LocalStorageManager.serializeBoards(this.model.boards));
+  updatePreviousBoardsState() {
+    this.model.previousBoardsState = this.model.boards;
   }
 
   saveBoardsStateToLocalStorage() {
@@ -20,18 +22,18 @@ class Controller {
   loadBoardsState(boardsState) {
     if (boardsState !== this.boards) {
       this.model.boardManager = new TitledEntityManager(null, boardsState, Board);
-      this.model.boardCreator = this.model.boardManager.childEntityCreator;
+      this.model.boardCreator = this.model.boardManager;
       this.model.notifyAll();
     }
   }
 
   loadBoardsStateFromLocalStorage() {
-    this.saveBoardsState();
+    this.updatePreviousBoardsState();
     this.loadBoardsState(LocalStorageManager.loadBoards());
   }
 
   loadInitialBoardsState() {
-    this.saveBoardsState();
+    this.updatePreviousBoardsState();
     const initialBoardState = LocalStorageManager.deserializeBoards(initialState.boards);
     this.loadBoardsState(initialBoardState);
   }
@@ -56,22 +58,21 @@ class Controller {
     return this.getEntityManagersDict()[parentIndex].childEntities.length - 1;
   }
 
-  incertEntity(parentIndex, childIndex, title) {
-    const entityManager = this.getEntityManagerWithIndex(parentIndex);
-    const entityCreator = entityManager.childEntityCreator;
-    const entity = entityCreator.create(title);
-    entityManager.incertChildEntity(entity, childIndex);
-    entityManager.childEntityCreator.addSectionInsidesShown = false;
-  }
-
   deleteEntity(parentIndex, childIndex) {
-    this.saveBoardsState();
+    this.updatePreviousBoardsState();
     const entityManager = this.getEntityManagerWithIndex(parentIndex);
     entityManager.deleteChildEntityWithIndex(childIndex);
   }
 
+  incertEntity(parentIndex, childIndex, title) {
+    const entityManager = this.getEntityManagerWithIndex(parentIndex);
+    const entity = entityManager.makeChildEntity(title);
+    entityManager.incertChildEntity(entity, childIndex);
+    entityManager.insidesShown = false;
+  }
+
   addChildEntity(parentIndex, title) {
-    this.saveBoardsState();
+    this.updatePreviousBoardsState();
     this.incertEntity(parentIndex, null, title);
     this.model.notifyAll();
   }
@@ -86,8 +87,7 @@ class Controller {
     const parentIndex = parseIntOrNull(e.target.id.split('-')[1]);
     const entityManagerDict = this.getEntityManagersDict();
     for (const index of Object.keys(entityManagerDict)) {
-      entityManagerDict[index].childEntityCreator
-        .addSectionInsidesShown = index === String(parentIndex);
+      entityManagerDict[index].insidesShown = index === String(parentIndex);
     }
 
     this.model.notifyAll();
@@ -95,7 +95,7 @@ class Controller {
 
   handleCrossClick(e) {
     const parentIndex = parseIntOrNull(e.target.id.split('-')[1]);
-    this.getEntityManagerWithIndex(parentIndex).childEntityCreator.addSectionInsidesShown = false;
+    this.getEntityManagerWithIndex(parentIndex).insidesShown = false;
     this.model.notifyAll();
   }
 

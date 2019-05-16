@@ -1,3 +1,1 @@
-class Card extends TitledEntity {
-
-}
+class Card extends TitledEntity {}

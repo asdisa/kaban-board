@@ -2,15 +2,20 @@ class TitledEntityManager extends TitledEntity {
   constructor(title, childEntities = [], childEntityClass = Card) {
     super(title);
     this._childEntities = childEntities;
-    this._childEntityCreator = TitledEntityCreatorFactory.create(childEntityClass);
+    this._childEntityClass = childEntityClass;
+    this.insidesShown = false;
   }
 
   get childEntities() {
     return this._childEntities;
   }
 
-  get childEntityCreator() {
-    return this._childEntityCreator;
+  get childEntityClass() {
+    return this._childEntityClass;
+  }
+
+  makeChildEntity(title) {
+    return new this._childEntityClass(title);
   }
 
   incertChildEntity(childEntity, index = null) {

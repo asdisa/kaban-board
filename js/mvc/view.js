@@ -26,12 +26,13 @@ class View extends Observer {
     }
   }
 
-  makeTitleTextareaListItem(entityCreator, index) {
+  makeTitleTextareaListItem(entityManager, index) {
+    const childClass = entityManager.childEntityClass;
     const titleTextareaElement = document.createElement('textarea');
     setAttributes(titleTextareaElement, new Map([
       ['id', `textarea-${index}`],
       ['class', 'title-textarea'],
-      ['placeholder', entityCreator.inputPlaceholder],
+      ['placeholder', elementText.entityAdder.get(childClass).inputPlaceholder],
       ['rows', '2'],
     ]));
     titleTextareaElement.addEventListener('keypress', (e) => {
@@ -47,7 +48,7 @@ class View extends Observer {
       ['class', 'card'],
     ]));
 
-    if (!entityCreator.addSectionInsidesShown) {
+    if (!entityManager.insidesShown) {
       cardElement.setAttribute('style', 'display:none;');
     } else {
       focusElement(titleTextareaElement);
@@ -58,7 +59,8 @@ class View extends Observer {
     return cardElement;
   }
 
-  makeAddSectionInsidesListItem(entityCreator, index) {
+  makeAddSectionInsidesListItem(entityManager, index) {
+    const childClass = entityManager.childEntityClass;
     const addButtonElement = document.createElement('button');
     setAttributes(addButtonElement, new Map([
       ['id', `addBtn-${index}`],
@@ -66,7 +68,7 @@ class View extends Observer {
       ['type', 'submit'],
     ]));
 
-    addButtonElement.innerText = entityCreator.addButtonText;
+    addButtonElement.innerText = elementText.entityAdder.get(childClass).addButtonText;
     addButtonElement.addEventListener('click', (e) => {
       e.stopPropagation();
       const title = document.getElementById(`textarea-${index}`).value;
@@ -83,11 +85,10 @@ class View extends Observer {
     ]));
 
     const insidesElement = document.createElement('li');
-    const hideInsides = !entityCreator.addSectionInsidesShown;
     setAttributes(insidesElement, new Map([
       ['id', `insides-${index}`],
       ['class', 'add-section-insides last-card unselectable'],
-      ['style', hideInsides ? 'display:none;' : ''],
+      ['style', !entityManager.insidesShown ? 'display:none;' : ''],
     ]));
     insidesElement.appendChild(addButtonElement);
     insidesElement.appendChild(crossInputElement);
@@ -97,7 +98,7 @@ class View extends Observer {
   }
 
 
-  makeCardsElement(cards, entityCreator, index) {
+  makeCardsElement(cards, entityManager, index) {
     const cardsElement = document.createElement('OL');
     setAttributes(cardsElement, new Map([
       ['id', `cards-${index}`],
@@ -108,7 +109,7 @@ class View extends Observer {
       const cardElement = document.createElement('LI');
       setAttributes(cardElement, new Map([
         ['id', `entity-${index}-${j}`],
-        ['class', `card${j === cards.length - 1 && !entityCreator.addSectionInsidesShown ? ' last-card' : ''}`],
+        ['class', `card${j === cards.length - 1 && !entityManager.insidesShown ? ' last-card' : ''}`],
         ['draggable', 'true'],
         ['tabindex', '-1'],
       ]));
@@ -140,19 +141,19 @@ class View extends Observer {
       cardsElement.appendChild(cardElement);
     }
 
-    if (cards.length === 0 && !entityCreator.addSectionInsidesShown) {
+    if (cards.length === 0 && !entityManager.insidesShown) {
       cardsElement.setAttribute('style', 'display:none;');
     }
-
-    const titleTextarea = this.makeTitleTextareaListItem(entityCreator, index);
-    const addSectionInsides = this.makeAddSectionInsidesListItem(entityCreator, index);
+    const titleTextarea = this.makeTitleTextareaListItem(entityManager, index);
+    const addSectionInsides = this.makeAddSectionInsidesListItem(entityManager, index);
     cardsElement.appendChild(titleTextarea);
     cardsElement.appendChild(addSectionInsides);
 
     return cardsElement;
   }
 
-  makeFacadeElement(entityCreator, index) {
+  makeFacadeElement(entityManager, index) {
+    const childClass = entityManager.childEntityClass;
     const plusInputElement = document.createElement('input');
     setAttributes(plusInputElement, new Map([
       ['id', `plus-${index}`],
@@ -164,7 +165,7 @@ class View extends Observer {
 
     const facadeTextElement = document.createElement('p');
     facadeTextElement.setAttribute('class', 'add-section-facade-text unselectable');
-    facadeTextElement.innerText = entityCreator.facadeText;
+    facadeTextElement.innerText = elementText.entityAdder.get(childClass).facadeInnerText;
 
     const facadeElement = document.createElement('div');
     setAttributes(facadeElement, new Map([
@@ -188,7 +189,7 @@ class View extends Observer {
     facadeElement.appendChild(plusInputElement);
     facadeElement.appendChild(facadeTextElement);
 
-    if (entityCreator.addSectionInsidesShown) {
+    if (entityManager.insidesShown) {
       facadeElement.setAttribute('style', 'display:none;');
     }
 
@@ -231,8 +232,8 @@ class View extends Observer {
       boardElement.appendChild(titleElement);
     }
 
-    const cardsElement = this.makeCardsElement(cards, entityManager.childEntityCreator, index);
-    const facadeElement = this.makeFacadeElement(entityManager.childEntityCreator, index);
+    const cardsElement = this.makeCardsElement(cards, entityManager, index);
+    const facadeElement = this.makeFacadeElement(entityManager, index);
 
     boardElement.appendChild(cardsElement);
     boardElement.appendChild(facadeElement);
