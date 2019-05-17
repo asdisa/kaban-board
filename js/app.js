@@ -3,7 +3,7 @@ function main() {
 
   const state = storedState != null
     ? storedState
-    : LocalStorageManager.decode(JSON.stringify(initialState));
+    : LocalStorageManager.decodeState(JSON.stringify(initialState));
 
   const model = new Model(state);
   const controller = new Controller(model);

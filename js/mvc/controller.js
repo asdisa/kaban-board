@@ -14,7 +14,7 @@ class Controller {
 
   updatePreviousState() {
     // Deep cloning
-    this.model.previousState = LocalStorageManager.decode(LocalStorageManager.encode(this.model.state));
+    this.model.previousState = LocalStorageManager.decodeState(LocalStorageManager.encode(this.model.state));
   }
 
   saveStateToLocalStorage() {
@@ -35,7 +35,7 @@ class Controller {
 
   loadInitialState() {
     this.updatePreviousState();
-    this.loadState(LocalStorageManager.decode(JSON.stringify(initialState)));
+    this.loadState(LocalStorageManager.decodeState(JSON.stringify(initialState)));
   }
 
   loadPreviousState() {

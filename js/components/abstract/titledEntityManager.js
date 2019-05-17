@@ -30,23 +30,23 @@ class TitledEntityManager extends TitledEntity {
   }
 
   /**
-  * Constructs a childEntityClass instance with a title set to `title`
-  *
-  * @param {?string} title Title of an entity
-  * @returns {TitledEntity}
-  */
+   * Constructs a childEntityClass instance with a title set to `title`
+   *
+   * @param {?string} title Title of an entity
+   * @returns {TitledEntity}
+   */
   makeChildEntity(title) {
     return new this._childEntityClass(title);
   }
 
   /**
-  * Incerts `childEntity` into childEntities at `index` position
-  *
-  * @param {TitledEntity} childEntity Instance of managers's childEntityClass
-  * to be incerted into managers's childEntities array
-  * @param {?number} index Index at which an entity will be inserted
-  * (null coresponds to inserting as a last member of array)
-  */
+   * Incerts `childEntity` into childEntities at `index` position
+   *
+   * @param {TitledEntity} childEntity Instance of managers's childEntityClass
+   * to be incerted into managers's childEntities array
+   * @param {?number} index Index at which an entity will be inserted
+   * (null coresponds to inserting as a last member of array)
+   */
   incertChildEntity(childEntity, index = null) {
     if (!(childEntity instanceof this.childEntityClass)) {
       throw new Error(`${childEntity} is not instance of ${this.childEntityClass}`);
@@ -56,10 +56,10 @@ class TitledEntityManager extends TitledEntity {
   }
 
   /**
-  * Deletes entity at `index` position
-  *
-  * @param {number} index Index of an entity to be deleted
-  */
+   * Deletes entity at `index` position
+   *
+   * @param {number} index Index of an entity to be deleted
+   */
   deleteChildEntityWithIndex(index) {
     this.childEntities.splice(index, 1);
   }
