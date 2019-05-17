@@ -1,5 +1,5 @@
 import './css/styles.css';
-import vkIcon from './img/vk-icon.ico';
+import vkIcon from './img/vk-icon.webp';
 import LocalStorageManager from './js/helpers/localStorageManager';
 import Model from './js/mvc/model';
 import Controller from './js/mvc/controller';
