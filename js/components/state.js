@@ -1,14 +1,14 @@
 /**
  * Application state
  */
-class State extends TitledEntityManager {
+class State {
   /**
-   * Constructs an application state with kaban boards stored in an array
-   * initially containing `board` members
+   * Constructs an application state with kaban boards placed on the wall
+   * initially set to `wall`
    *
-   * @param {Board[]=} [] boards Initial state of boards
+   * @param {?Wall} wall Initial state of the wall
    */
-  constructor(boards = []) {
-    super(null, boards, Board);
+  constructor(wall = null) {
+    this.wall = wall != null ? wall : new Wall();
   }
 }

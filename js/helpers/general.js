@@ -25,3 +25,13 @@ function getElementIndices(element) {
   }
   return [null, parseIntOrNull(idParts[1])];
 }
+
+/**
+ * Detemines whether `obj`, has property `propertyName`
+ *
+ * @param {string} str String to be parsed
+ * @returns {number|null}
+ */
+function has(obj, propertyName) {
+  return obj ? hasOwnProperty.call(obj, propertyName) : false;
+}

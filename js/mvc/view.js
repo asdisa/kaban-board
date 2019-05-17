@@ -18,6 +18,7 @@ class View extends Observer {
 
   deleteEntityById(elementId) {
     const [elementType, parentIndex, childIndex] = elementId.split('-');
+
     if (elementType === 'entity' && childIndex !== 'null') {
       const entityIndices = [parseIntOrNull(parentIndex), parseIntOrNull(childIndex)];
       this._controller.deleteEntityAndUpdateView(entityIndices);
@@ -241,34 +242,34 @@ class View extends Observer {
     return boardElement;
   }
 
-  update(data) {
+  update(model) {
     const wallElement = document.getElementsByClassName('wall')[0];
     while (wallElement.firstChild) {
       wallElement.removeChild(wallElement.firstChild);
     }
 
-    for (let i = 0; i < data.boards.length; i += 1) {
-      const board = data.boards[i];
+    for (let i = 0; i < model.boards.length; i += 1) {
+      const board = model.boards[i];
       wallElement.appendChild(this.makeBoardElement(board, i));
     }
 
-    wallElement.appendChild(this.makeBoardElement(data.boardManager, null));
+    wallElement.appendChild(this.makeBoardElement(model.wall, null));
 
     document.onkeydown = (e) => {
       if ((window.navigator.platform.match('Mac') ? e.metaKey : e.ctrlKey)) {
         e.preventDefault();
         switch (e.keyCode) {
           case 83:
-            this._controller.saveBoardsStateToLocalStorage();
+            this._controller.saveStateToLocalStorage();
             break;
           case 90:
-            this._controller.loadPreviousBoardsState();
+            this._controller.loadPreviousState();
             break;
           case 76:
-            this._controller.loadBoardsStateFromLocalStorage();
+            this._controller.loadStateFromLocalStorage();
             break;
           case 73:
-            this._controller.loadInitialBoardsState();
+            this._controller.loadInitialState();
             break;
           default:
             break;

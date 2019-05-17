@@ -48,8 +48,8 @@ class TitledEntityManager extends TitledEntity {
   * (null coresponds to inserting as a last member of array)
   */
   incertChildEntity(childEntity, index = null) {
-    if (!(childEntity instanceof childEntityClass)) {
-      throw new Error(`${childEntity} is not instance of ${childEntityClass}`);
+    if (!(childEntity instanceof this.childEntityClass)) {
+      throw new Error(`${childEntity} is not instance of ${this.childEntityClass}`);
     }
     index = index != null ? index : this.childEntities.length;
     this._childEntities.splice(index, 0, childEntity);
@@ -61,6 +61,6 @@ class TitledEntityManager extends TitledEntity {
   * @param {number} index Index of an entity to be deleted
   */
   deleteChildEntityWithIndex(index) {
-    this._childEntities.splice(index, 1);
+    this.childEntities.splice(index, 1);
   }
 }

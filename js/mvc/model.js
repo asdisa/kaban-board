@@ -1,12 +1,15 @@
 class Model extends Observable {
-  constructor(boards = []) {
+  constructor(state = null) {
     super();
-    this.previousBoardsState = boards;
-    this.boardManager = new TitledEntityManager(null, boards, Board);
-    this.boardCreator = this.boardManager.childEntityCreator;
+    this.state = state != null ? state : new State();
+    this.previousState = this.state;
+  }
+
+  get wall() {
+    return this.state.wall;
   }
 
   get boards() {
-    return this.boardManager.childEntities;
+    return this.wall.boards;
   }
 }

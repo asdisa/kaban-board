@@ -1,11 +1,11 @@
 function main() {
-  const storedBoards = LocalStorageManager.loadBoards();
+  const storedState = LocalStorageManager.loadState();
 
-  const boards = storedBoards != null
-    ? storedBoards
-    : LocalStorageManager.deserializeBoards(initialState.boards);
+  const state = storedState != null
+    ? storedState
+    : LocalStorageManager.decode(JSON.stringify(initialState));
 
-  const model = new Model(boards);
+  const model = new Model(state);
   const controller = new Controller(model);
   const view = new View(controller);
 

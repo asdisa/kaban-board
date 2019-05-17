@@ -1,49 +1,49 @@
+/* eslint-disable class-methods-use-this */
 /*
 Handles events passed by View by manipulating the state of the application.
 */
 class Controller {
   constructor(model) {
     this._model = model;
-    this._draggedCardElement = null;
+    this._draggedElement = null;
   }
 
   get model() {
     return this._model;
   }
 
-  updatePreviousBoardsState() {
-    this.model.previousBoardsState = this.model.boards;
+  updatePreviousState() {
+    // Deep cloning
+    this.model.previousState = LocalStorageManager.decode(LocalStorageManager.encode(this.model.state));
   }
 
-  saveBoardsStateToLocalStorage() {
-    LocalStorageManager.saveBoards(this.model.boards);
+  saveStateToLocalStorage() {
+    LocalStorageManager.saveState(this.model.state);
   }
 
-  loadBoardsState(boardsState) {
-    if (boardsState !== this.boards) {
-      this.model.boardManager = new TitledEntityManager(null, boardsState, Board);
-      this.model.boardCreator = this.model.boardManager;
+  loadState(state) {
+    if (state !== this.model.state) {
+      this.model.state = state;
       this.model.notifyAll();
     }
   }
 
-  loadBoardsStateFromLocalStorage() {
-    this.updatePreviousBoardsState();
-    this.loadBoardsState(LocalStorageManager.loadBoards());
+  loadStateFromLocalStorage() {
+    this.updatePreviousState();
+    this.loadState(LocalStorageManager.loadState());
   }
 
-  loadInitialBoardsState() {
-    this.updatePreviousBoardsState();
-    const initialBoardState = LocalStorageManager.deserializeBoards(initialState.boards);
-    this.loadBoardsState(initialBoardState);
+  loadInitialState() {
+    this.updatePreviousState();
+    this.loadState(LocalStorageManager.decode(JSON.stringify(initialState)));
   }
 
-  loadPreviousBoardsState() {
-    this.loadBoardsState(this.model.previousBoardsState);
+  loadPreviousState() {
+    this.loadState(this.model.previousState);
   }
 
   getEntityManagersDict() {
-    const entityManagersDict = { null: this.model.boardManager };
+    const entityManagersDict = { null: this.model.wall };
     for (let i = 0; i < this.model.boards.length; i += 1) {
       entityManagersDict[i] = this.model.boards[i];
     }
@@ -59,7 +59,7 @@ class Controller {
   }
 
   deleteEntity(parentIndex, childIndex) {
-    this.updatePreviousBoardsState();
+    this.updatePreviousState();
     const entityManager = this.getEntityManagerWithIndex(parentIndex);
     entityManager.deleteChildEntityWithIndex(childIndex);
   }
@@ -68,11 +68,13 @@ class Controller {
     const entityManager = this.getEntityManagerWithIndex(parentIndex);
     const entity = entityManager.makeChildEntity(title);
     entityManager.incertChildEntity(entity, childIndex);
-    entityManager.insidesShown = false;
+    if (has(entityManager, 'insidesShown')) {
+      entityManager.insidesShown = false;
+    }
   }
 
   addChildEntity(parentIndex, title) {
-    this.updatePreviousBoardsState();
+    this.updatePreviousState();
     this.incertEntity(parentIndex, null, title);
     this.model.notifyAll();
   }
@@ -101,7 +103,7 @@ class Controller {
 
   handleDragStart(e) {
     const targetElement = e.target;
-    this._draggedCardElement = targetElement;
+    this._draggedElement = targetElement;
 
     const ghostElement = targetElement.cloneNode(true);
     ghostElement.classList.add('ghost');
@@ -141,13 +143,16 @@ class Controller {
     }
 
     const targetElement = e.target;
-    if (this._draggedCardElement !== targetElement && targetElement.id) {
-      const [targetBoardIndex, targetCardIndex] = getElementIndices(targetElement);
-      const [draggedBoardIndex, draggedCardIndex] = getElementIndices(this._draggedCardElement);
-      const draggedTitle = this._draggedCardElement.innerHTML;
+    if (this._draggedElement !== targetElement && targetElement.id) {
+      let [targetParentIndex, targetChildIndex] = getElementIndices(targetElement);
+      if (targetParentIndex == null) {
+        [targetParentIndex, targetChildIndex] = [targetChildIndex, null];
+      }
+      const [draggedParentIndex, draggedChildIndex] = getElementIndices(this._draggedElement);
+      const draggedTitle = this._draggedElement.innerHTML;
 
-      this.deleteEntity(draggedBoardIndex, draggedCardIndex);
-      this.incertEntity(targetBoardIndex, targetCardIndex, draggedTitle);
+      this.deleteEntity(draggedParentIndex, draggedChildIndex);
+      this.incertEntity(targetParentIndex, targetChildIndex, draggedTitle);
       this.model.notifyAll();
     }
 
