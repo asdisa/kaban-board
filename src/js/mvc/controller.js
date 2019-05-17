@@ -3,6 +3,7 @@ import LocalStorageManager from '../helpers/localStorageManager';
 import TitledEntityManager from '../components/titledEntityManager';
 import State from '../components/state';
 import { parseIntOrNull, getElementIndices, has } from '../helpers/general';
+import { scrollToBottom } from '../helpers/viewHelpers';
 import initialState from '../data/initialState';
 
 
@@ -190,6 +191,7 @@ export default class Controller {
       this.deleteEntity(draggedParentIndex, draggedChildIndex);
       this.incertEntity(targetParentIndex, targetChildIndex, draggedTitle);
       this.model.notifyAll();
+      scrollToBottom(document.getElementById(`cards-${targetParentIndex}`));
     }
 
     return false;
