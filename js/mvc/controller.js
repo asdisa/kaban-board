@@ -1,6 +1,6 @@
 /* eslint-disable class-methods-use-this */
 /*
-Handles events passed by View by manipulating the state of the application.
+Handles events passed from View by manipulating the state of the application.
 */
 class Controller {
   constructor(model) {

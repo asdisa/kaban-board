@@ -1,5 +1,5 @@
 /**
- * Wall with caban boards placed on it.
+ * Wall with kaban boards placed on it.
  * @extends TitledEntityManager
  */
 class Wall extends TitledEntityManager {

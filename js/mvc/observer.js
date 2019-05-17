@@ -3,7 +3,10 @@
  * @abstract
  */
 class Observer {
+  /**
+   * Update internal state.
+   */
   // eslint-disable-next-line class-methods-use-this
-  update(data) {
+  update() {
   }
 }

@@ -9,7 +9,7 @@ function parseIntOrNull(str) {
 }
 
 /**
- * Parses of elements with IDs shaped as
+ * Parses element indices with IDs shaped as
  * elementType-parentIndex-childIndex or
  * elementType-childIndex.
  *
@@ -27,7 +27,7 @@ function getElementIndices(element) {
 }
 
 /**
- * Detemines whether `obj`, has property `propertyName`.
+ * Determines whether `obj`, has property `propertyName`.
  *
  * @param {string} str String to be parsed
  * @returns {number|null}
