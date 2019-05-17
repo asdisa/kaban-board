@@ -42,7 +42,7 @@
             <div class="column is-3" id="sidebarNav">
                 <div class="sidebar">
                     <nav>
-                        <h2><a href="index.html">Home</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="Board.html">Board</a></li><li><a href="Card.html">Card</a></li><li><a href="Controller.html">Controller</a></li><li><a href="LocalStorageManager.html">LocalStorageManager</a></li><li><a href="Model.html">Model</a></li><li><a href="Observable.html">Observable</a></li><li><a href="Observer.html">Observer</a></li><li><a href="State.html">State</a></li><li><a href="TitledEntity.html">TitledEntity</a></li><li><a href="TitledEntityManager.html">TitledEntityManager</a></li><li><a href="View.html">View</a></li><li><a href="Wall.html">Wall</a></li></ul><h3>Global</h3><ul><li><a href="global.html#focusElement">focusElement</a></li><li><a href="global.html#getElementIndices">getElementIndices</a></li><li><a href="global.html#has">has</a></li><li><a href="global.html#parseIntOrNull">parseIntOrNull</a></li><li><a href="global.html#scrollToBottom">scrollToBottom</a></li><li><a href="global.html#setAttributes">setAttributes</a></li><li><a href="global.html#wiggleElement">wiggleElement</a></li></ul></div>
+                        <h2><a href="index.html">Home</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="module.exports.html">exports</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addChildEntity">addChildEntity</a></li><li><a href="global.html#decodeState">decodeState</a></li><li><a href="global.html#deleteChildEntityWithIndex">deleteChildEntityWithIndex</a></li><li><a href="global.html#deleteEntityById">deleteEntityById</a></li><li><a href="global.html#encode">encode</a></li><li><a href="global.html#focusElement">focusElement</a></li><li><a href="global.html#getElementIndices">getElementIndices</a></li><li><a href="global.html#getEntityManagersDict">getEntityManagersDict</a></li><li><a href="global.html#getEntityManagerWithIndex">getEntityManagerWithIndex</a></li><li><a href="global.html#has">has</a></li><li><a href="global.html#incertChildEntity">incertChildEntity</a></li><li><a href="global.html#lastChildIndex">lastChildIndex</a></li><li><a href="global.html#loadState">loadState</a></li><li><a href="global.html#makeAddSectionInsidesListItem">makeAddSectionInsidesListItem</a></li><li><a href="global.html#makeBoardElement">makeBoardElement</a></li><li><a href="global.html#makeCardsElement">makeCardsElement</a></li><li><a href="global.html#makeChildEntity">makeChildEntity</a></li><li><a href="global.html#makeFacadeElement">makeFacadeElement</a></li><li><a href="global.html#makeTitleTextareaListItem">makeTitleTextareaListItem</a></li><li><a href="global.html#notifyAll">notifyAll</a></li><li><a href="global.html#parseIntOrNull">parseIntOrNull</a></li><li><a href="global.html#registerObserver">registerObserver</a></li><li><a href="global.html#removeStateFromLocalStorage">removeStateFromLocalStorage</a></li><li><a href="global.html#saveState">saveState</a></li><li><a href="global.html#scrollToBottom">scrollToBottom</a></li><li><a href="global.html#setAttributes">setAttributes</a></li><li><a href="global.html#update">update</a></li><li><a href="global.html#wiggleElement">wiggleElement</a></li></ul></div>
                     </nav>
                 </div>
             </div>
@@ -132,6 +132,816 @@
         <div class='vertical-section'>
             <h3 class="title"><span>Methods</span></h3>
             <div class="members">
+            
+                <div class="member">
+
+    
+    <h4 class="name" id="addChildEntity">
+        
+        <span class="code-name">
+            addChildEntity<span class="signature">(parentIndex<span class="signature-attributes">nullable</span>, title)</span><span class="type-signature"></span>
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Asks controller to add appropriate TitledEntity with `title`
+to entityManager with `parentIndex` index then focuses added entity.
+If `title` consists entierly of whitspace characters, corresponding to `parentIndex`
+titleInput will be wiggled.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        
+<tr class="deep-level-0">
+  
+      <td class="name"><code>parentIndex</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">number</span>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+
+      
+          &lt;nullable><br>
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last">Index of the entityManager (null corresponds to the Wall)</td>
+</tr>
+
+
+    
+
+        
+<tr class="deep-level-0">
+  
+      <td class="name"><code>title</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last">Title of added entity</td>
+</tr>
+
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="mvc_view.js.html" class="button">View Source</a>
+            <span>
+                <a href="mvc_view.js.html">mvc/view.js</a>, <a href="mvc_view.js.html#line40">line 40</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    
+    <h4 class="name" id="decodeState">
+        
+        <span class="code-name">
+            decodeState<span class="signature">(serializedState)</span><span class="type-signature"> &rarr; {State}</span>
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Constructs a State instance from `serializedState`.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        
+<tr class="deep-level-0">
+  
+      <td class="name"><code>serializedState</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">Stringified JSON representation of State instance</td>
+</tr>
+
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="helpers_localStorageManager.js.html" class="button">View Source</a>
+            <span>
+                <a href="helpers_localStorageManager.js.html">helpers/localStorageManager.js</a>, <a href="helpers_localStorageManager.js.html#line36">line 36</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<span class="param-type">State</span>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    
+    <h4 class="name" id="deleteChildEntityWithIndex">
+        
+        <span class="code-name">
+            deleteChildEntityWithIndex<span class="signature">(index)</span><span class="type-signature"></span>
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Deletes entity at `index` position.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        
+<tr class="deep-level-0">
+  
+      <td class="name"><code>index</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">number</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">Index of an entity to be deleted</td>
+</tr>
+
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="components_titledEntityManager.js.html" class="button">View Source</a>
+            <span>
+                <a href="components_titledEntityManager.js.html">components/titledEntityManager.js</a>, <a href="components_titledEntityManager.js.html#line68">line 68</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    
+    <h4 class="name" id="deleteEntityById">
+        
+        <span class="code-name">
+            deleteEntityById<span class="signature">(elementId)</span><span class="type-signature"></span>
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Asks controller to delete entity corresponding to element with `elementId` id.
+If element with `elementId` id shold not be deleted, it will be wiggled.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        
+<tr class="deep-level-0">
+  
+      <td class="name"><code>elementId</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">Value of element "id" property</td>
+</tr>
+
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="mvc_view.js.html" class="button">View Source</a>
+            <span>
+                <a href="mvc_view.js.html">mvc/view.js</a>, <a href="mvc_view.js.html#line57">line 57</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    
+    <h4 class="name" id="encode">
+        
+        <span class="code-name">
+            encode<span class="signature">(obj)</span><span class="type-signature"> &rarr; {string}</span>
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Serializes an `obj` to stringified JSON.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        
+<tr class="deep-level-0">
+  
+      <td class="name"><code>obj</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">Object</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">Obj to serialize</td>
+</tr>
+
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="helpers_localStorageManager.js.html" class="button">View Source</a>
+            <span>
+                <a href="helpers_localStorageManager.js.html">helpers/localStorageManager.js</a>, <a href="helpers_localStorageManager.js.html#line18">line 18</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<span class="param-type">string</span>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
             
                 <div class="member">
 
@@ -447,6 +1257,239 @@ elementType-childIndex.
                 <div class="member">
 
     
+    <h4 class="name" id="getEntityManagersDict">
+        
+        <span class="code-name">
+            getEntityManagersDict<span class="signature">()</span><span class="type-signature"> &rarr; {Object}</span>
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Constructs an object with Boards corresponding to their indices
+and Wall corresponding to null.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="mvc_controller.js.html" class="button">View Source</a>
+            <span>
+                <a href="mvc_controller.js.html">mvc/controller.js</a>, <a href="mvc_controller.js.html#line70">line 70</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<span class="param-type">Object</span>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    
+    <h4 class="name" id="getEntityManagerWithIndex">
+        
+        <span class="code-name">
+            getEntityManagerWithIndex<span class="signature">()</span><span class="type-signature"> &rarr; {TitledEntityManager}</span>
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Retreives EntityManager with `parentIndex` index.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="mvc_controller.js.html" class="button">View Source</a>
+            <span>
+                <a href="mvc_controller.js.html">mvc/controller.js</a>, <a href="mvc_controller.js.html#line83">line 83</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<span class="param-type">TitledEntityManager</span>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    
     <h4 class="name" id="has">
         
         <span class="code-name">
@@ -616,6 +1659,1947 @@ elementType-childIndex.
                 <div class="member">
 
     
+    <h4 class="name" id="incertChildEntity">
+        
+        <span class="code-name">
+            incertChildEntity<span class="signature">(childEntity, index<span class="signature-attributes">nullable</span>)</span><span class="type-signature"></span>
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Incerts `childEntity` into childEntities at `index` position.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        
+<tr class="deep-level-0">
+  
+      <td class="name"><code>childEntity</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">TitledEntity</span>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+
+      
+
+      
+      </td>
+  
+
+  
+      <td class="default">
+      
+      </td>
+  
+
+  <td class="description last">Instance of managers's childEntityClass
+to be incerted into managers's childEntities array</td>
+</tr>
+
+
+    
+
+        
+<tr class="deep-level-0">
+  
+      <td class="name"><code>index</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">number</span>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+
+      
+          &lt;nullable><br>
+      
+
+      
+      </td>
+  
+
+  
+      <td class="default">
+      
+          null
+      
+      </td>
+  
+
+  <td class="description last">Index at which an entity will be inserted
+(null coresponds to inserting as a last member of array)</td>
+</tr>
+
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="components_titledEntityManager.js.html" class="button">View Source</a>
+            <span>
+                <a href="components_titledEntityManager.js.html">components/titledEntityManager.js</a>, <a href="components_titledEntityManager.js.html#line55">line 55</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    
+    <h4 class="name" id="lastChildIndex">
+        
+        <span class="code-name">
+            lastChildIndex<span class="signature">()</span><span class="type-signature"> &rarr; {TitledEntityManager}</span>
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Computes index of the last child of entityMagader
+with `parentIndex` index.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="mvc_controller.js.html" class="button">View Source</a>
+            <span>
+                <a href="mvc_controller.js.html">mvc/controller.js</a>, <a href="mvc_controller.js.html#line93">line 93</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<span class="param-type">TitledEntityManager</span>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    
+    <h4 class="name" id="loadState">
+        
+        <span class="code-name">
+            loadState<span class="signature">()</span><span class="type-signature"> &rarr; {State}</span>
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Retreives a State instance from localStorage.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="helpers_localStorageManager.js.html" class="button">View Source</a>
+            <span>
+                <a href="helpers_localStorageManager.js.html">helpers/localStorageManager.js</a>, <a href="helpers_localStorageManager.js.html#line66">line 66</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<span class="param-type">State</span>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    
+    <h4 class="name" id="loadState">
+        
+        <span class="code-name">
+            loadState<span class="signature">(state)</span><span class="type-signature"></span>
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Loads `state` into model.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        
+<tr class="deep-level-0">
+  
+      <td class="name"><code>state</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">State</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">New state</td>
+</tr>
+
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="mvc_controller.js.html" class="button">View Source</a>
+            <span>
+                <a href="mvc_controller.js.html">mvc/controller.js</a>, <a href="mvc_controller.js.html#line43">line 43</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    
+    <h4 class="name" id="makeAddSectionInsidesListItem">
+        
+        <span class="code-name">
+            makeAddSectionInsidesListItem<span class="signature">(entityManager, index<span class="signature-attributes">nullable</span>)</span><span class="type-signature"> &rarr; {Element}</span>
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Makes <li> element with addTitle and cross buttons and corresponding to
+`entityManager` with `index`.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        
+<tr class="deep-level-0">
+  
+      <td class="name"><code>entityManager</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">TitledEntityManager</span>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last">Parent entityManager</td>
+</tr>
+
+
+    
+
+        
+<tr class="deep-level-0">
+  
+      <td class="name"><code>index</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">number</span>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+
+      
+          &lt;nullable><br>
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last">Index of parent entityManager (null corresponds to the Wall)</td>
+</tr>
+
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="mvc_view.js.html" class="button">View Source</a>
+            <span>
+                <a href="mvc_view.js.html">mvc/view.js</a>, <a href="mvc_view.js.html#line180">line 180</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<span class="param-type">Element</span>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    
+    <h4 class="name" id="makeBoardElement">
+        
+        <span class="code-name">
+            makeBoardElement<span class="signature">(entityManager, index<span class="signature-attributes">nullable</span>)</span><span class="type-signature"> &rarr; {Element}</span>
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Makes HTML representation of `entityManager` with `index`.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        
+<tr class="deep-level-0">
+  
+      <td class="name"><code>entityManager</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">TitledEntityManager</span>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last">Parent entityManager</td>
+</tr>
+
+
+    
+
+        
+<tr class="deep-level-0">
+  
+      <td class="name"><code>index</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">number</span>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+
+      
+          &lt;nullable><br>
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last">Index of parent entityManager (null corresponds to the Wall)</td>
+</tr>
+
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="mvc_view.js.html" class="button">View Source</a>
+            <span>
+                <a href="mvc_view.js.html">mvc/view.js</a>, <a href="mvc_view.js.html#line283">line 283</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<span class="param-type">Element</span>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    
+    <h4 class="name" id="makeCardsElement">
+        
+        <span class="code-name">
+            makeCardsElement<span class="signature">(cards, entityManager, index<span class="signature-attributes">nullable</span>)</span><span class="type-signature"> &rarr; {Element}</span>
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Makes <ol> cards element of `cards` array corresponding to
+`entityManager` with `index`.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        
+<tr class="deep-level-0">
+  
+      <td class="name"><code>cards</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">Array.&lt;Card></span>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last">Array of Card instances to be placed as elements</td>
+</tr>
+
+
+    
+
+        
+<tr class="deep-level-0">
+  
+      <td class="name"><code>entityManager</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">TitledEntityManager</span>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last">Parent entityManager</td>
+</tr>
+
+
+    
+
+        
+<tr class="deep-level-0">
+  
+      <td class="name"><code>index</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">number</span>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+
+      
+          &lt;nullable><br>
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last">Index of parent entityManager (null corresponds to the Wall)</td>
+</tr>
+
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="mvc_view.js.html" class="button">View Source</a>
+            <span>
+                <a href="mvc_view.js.html">mvc/view.js</a>, <a href="mvc_view.js.html#line77">line 77</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<span class="param-type">Element</span>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    
+    <h4 class="name" id="makeChildEntity">
+        
+        <span class="code-name">
+            makeChildEntity<span class="signature">(title<span class="signature-attributes">nullable</span>)</span><span class="type-signature"> &rarr; {TitledEntity}</span>
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Constructs a childEntityClass instance with a title set to `title`.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        
+<tr class="deep-level-0">
+  
+      <td class="name"><code>title</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+
+      
+          &lt;nullable><br>
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last">Title of an entity</td>
+</tr>
+
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="components_titledEntityManager.js.html" class="button">View Source</a>
+            <span>
+                <a href="components_titledEntityManager.js.html">components/titledEntityManager.js</a>, <a href="components_titledEntityManager.js.html#line43">line 43</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<span class="param-type">TitledEntity</span>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    
+    <h4 class="name" id="makeFacadeElement">
+        
+        <span class="code-name">
+            makeFacadeElement<span class="signature">(entityManager, index<span class="signature-attributes">nullable</span>)</span><span class="type-signature"> &rarr; {Element}</span>
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Makes <div> element corresponding to `entityManager` with `index`,
+which reveals addSection on click.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        
+<tr class="deep-level-0">
+  
+      <td class="name"><code>entityManager</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">TitledEntityManager</span>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last">Parent entityManager</td>
+</tr>
+
+
+    
+
+        
+<tr class="deep-level-0">
+  
+      <td class="name"><code>index</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">number</span>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+
+      
+          &lt;nullable><br>
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last">Index of parent entityManager (null corresponds to the Wall)</td>
+</tr>
+
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="mvc_view.js.html" class="button">View Source</a>
+            <span>
+                <a href="mvc_view.js.html">mvc/view.js</a>, <a href="mvc_view.js.html#line226">line 226</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<span class="param-type">Element</span>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    
+    <h4 class="name" id="makeTitleTextareaListItem">
+        
+        <span class="code-name">
+            makeTitleTextareaListItem<span class="signature">(entityManager, index<span class="signature-attributes">nullable</span>)</span><span class="type-signature"> &rarr; {Element}</span>
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Makes <li> element with textarea for title input corresponding to
+`entityManager` with `index`.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        
+<tr class="deep-level-0">
+  
+      <td class="name"><code>entityManager</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">TitledEntityManager</span>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last">Parent entityManager</td>
+</tr>
+
+
+    
+
+        
+<tr class="deep-level-0">
+  
+      <td class="name"><code>index</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">number</span>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+
+      
+          &lt;nullable><br>
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last">Index of parent entityManager (null corresponds to the Wall)</td>
+</tr>
+
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="mvc_view.js.html" class="button">View Source</a>
+            <span>
+                <a href="mvc_view.js.html">mvc/view.js</a>, <a href="mvc_view.js.html#line139">line 139</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<span class="param-type">Element</span>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    
+    <h4 class="name" id="notifyAll">
+        
+        <span class="code-name">
+            notifyAll<span class="signature">()</span><span class="type-signature"></span>
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Updates all registered Observers.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="mvc_observable.js.html" class="button">View Source</a>
+            <span>
+                <a href="mvc_observable.js.html">mvc/observable.js</a>, <a href="mvc_observable.js.html#line26">line 26</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    
     <h4 class="name" id="parseIntOrNull">
         
         <span class="code-name">
@@ -776,6 +3760,385 @@ elementType-childIndex.
                 
         </div>
     </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    
+    <h4 class="name" id="registerObserver">
+        
+        <span class="code-name">
+            registerObserver<span class="signature">(observer)</span><span class="type-signature"></span>
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Adds `observer` to array of corresponding Observers.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        
+<tr class="deep-level-0">
+  
+      <td class="name"><code>observer</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">Observer</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">Observer to be registered</td>
+</tr>
+
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="mvc_observable.js.html" class="button">View Source</a>
+            <span>
+                <a href="mvc_observable.js.html">mvc/observable.js</a>, <a href="mvc_observable.js.html#line19">line 19</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    
+    <h4 class="name" id="removeStateFromLocalStorage">
+        
+        <span class="code-name">
+            removeStateFromLocalStorage<span class="signature">()</span><span class="type-signature"></span>
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Removes saved state from localStorage.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="helpers_localStorageManager.js.html" class="button">View Source</a>
+            <span>
+                <a href="helpers_localStorageManager.js.html">helpers/localStorageManager.js</a>, <a href="helpers_localStorageManager.js.html#line74">line 74</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    
+    <h4 class="name" id="saveState">
+        
+        <span class="code-name">
+            saveState<span class="signature">(stateInstance)</span><span class="type-signature"></span>
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Saves a serialized State instance to localStorage.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        
+<tr class="deep-level-0">
+  
+      <td class="name"><code>stateInstance</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">State</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">State to be saved</td>
+</tr>
+
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="helpers_localStorageManager.js.html" class="button">View Source</a>
+            <span>
+                <a href="helpers_localStorageManager.js.html">helpers/localStorageManager.js</a>, <a href="helpers_localStorageManager.js.html#line57">line 57</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1096,6 +4459,242 @@ elementType-childIndex.
                 <div class="member">
 
     
+    <h4 class="name" id="update">
+        
+        <span class="code-name">
+            update<span class="signature">()</span><span class="type-signature"></span>
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Updates internal state.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="mvc_observer.js.html" class="button">View Source</a>
+            <span>
+                <a href="mvc_observer.js.html">mvc/observer.js</a>, <a href="mvc_observer.js.html#line10">line 10</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    
+    <h4 class="name" id="update">
+        
+        <span class="code-name">
+            update<span class="signature">(model)</span><span class="type-signature"></span>
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Renders application state into HTML.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        
+<tr class="deep-level-0">
+  
+      <td class="name"><code>model</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">Model</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">Model with updated application state.</td>
+</tr>
+
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="mvc_view.js.html" class="button">View Source</a>
+            <span>
+                <a href="mvc_view.js.html">mvc/view.js</a>, <a href="mvc_view.js.html#line327">line 327</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    
     <h4 class="name" id="wiggleElement">
         
         <span class="code-name">
@@ -1257,7 +4856,7 @@ elementType-childIndex.
 
 <footer class="footer">
     <div class="content has-text-centered">
-        <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.2</a> on Fri May 17 2019 23:08:49 GMT+0400 (+04)</p>
+        <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.2</a> on Sat May 18 2019 01:23:58 GMT+0400 (+04)</p>
         <p class="sidebar-created-by">
             <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
             <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers</a>

@@ -1,68 +1,4 @@
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    
-    <meta charset="utf-8">
-    <title>JSDoc: mvc/view.js</title>
-
-    <script src="scripts/prettify/prettify.js"></script>
-    <script src="scripts/prettify/lang-css.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <link href="https://fonts.googleapis.com/css?family=Muli:100,400,700|Oswald:300|Inconsolata,700" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-    <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
-    <link type="text/css" rel="stylesheet" href="styles/app.min.css">
-</head>
-
-<body>
-    <div id="stickyNavbarOverlay"></div>
-    <div class="top-navbar">
-        <div class="container">
-            <nav class="navbar" role="navigation" aria-label="main navigation">
-                <div class="navbar-brand">
-                    
-                    
-                        <h1 class="navbar-item">Documentation</h1>
-                    
-                    <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-                        <span aria-hidden="true"></span>
-                        <span aria-hidden="true"></span>
-                        <span aria-hidden="true"></span>
-                    </a>
-                </div>
-                
-            </nav>
-        </div>
-    </div>
-    <div class="container">
-        <div class="columns">
-            <div class="column is-3" id="sidebarNav">
-                <div class="sidebar">
-                    <nav>
-                        <h2><a href="index.html">Home</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="module.exports.html">exports</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addChildEntity">addChildEntity</a></li><li><a href="global.html#decodeState">decodeState</a></li><li><a href="global.html#deleteChildEntityWithIndex">deleteChildEntityWithIndex</a></li><li><a href="global.html#deleteEntityById">deleteEntityById</a></li><li><a href="global.html#encode">encode</a></li><li><a href="global.html#focusElement">focusElement</a></li><li><a href="global.html#getElementIndices">getElementIndices</a></li><li><a href="global.html#getEntityManagersDict">getEntityManagersDict</a></li><li><a href="global.html#getEntityManagerWithIndex">getEntityManagerWithIndex</a></li><li><a href="global.html#has">has</a></li><li><a href="global.html#incertChildEntity">incertChildEntity</a></li><li><a href="global.html#lastChildIndex">lastChildIndex</a></li><li><a href="global.html#loadState">loadState</a></li><li><a href="global.html#makeAddSectionInsidesListItem">makeAddSectionInsidesListItem</a></li><li><a href="global.html#makeBoardElement">makeBoardElement</a></li><li><a href="global.html#makeCardsElement">makeCardsElement</a></li><li><a href="global.html#makeChildEntity">makeChildEntity</a></li><li><a href="global.html#makeFacadeElement">makeFacadeElement</a></li><li><a href="global.html#makeTitleTextareaListItem">makeTitleTextareaListItem</a></li><li><a href="global.html#notifyAll">notifyAll</a></li><li><a href="global.html#parseIntOrNull">parseIntOrNull</a></li><li><a href="global.html#registerObserver">registerObserver</a></li><li><a href="global.html#removeStateFromLocalStorage">removeStateFromLocalStorage</a></li><li><a href="global.html#saveState">saveState</a></li><li><a href="global.html#scrollToBottom">scrollToBottom</a></li><li><a href="global.html#setAttributes">setAttributes</a></li><li><a href="global.html#update">update</a></li><li><a href="global.html#wiggleElement">wiggleElement</a></li></ul></div>
-                    </nav>
-                </div>
-            </div>
-            <div class="column is-9-desktop">
-                <div class="content" id="main-content-wrapper">
-                    <header class="page-title">
-                        <p>Source</p>
-                        <h1>mvc/view.js</h1>
-                    </header>
-                    
-                    
-
-
-
-    
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>import Observer from './observer';
+import Observer from './observer';
 import Controller from './controller';
 import Model from './model';
 import TitledEntityManager from '../components/titledEntityManager';
@@ -121,7 +57,7 @@ export default class View extends Observer {
   deleteEntityById(elementId) {
     const [elementType, parentIndex, childIndex] = elementId.split('-');
 
-    if (elementType === 'entity' &amp;&amp; childIndex !== 'null') {
+    if (elementType === 'entity' && childIndex !== 'null') {
       const entityIndices = [parseIntOrNull(parentIndex), parseIntOrNull(childIndex)];
       this._controller.deleteEntityAndUpdateView(entityIndices);
     } else {
@@ -130,7 +66,7 @@ export default class View extends Observer {
   }
 
   /**
-   * Makes &lt;ol> cards element of `cards` array corresponding to
+   * Makes <ol> cards element of `cards` array corresponding to
    * `entityManager` with `index`.
    *
    * @param {Card[]} cards Array of Card instances to be placed as elements
@@ -145,11 +81,11 @@ export default class View extends Observer {
       ['class', 'cards'],
     ]));
 
-    for (let j = 0; j &lt; cards.length; j += 1) {
+    for (let j = 0; j < cards.length; j += 1) {
       const cardElement = document.createElement('LI');
       setAttributes(cardElement, new Map([
         ['id', `entity-${index}-${j}`],
-        ['class', `card${j === cards.length - 1 &amp;&amp; !entityManager.insidesShown ? ' last-card' : ''}`],
+        ['class', `card${j === cards.length - 1 && !entityManager.insidesShown ? ' last-card' : ''}`],
         ['draggable', 'true'],
         ['tabindex', '-1'],
       ]));
@@ -181,7 +117,7 @@ export default class View extends Observer {
       cardsElement.appendChild(cardElement);
     }
 
-    if (cards.length === 0 &amp;&amp; !entityManager.insidesShown) {
+    if (cards.length === 0 && !entityManager.insidesShown) {
       cardsElement.setAttribute('style', 'display:none;');
     }
     const titleTextarea = this.makeTitleTextareaListItem(entityManager, index);
@@ -193,7 +129,7 @@ export default class View extends Observer {
   }
 
   /**
-   * Makes &lt;li> element with textarea for title input corresponding to
+   * Makes <li> element with textarea for title input corresponding to
    * `entityManager` with `index`.
    *
    * @param {TitledEntityManager} entityManager Parent entityManager
@@ -210,7 +146,7 @@ export default class View extends Observer {
       ['rows', '2'],
     ]));
     titleTextareaElement.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter' &amp;&amp; !e.shiftKey) {
+      if (e.key === 'Enter' && !e.shiftKey) {
         e.preventDefault();
         this.addChildEntity(index, titleTextareaElement.value);
       }
@@ -234,7 +170,7 @@ export default class View extends Observer {
   }
 
   /**
-   * Makes &lt;li> element with addTitle and cross buttons and corresponding to
+   * Makes <li> element with addTitle and cross buttons and corresponding to
    * `entityManager` with `index`.
    *
    * @param {TitledEntityManager} entityManager Parent entityManager
@@ -280,7 +216,7 @@ export default class View extends Observer {
   }
 
   /**
-   * Makes &lt;div> element corresponding to `entityManager` with `index`,
+   * Makes <div> element corresponding to `entityManager` with `index`,
    * which reveals addSection on click.
    *
    * @param {TitledEntityManager} entityManager Parent entityManager
@@ -358,7 +294,7 @@ export default class View extends Observer {
     boardElement.addEventListener('keydown', (e) => {
       e.stopPropagation();
       const targeElementType = e.target.id.split('-')[0];
-      if (e.key === 'Delete' &amp;&amp; targeElementType !== 'textarea') {
+      if (e.key === 'Delete' && targeElementType !== 'textarea') {
         this.deleteEntityById(e.target.id);
       }
     });
@@ -394,7 +330,7 @@ export default class View extends Observer {
       wallElement.removeChild(wallElement.firstChild);
     }
 
-    for (let i = 0; i &lt; model.boards.length; i += 1) {
+    for (let i = 0; i < model.boards.length; i += 1) {
       const board = model.boards[i];
       wallElement.appendChild(this.makeBoardElement(board, i));
     }
@@ -424,30 +360,3 @@ export default class View extends Observer {
     };
   }
 }
-</code></pre>
-        </article>
-    </section>
-
-
-
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-<footer class="footer">
-    <div class="content has-text-centered">
-        <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.2</a> on Sat May 18 2019 01:23:58 GMT+0400 (+04)</p>
-        <p class="sidebar-created-by">
-            <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
-            <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers</a>
-        </p>
-    </div>
-</footer>
-
-<script> prettyPrint(); </script>
-<script src="scripts/app.min.js"></script>
-<script src="scripts/linenumber.js"> </script>
-</body>
-</html>
