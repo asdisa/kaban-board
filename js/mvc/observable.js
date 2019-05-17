@@ -20,7 +20,7 @@ class Observable {
   }
 
   /**
-   * Update all registered Observers.
+   * Updates all registered Observers.
    */
   notifyAll() {
     this._observers.forEach((observer) => {

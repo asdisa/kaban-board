@@ -1,5 +1,5 @@
 /**
- * Immediatly focus `element`.
+ * Immediatly focuses `element`.
  *
  * @param {Element} element Element to focus.
  */
@@ -10,9 +10,9 @@ function focusElement(element) {
 }
 
 /**
- * Set multiple attributes of `element` to corrsponding values.
+ * Sets multiple attributes of `element` to their corresponding values.
  *
- * @param {Element} element Element in question.
+ * @param {Element} element Element which attributes will be set.
  * @param {Map} attrMap Attr-value map.
  */
 function setAttributes(element, attrMap) {
@@ -22,7 +22,7 @@ function setAttributes(element, attrMap) {
 }
 
 /**
- * Shake `element` a bit.
+ * Shakes `element` a bit.
  *
  * @param {Element} element Element to wiggle.
  */
@@ -37,7 +37,7 @@ function wiggleElement(element) {
 }
 
 /**
- * Scroll down scrollable `element` all the way down.
+ * Scrolls down scrollable `element` all the way down.
  *
  * @param {Element} element Element to scroll.
  */

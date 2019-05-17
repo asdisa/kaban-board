@@ -1,5 +1,5 @@
 /**
- * Major pillar of application responsible for storing state.
+ * Major pillar of application, responsible for storing state.
  * @extends Observable
  */
 class Model extends Observable {
