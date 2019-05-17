@@ -1,11 +1,11 @@
 /* eslint-disable no-return-assign */
 
 /**
- * Static class responsible for localStorage interactions
+ * Static class responsible for localStorage interactions.
  */
 class LocalStorageManager {
   /**
-   * Serializes an `obj` to strigified JSON
+   * Serializes an `obj` to strigified JSON.
    *
    * @param {Object} obj Obj to serialize
    * @returns {string}
@@ -23,7 +23,7 @@ class LocalStorageManager {
   }
 
   /**
-   * Constructs a State instance from `serializedState`
+   * Constructs a State instance from `serializedState`.
    *
    * @param {string} serializedState Stringified JSON representation of State instance
    * @returns {State}
@@ -45,7 +45,7 @@ class LocalStorageManager {
   }
 
   /**
-   * Save a serialized State instance to localStorage
+   * Save a serialized State instance to localStorage.
    *
    * @param {State} stateInstance State to be saved
    */
@@ -54,7 +54,7 @@ class LocalStorageManager {
   }
 
   /**
-   * Retreive a State instance from localStorage
+   * Retreive a State instance from localStorage.
    *
    * @returns {State}
    */
@@ -64,7 +64,7 @@ class LocalStorageManager {
   }
 
   /**
-   * Remove saved state from localStorage
+   * Remove saved state from localStorage.
    */
   static removeStateFromLocalStorage() {
     localStorage.removeItem('appState');

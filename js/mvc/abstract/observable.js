@@ -1,3 +1,7 @@
+/**
+ * Abstract class of Observable pattern implementation.
+ * @abstract
+ */
 class Observable {
   constructor() {
     this._observers = [];

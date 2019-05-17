@@ -1,11 +1,12 @@
 /**
- * Board user is placing cards on
+ * Board user is placing cards on.
+ * @extends TitledEntityManager
  */
 class Board extends TitledEntityManager {
   /**
    * Constructs a board with a title set to `title`,
    * and placed cards stored in an array
-   * initially containing `cards` members
+   * initially containing `cards` members.
    *
    * @param {?string} title Board title
    * @param {Array<Card>} cards Initially placed cards

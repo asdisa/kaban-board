@@ -1,15 +1,17 @@
 /**
  * Abstract class of a titledEntity with corresponding array of
  * titledEntities, acting as it's children.
+ * @extends TitledEntity
+ * @abstract
  */
 class TitledEntityManager extends TitledEntity {
   /**
    * Constructs a TitledEntityManager with a title set to `title`,
    * and `childEntityClass` members stored in an array
-   * initially containing `childEntities` members
+   * initially containing `childEntities` members.
    *
    * @param {?string} title Title of an entity
-   * @param {TitledEntity[]=} [] childEntities Existing child entities
+   * @param {TitledEntity[]} childEntities Existing child entities
    * @param {function} childEntityClass Class of child entities
    */
   constructor(title, childEntities = [], childEntityClass = Card) {
@@ -30,7 +32,7 @@ class TitledEntityManager extends TitledEntity {
   }
 
   /**
-   * Constructs a childEntityClass instance with a title set to `title`
+   * Constructs a childEntityClass instance with a title set to `title`.
    *
    * @param {?string} title Title of an entity
    * @returns {TitledEntity}
@@ -40,7 +42,7 @@ class TitledEntityManager extends TitledEntity {
   }
 
   /**
-   * Incerts `childEntity` into childEntities at `index` position
+   * Incerts `childEntity` into childEntities at `index` position.
    *
    * @param {TitledEntity} childEntity Instance of managers's childEntityClass
    * to be incerted into managers's childEntities array
@@ -56,7 +58,7 @@ class TitledEntityManager extends TitledEntity {
   }
 
   /**
-   * Deletes entity at `index` position
+   * Deletes entity at `index` position.
    *
    * @param {number} index Index of an entity to be deleted
    */

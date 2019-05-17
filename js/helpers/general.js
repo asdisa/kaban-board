@@ -1,5 +1,5 @@
 /**
- * Behaves as parseInt called on `str`, but parces 'null' as null
+ * Behaves as parseInt called on `str`, but parces 'null' as null.
  *
  * @param {string} str String to be parsed
  * @returns {number|null}
@@ -11,7 +11,7 @@ function parseIntOrNull(str) {
 /**
  * Parses of elements with IDs shaped as
  * elementType-parentIndex-childIndex or
- * elementType-childIndex
+ * elementType-childIndex.
  *
  * @param {Element} element Element with id containing indices
  * @returns {?number[]}
@@ -27,7 +27,7 @@ function getElementIndices(element) {
 }
 
 /**
- * Detemines whether `obj`, has property `propertyName`
+ * Detemines whether `obj`, has property `propertyName`.
  *
  * @param {string} str String to be parsed
  * @returns {number|null}

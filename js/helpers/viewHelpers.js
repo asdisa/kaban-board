@@ -1,7 +1,7 @@
 /**
- * Immediatly focus `element`
+ * Immediatly focus `element`.
  *
- * @param {Element} element Element to focus
+ * @param {Element} element Element to focus.
  */
 function focusElement(element) {
   setTimeout(() => {
@@ -10,10 +10,10 @@ function focusElement(element) {
 }
 
 /**
- * Set multiple attributes of `element` to corrsponding values
+ * Set multiple attributes of `element` to corrsponding values.
  *
- * @param {Element} element Element in question
- * @param {Map} attrMap Attr-value map
+ * @param {Element} element Element in question.
+ * @param {Map} attrMap Attr-value map.
  */
 function setAttributes(element, attrMap) {
   for (const [attrName, value] of attrMap) {
@@ -22,9 +22,9 @@ function setAttributes(element, attrMap) {
 }
 
 /**
- * Shake `element` a bit
+ * Shake `element` a bit.
  *
- * @param {Element} element Element to wiggle
+ * @param {Element} element Element to wiggle.
  */
 function wiggleElement(element) {
   (async () => {
@@ -37,9 +37,9 @@ function wiggleElement(element) {
 }
 
 /**
- * Scroll down scrollable `element` all the way down
+ * Scroll down scrollable `element` all the way down.
  *
- * @param {Element} element Element to scroll
+ * @param {Element} element Element to scroll.
  */
 function scrollToBottom(element) {
   element.scrollTop = element.scrollHeight - element.clientHeight;
