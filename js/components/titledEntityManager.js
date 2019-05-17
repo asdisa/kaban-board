@@ -8,9 +8,9 @@ class TitledEntityManager extends TitledEntity {
    * and `childEntityClass` members stored in an array
    * initially containing `childEntities` members
    *
-   * @param {string} title Title of an entity
-   * @param {Array<TitledEntity>} childEntities Existing child entities
-   * @param {function} title Class of child entities
+   * @param {?string} title Title of an entity
+   * @param {TitledEntity[]=} [] childEntities Existing child entities
+   * @param {function} childEntityClass Class of child entities
    */
   constructor(title, childEntities = [], childEntityClass = Card) {
     if (!childEntities.every(e => e instanceof childEntityClass)) {
@@ -19,7 +19,6 @@ class TitledEntityManager extends TitledEntity {
     super(title);
     this._childEntities = childEntities;
     this._childEntityClass = childEntityClass;
-    this.insidesShown = false;
   }
 
   get childEntities() {
@@ -33,7 +32,7 @@ class TitledEntityManager extends TitledEntity {
   /**
   * Constructs a childEntityClass instance with a title set to `title`
   *
-  * @param {string} title Title of an entity
+  * @param {?string} title Title of an entity
   * @returns {TitledEntity}
   */
   makeChildEntity(title) {
@@ -45,7 +44,7 @@ class TitledEntityManager extends TitledEntity {
   *
   * @param {TitledEntity} childEntity Instance of managers's childEntityClass
   * to be incerted into managers's childEntities array
-  * @param {number||null} index Index at which an entity will be inserted
+  * @param {?number} index Index at which an entity will be inserted
   * (null coresponds to inserting as a last member of array)
   */
   incertChildEntity(childEntity, index = null) {

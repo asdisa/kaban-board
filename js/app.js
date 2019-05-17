@@ -1,5 +1,6 @@
 function main() {
   const storedBoards = LocalStorageManager.loadBoards();
+
   const boards = storedBoards != null
     ? storedBoards
     : LocalStorageManager.deserializeBoards(initialState.boards);

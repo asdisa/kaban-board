@@ -1,4 +1,23 @@
 class LocalStorageManager {
+  static encode(instance) {
+    const _result = {};
+
+    Object.getOwnPropertyNames(instance)
+      .forEach(prop => _result[prop] = instance[prop]);
+    Object.getOwnPropertyNames(Object.getPrototypeOf(instance))
+      .forEach(method => _result[method] = instance[method]);
+
+    const replacer = (key, value) => (typeof value === 'function' ? value.toString() : value);
+    return JSON.stringify(_result, replacer, 2);
+  }
+
+  static decode(serializedObject) {
+    const revivier = (key, value) => (typeof value === 'string' && value.indexOf('function ') === 0
+      ? Function.apply(null, [`return ${value}`])() : value);
+
+    return JSON.parse(serializedObject, revivier);
+  }
+
   static serializeBoards(boards) {
     const serializedBoards = [];
     for (const board of boards) {

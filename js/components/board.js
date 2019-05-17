@@ -7,10 +7,11 @@ class Board extends TitledEntityManager {
    * and placed cards stored in an array
    * initially containing `cards` members
    *
-   * @param {string} title Board title
+   * @param {?string} title Board title
    * @param {Array<Card>} cards Initially placed cards
    */
   constructor(title, cards = []) {
     super(title, cards, Card);
+    this.insidesShown = false;
   }
 }

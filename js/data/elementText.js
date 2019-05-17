@@ -10,6 +10,5 @@ const elementText = {
       inputPlaceholder: 'Введите название колонки',
       addButtonText: 'Добавить колонку',
     }],
-    ['A', 1],
   ]),
 };
