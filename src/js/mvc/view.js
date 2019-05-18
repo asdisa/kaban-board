@@ -4,9 +4,8 @@ import Model from './model';
 import TitledEntityManager from '../components/titledEntityManager';
 import Card from '../components/card';
 import {
-  focusElement, setAttributes, wiggleElement, scrollToBottom,
+  focusElement, setAttributes, scrollToBottom,
 } from '../helpers/viewHelpers';
-import { parseIntOrNull } from '../helpers/general';
 import elementText from '../data/elementText';
 import crossIco from '../../img/cross.svg';
 import plusIco from '../../img/plus.svg';
@@ -25,44 +24,6 @@ class View extends Observer {
     super();
     this._controller = controller;
     this._controller.model.registerObserver(this);
-  }
-
-  /**
-   * Asks controller to add appropriate TitledEntity with `title`
-   * to entityManager with `parentIndex` index then focuses added entity.
-   * If `title` consists entierly of whitspace characters, corresponding to `parentIndex`
-   * titleInput will be wiggled.
-   *
-   *
-   * @param {?number} parentIndex Index of the entityManager (null corresponds to the Wall)
-   * @param {string} title Title of added entity
-   */
-  addChildEntity(parentIndex, title) {
-    const titleWithoutWitespaces = title.replace(/\s/g, '');
-    if (!titleWithoutWitespaces) {
-      wiggleElement(document.getElementById(`titleInput-${parentIndex}`));
-    } else {
-      this._controller.addChildEntity(parentIndex, title);
-      const addedChildIndex = this._controller.lastChildIndex(parentIndex);
-      focusElement(document.getElementById(`entity-${String(parentIndex)}-${addedChildIndex}`));
-    }
-  }
-
-  /**
-   * Asks controller to delete entity corresponding to element with `elementId` id.
-   * If element with `elementId` id shold not be deleted, it will be wiggled.
-   *
-   * @param {string} elementId Value of element "id" property
-   */
-  deleteEntityById(elementId) {
-    const [elementType, parentIndex, childIndex] = elementId.split('-');
-
-    if (elementType === 'entity' && childIndex !== 'null') {
-      const entityIndices = [parseIntOrNull(parentIndex), parseIntOrNull(childIndex)];
-      this._controller.deleteEntityAndUpdateView(entityIndices);
-    } else {
-      wiggleElement(document.getElementById(elementId));
-    }
   }
 
   /**
@@ -96,7 +57,7 @@ class View extends Observer {
       cardElement.addEventListener('keydown', (e) => {
         e.stopPropagation();
         if (e.key === 'Delete') {
-          this.deleteEntityById(e.target.id);
+          this._controller.handleDeleteKeydown(e);
         }
       });
 
@@ -125,16 +86,16 @@ class View extends Observer {
     cardsElement.appendChild(titleTextarea);
     cardsElement.appendChild(addSectionInsides);
 
-    // Dirty trick  to make cards scroll consistently
+    // A dirty hack to make cards scroll consistently
     setTimeout(() => {
       cardsElement.style.height = '100%';
       cardsElement.style.height = 'auto';
     }, 0);
-
     cardsElement.addEventListener('scroll', (e) => {
       cardsElement.style.height = '100%';
       cardsElement.style.height = 'auto';
     }, false);
+    // A dirty hack to make cards scroll consistently
 
     return cardsElement;
   }
@@ -159,7 +120,7 @@ class View extends Observer {
     titleTextareaElement.addEventListener('keypress', (e) => {
       if (e.key === 'Enter' && !e.shiftKey) {
         e.preventDefault();
-        this.addChildEntity(index, titleTextareaElement.value);
+        this._controller.addChildEntity(index, titleTextareaElement.value);
       }
     });
 
@@ -201,7 +162,7 @@ class View extends Observer {
     addButtonElement.addEventListener('click', (e) => {
       e.stopPropagation();
       const title = document.getElementById(`textarea-${index}`).value;
-      this.addChildEntity(index, title);
+      this._controller.addChildEntity(index, title);
     });
 
     const crossInputElement = document.createElement('input');
@@ -306,7 +267,7 @@ class View extends Observer {
       e.stopPropagation();
       const targeElementType = e.target.id.split('-')[0];
       if (e.key === 'Delete' && targeElementType !== 'textarea') {
-        this.deleteEntityById(e.target.id);
+        this._controller.handleDeleteKeydown(e);
       }
     });
 

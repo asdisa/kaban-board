@@ -3,7 +3,7 @@ import LocalStorageManager from '../helpers/localStorageManager';
 import TitledEntityManager from '../components/titledEntityManager';
 import State from '../components/state';
 import { parseIntOrNull, getElementIndices, has } from '../helpers/general';
-import { scrollToBottom } from '../helpers/viewHelpers';
+import { scrollToBottom, wiggleElement, focusElement } from '../helpers/viewHelpers';
 import initialState from '../data/initialState';
 
 
@@ -97,6 +97,48 @@ class Controller {
     return this.getEntityManagersDict()[parentIndex].childEntities.length - 1;
   }
 
+  /**
+   * Asks controller to add appropriate TitledEntity with `title`
+   * to entityManager with `parentIndex` index then focuses added entity.
+   * If `title` consists entierly of whitspace characters, corresponding to `parentIndex`
+   * titleInput will be wiggled.
+   *
+   *
+   * @param {?number} parentIndex Index of the entityManager (null corresponds to the Wall)
+   * @param {string} title Title of added entity
+   */
+  addChildEntity(parentIndex, title) {
+    const titleWithoutWitespaces = title.replace(/\s/g, '');
+    if (!titleWithoutWitespaces) {
+      wiggleElement(document.getElementById(`titleInput-${parentIndex}`));
+    } else {
+      this.updatePreviousState();
+      this.incertEntity(parentIndex, null, title);
+      this.model.notifyAll();
+      const addedChildIndex = this.lastChildIndex(parentIndex);
+      focusElement(document.getElementById(`entity-${String(parentIndex)}-${addedChildIndex}`));
+    }
+  }
+
+  /**
+   * Delete entity corresponding to `e`'s target id and update the View.
+   * If such entity should not be deleted, it's element be wiggled.
+   *
+   * @param {KeyboardEvent} e Event to be handeled
+   */
+  handleDeleteKeydown(e) {
+    const elementId = e.target.id;
+    const [elementType, parentStrIndex, childStrIndex] = elementId.split('-');
+
+    if (elementType === 'entity' && childStrIndex !== 'null') {
+      this.deleteEntity(parseIntOrNull(parentStrIndex), parseIntOrNull(childStrIndex));
+      this.model.notifyAll();
+    } else {
+      wiggleElement(document.getElementById(elementId));
+    }
+  }
+
+
   deleteEntity(parentIndex, childIndex) {
     this.updatePreviousState();
     const entityManager = this.getEntityManagerWithIndex(parentIndex);
@@ -112,23 +154,11 @@ class Controller {
     }
   }
 
-  addChildEntity(parentIndex, title) {
-    this.updatePreviousState();
-    this.incertEntity(parentIndex, null, title);
-    this.model.notifyAll();
-  }
-
-  deleteEntityAndUpdateView(entityIndices) {
-    const [parentIndex, childIndex] = entityIndices;
-    this.deleteEntity(parentIndex, childIndex);
-    this.model.notifyAll();
-  }
-
   handleFacadeClick(e) {
-    const parentIndex = parseIntOrNull(e.target.id.split('-')[1]);
+    const parentStrIndex = e.target.id.split('-')[1];
     const entityManagerDict = this.getEntityManagersDict();
-    for (const index of Object.keys(entityManagerDict)) {
-      entityManagerDict[index].insidesShown = index === String(parentIndex);
+    for (const strIndex of Object.keys(entityManagerDict)) {
+      entityManagerDict[strIndex].insidesShown = strIndex === parentStrIndex;
     }
 
     this.model.notifyAll();
