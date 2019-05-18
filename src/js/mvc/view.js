@@ -350,18 +350,21 @@ class View extends Observer {
 
     document.onkeydown = (e) => {
       if ((window.navigator.platform.match('Mac') ? e.metaKey : e.ctrlKey)) {
-        e.preventDefault();
         switch (e.keyCode) {
           case 83:
+            e.preventDefault();
             this._controller.saveStateToLocalStorage();
             break;
           case 90:
+            e.preventDefault();
             this._controller.loadPreviousState();
             break;
           case 76:
+            e.preventDefault();
             this._controller.loadStateFromLocalStorage();
             break;
           case 73:
+            e.preventDefault();
             this._controller.loadInitialState();
             break;
           default:
