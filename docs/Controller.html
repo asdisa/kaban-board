@@ -247,6 +247,197 @@ via changing the state inside Model.</p></div>
                 <div class="member">
 
     
+    <h4 class="name" id="addChildEntity">
+        
+        <span class="code-name">
+            addChildEntity<span class="signature">(parentIndex<span class="signature-attributes">nullable</span>, title)</span><span class="type-signature"></span>
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Asks controller to add appropriate TitledEntity with <code>title</code>
+to entityManager with <code>parentIndex</code> index then focuses added entity.
+If <code>title</code> consists entierly of whitspace characters, corresponding to <code>parentIndex</code>
+titleInput will be wiggled.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        
+<tr class="deep-level-0">
+  
+      <td class="name"><code>parentIndex</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">number</span>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+
+      
+          &lt;nullable><br>
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"><p>Index of the entityManager (null corresponds to the Wall)</p></td>
+</tr>
+
+
+    
+
+        
+<tr class="deep-level-0">
+  
+      <td class="name"><code>title</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"><p>Title of added entity</p></td>
+</tr>
+
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="mvc_controller.js.html" class="button">View Source</a>
+            <span>
+                <a href="mvc_controller.js.html">mvc/controller.js</a>, <a href="mvc_controller.js.html#line110">line 110</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    
     <h4 class="name" id="getEntityManagersDict">
         
         <span class="code-name">
@@ -524,6 +715,150 @@ and Wall corresponding to null.</p>
                 
         </div>
     </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    
+    <h4 class="name" id="handleDeleteKeydown">
+        
+        <span class="code-name">
+            handleDeleteKeydown<span class="signature">(e)</span><span class="type-signature"></span>
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Delete entity corresponding to <code>e</code>'s target id and update the View.
+If such entity should not be deleted, it's element be wiggled.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        
+<tr class="deep-level-0">
+  
+      <td class="name"><code>e</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">KeyboardEvent</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>Event to be handeled</p></td>
+</tr>
+
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="mvc_controller.js.html" class="button">View Source</a>
+            <span>
+                <a href="mvc_controller.js.html">mvc/controller.js</a>, <a href="mvc_controller.js.html#line129">line 129</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
