@@ -129,6 +129,11 @@ class View extends Observer {
     // Dirty trick  to make cards scroll consistently
     cardsElement.setAttribute('style', 'height:100%;');
     cardsElement.setAttribute('style', 'height:auto;');
+    cardsElement.addEventListener('scroll', (e) => {
+      cardsElement.setAttribute('style', 'height:100%;');
+      cardsElement.setAttribute('style', 'height:auto;');
+    }, false);
+
     return cardsElement;
   }
 
