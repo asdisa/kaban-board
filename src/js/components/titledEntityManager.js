@@ -1,3 +1,4 @@
+/** @module TitledEntityManager */
 import TitledEntity from './titledEntity';
 import Card from './card';
 
@@ -7,7 +8,7 @@ import Card from './card';
  * @extends TitledEntity
  * @abstract
  */
-export default class TitledEntityManager extends TitledEntity {
+class TitledEntityManager extends TitledEntity {
   /**
    * Constructs a TitledEntityManager with a title set to `title`,
    * and `childEntityClass` members stored in an array
@@ -69,3 +70,5 @@ export default class TitledEntityManager extends TitledEntity {
     this.childEntities.splice(index, 1);
   }
 }
+
+export default TitledEntityManager;

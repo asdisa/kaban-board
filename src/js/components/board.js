@@ -1,3 +1,4 @@
+/** @module Board */
 import TitledEntityManager from './titledEntityManager';
 import Card from './card';
 
@@ -5,7 +6,7 @@ import Card from './card';
  * Kaban board for card placement.
  * @extends TitledEntityManager
  */
-export default class Board extends TitledEntityManager {
+class Board extends TitledEntityManager {
   /**
    * Constructs a board with a title set to `title`,
    * and placed cards stored in an array
@@ -19,3 +20,5 @@ export default class Board extends TitledEntityManager {
     this.insidesShown = false;
   }
 }
+
+export default Board;

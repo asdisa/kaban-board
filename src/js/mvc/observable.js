@@ -1,9 +1,11 @@
+/** @module Observable */
 import Observer from './observer';
+
 /**
  * Abstract class of Observable pattern implementation.
  * @abstract
  */
-export default class Observable {
+class Observable {
   /**
    * Constructs an Observable with emply array of corresponding Observers.
    */
@@ -29,3 +31,5 @@ export default class Observable {
     });
   }
 }
+
+export default Observable;

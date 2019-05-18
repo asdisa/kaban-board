@@ -1,3 +1,4 @@
+/** @module Wall */
 import TitledEntityManager from './titledEntityManager';
 import Board from './board';
 
@@ -5,7 +6,7 @@ import Board from './board';
  * Wall with kaban boards placed on it.
  * @extends TitledEntityManager
  */
-export default class Wall extends TitledEntityManager {
+class Wall extends TitledEntityManager {
   /**
    * Constructs an wall with kaban boards stored in an array
    * initially containing `board` members.
@@ -20,3 +21,5 @@ export default class Wall extends TitledEntityManager {
     return this.childEntities;
   }
 }
+
+export default Wall;

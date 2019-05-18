@@ -1,3 +1,4 @@
+/** @module Model */
 import Observable from './observable';
 import State from '../components/state';
 
@@ -5,7 +6,7 @@ import State from '../components/state';
  * Major pillar of application, responsible for storing state.
  * @extends Observable
  */
-export default class Model extends Observable {
+class Model extends Observable {
   /**
    * Constructs a Model with initial state set to `state`.
    * @param {?State} state Initial state of the application
@@ -24,3 +25,5 @@ export default class Model extends Observable {
     return this.wall.boards;
   }
 }
+
+export default Model;

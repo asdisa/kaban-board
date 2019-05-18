@@ -1,3 +1,4 @@
+/** @module View */
 import Observer from './observer';
 import Controller from './controller';
 import Model from './model';
@@ -15,7 +16,7 @@ import plusIco from '../../img/plus.svg';
  * Major pillar of application, responsible for rendering the state into HTML.
  * @extends Observer
  */
-export default class View extends Observer {
+class View extends Observer {
   /**
    * Constructs a View corresponding to `controller`.
    *
@@ -125,6 +126,9 @@ export default class View extends Observer {
     cardsElement.appendChild(titleTextarea);
     cardsElement.appendChild(addSectionInsides);
 
+    // Dirty trick  to make cards scroll consistently
+    cardsElement.setAttribute('style', 'height:100%;');
+    cardsElement.setAttribute('style', 'height:auto;');
     return cardsElement;
   }
 
@@ -199,7 +203,7 @@ export default class View extends Observer {
       ['class', 'svg-ico cross-ico unselectable'],
       ['type', 'image'],
       ['alt', 'X'],
-      ['src', plusIco],
+      ['src', crossIco],
     ]));
 
     const insidesElement = document.createElement('li');
@@ -360,3 +364,5 @@ export default class View extends Observer {
     };
   }
 }
+
+export default View;

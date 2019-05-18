@@ -1,3 +1,4 @@
+/** @module Controller */
 import Model from './model';
 import LocalStorageManager from '../helpers/localStorageManager';
 import TitledEntityManager from '../components/titledEntityManager';
@@ -12,7 +13,7 @@ import initialState from '../data/initialState';
  * Major pillar of application, responsible for handling events passed from View
  * via changing the state inside Model.
  */
-export default class Controller {
+class Controller {
   /**
    * Constructs a Controller corresponding to `model`.
    *
@@ -79,6 +80,7 @@ export default class Controller {
   /**
    * Retreives EntityManager with `parentIndex` index.
    *
+   * @param {number|null} parentIndex Index of EntityManager
    * @returns {TitledEntityManager}
    */
   getEntityManagerWithIndex(parentIndex) {
@@ -89,6 +91,7 @@ export default class Controller {
    * Computes index of the last child of entityMagader
    * with `parentIndex` index.
    *
+   * @param {number|null} parentIndex Index of EntityManager
    * @returns {TitledEntityManager}
    */
   lastChildIndex(parentIndex) {
@@ -205,3 +208,5 @@ export default class Controller {
     });
   }
 }
+
+export default Controller;

@@ -1,8 +1,10 @@
+/** @module Observer */
+
 /**
  * Abstract class of Observer pattern implementation.
  * @abstract
  */
-export default class Observer {
+class Observer {
   /**
    * Updates internal state.
    */
@@ -10,3 +12,5 @@ export default class Observer {
   update() {
   }
 }
+
+export default Observer;

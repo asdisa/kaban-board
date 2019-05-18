@@ -1,9 +1,10 @@
+/** @module Wall */
 import Wall from './wall';
 
 /**
  * Application state.
  */
-export default class State {
+class State {
   /**
    * Constructs an application state with kaban boards placed on the wall
    * initially set to `wall`.
@@ -14,3 +15,5 @@ export default class State {
     this.wall = wall != null ? wall : new Wall();
   }
 }
+
+export default State;

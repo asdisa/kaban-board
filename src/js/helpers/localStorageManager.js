@@ -1,3 +1,4 @@
+/** @module LocalStorageManager */
 import State from '../components/state';
 import Board from '../components/board';
 import Card from '../components/card';
@@ -8,7 +9,7 @@ import Wall from '../components/wall';
 /**
  * Static class responsible for interactions with localStorage.
  */
-export default class LocalStorageManager {
+class LocalStorageManager {
   /**
    * Serializes an `obj` to stringified JSON.
    *
@@ -75,3 +76,5 @@ export default class LocalStorageManager {
     localStorage.removeItem('appState');
   }
 }
+
+export default LocalStorageManager;

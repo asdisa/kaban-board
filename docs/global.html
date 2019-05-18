@@ -42,7 +42,7 @@
             <div class="column is-3" id="sidebarNav">
                 <div class="sidebar">
                     <nav>
-                        <h2><a href="index.html">Home</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="module.exports.html">exports</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addChildEntity">addChildEntity</a></li><li><a href="global.html#decodeState">decodeState</a></li><li><a href="global.html#deleteChildEntityWithIndex">deleteChildEntityWithIndex</a></li><li><a href="global.html#deleteEntityById">deleteEntityById</a></li><li><a href="global.html#encode">encode</a></li><li><a href="global.html#focusElement">focusElement</a></li><li><a href="global.html#getElementIndices">getElementIndices</a></li><li><a href="global.html#getEntityManagersDict">getEntityManagersDict</a></li><li><a href="global.html#getEntityManagerWithIndex">getEntityManagerWithIndex</a></li><li><a href="global.html#has">has</a></li><li><a href="global.html#incertChildEntity">incertChildEntity</a></li><li><a href="global.html#lastChildIndex">lastChildIndex</a></li><li><a href="global.html#loadState">loadState</a></li><li><a href="global.html#makeAddSectionInsidesListItem">makeAddSectionInsidesListItem</a></li><li><a href="global.html#makeBoardElement">makeBoardElement</a></li><li><a href="global.html#makeCardsElement">makeCardsElement</a></li><li><a href="global.html#makeChildEntity">makeChildEntity</a></li><li><a href="global.html#makeFacadeElement">makeFacadeElement</a></li><li><a href="global.html#makeTitleTextareaListItem">makeTitleTextareaListItem</a></li><li><a href="global.html#notifyAll">notifyAll</a></li><li><a href="global.html#parseIntOrNull">parseIntOrNull</a></li><li><a href="global.html#registerObserver">registerObserver</a></li><li><a href="global.html#removeStateFromLocalStorage">removeStateFromLocalStorage</a></li><li><a href="global.html#saveState">saveState</a></li><li><a href="global.html#scrollToBottom">scrollToBottom</a></li><li><a href="global.html#setAttributes">setAttributes</a></li><li><a href="global.html#update">update</a></li><li><a href="global.html#wiggleElement">wiggleElement</a></li></ul></div>
+                        <h2><a href="index.html">Home</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-Board.html">Board</a></li></ul><h3>Classes</h3><ul><li><a href="module.exports.html">exports</a></li><li><a href="module-Board-Board.html">Board</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addChildEntity">addChildEntity</a></li><li><a href="global.html#decodeState">decodeState</a></li><li><a href="global.html#deleteChildEntityWithIndex">deleteChildEntityWithIndex</a></li><li><a href="global.html#deleteEntityById">deleteEntityById</a></li><li><a href="global.html#encode">encode</a></li><li><a href="global.html#focusElement">focusElement</a></li><li><a href="global.html#getElementIndices">getElementIndices</a></li><li><a href="global.html#getEntityManagersDict">getEntityManagersDict</a></li><li><a href="global.html#getEntityManagerWithIndex">getEntityManagerWithIndex</a></li><li><a href="global.html#has">has</a></li><li><a href="global.html#incertChildEntity">incertChildEntity</a></li><li><a href="global.html#lastChildIndex">lastChildIndex</a></li><li><a href="global.html#loadState">loadState</a></li><li><a href="global.html#makeAddSectionInsidesListItem">makeAddSectionInsidesListItem</a></li><li><a href="global.html#makeBoardElement">makeBoardElement</a></li><li><a href="global.html#makeCardsElement">makeCardsElement</a></li><li><a href="global.html#makeChildEntity">makeChildEntity</a></li><li><a href="global.html#makeFacadeElement">makeFacadeElement</a></li><li><a href="global.html#makeTitleTextareaListItem">makeTitleTextareaListItem</a></li><li><a href="global.html#notifyAll">notifyAll</a></li><li><a href="global.html#parseIntOrNull">parseIntOrNull</a></li><li><a href="global.html#registerObserver">registerObserver</a></li><li><a href="global.html#removeStateFromLocalStorage">removeStateFromLocalStorage</a></li><li><a href="global.html#saveState">saveState</a></li><li><a href="global.html#scrollToBottom">scrollToBottom</a></li><li><a href="global.html#setAttributes">setAttributes</a></li><li><a href="global.html#update">update</a></li><li><a href="global.html#wiggleElement">wiggleElement</a></li></ul></div>
                     </nav>
                 </div>
             </div>
@@ -147,10 +147,10 @@
     
     
     <div class="description">
-        Asks controller to add appropriate TitledEntity with `title`
-to entityManager with `parentIndex` index then focuses added entity.
-If `title` consists entierly of whitspace characters, corresponding to `parentIndex`
-titleInput will be wiggled.
+        <p>Asks controller to add appropriate TitledEntity with <code>title</code>
+to entityManager with <code>parentIndex</code> index then focuses added entity.
+If <code>title</code> consists entierly of whitspace characters, corresponding to <code>parentIndex</code>
+titleInput will be wiggled.</p>
     </div>
     
 
@@ -216,7 +216,7 @@ titleInput will be wiggled.
 
   
 
-  <td class="description last">Index of the entityManager (null corresponds to the Wall)</td>
+  <td class="description last"><p>Index of the entityManager (null corresponds to the Wall)</p></td>
 </tr>
 
 
@@ -249,7 +249,7 @@ titleInput will be wiggled.
 
   
 
-  <td class="description last">Title of added entity</td>
+  <td class="description last"><p>Title of added entity</p></td>
 </tr>
 
 
@@ -338,7 +338,7 @@ titleInput will be wiggled.
     
     
     <div class="description">
-        Constructs a State instance from `serializedState`.
+        <p>Constructs a State instance from <code>serializedState</code>.</p>
     </div>
     
 
@@ -392,7 +392,7 @@ titleInput will be wiggled.
 
   
 
-  <td class="description last">Stringified JSON representation of State instance</td>
+  <td class="description last"><p>Stringified JSON representation of State instance</p></td>
 </tr>
 
 
@@ -504,7 +504,7 @@ titleInput will be wiggled.
     
     
     <div class="description">
-        Deletes entity at `index` position.
+        <p>Deletes entity at <code>index</code> position.</p>
     </div>
     
 
@@ -558,7 +558,7 @@ titleInput will be wiggled.
 
   
 
-  <td class="description last">Index of an entity to be deleted</td>
+  <td class="description last"><p>Index of an entity to be deleted</p></td>
 </tr>
 
 
@@ -647,8 +647,8 @@ titleInput will be wiggled.
     
     
     <div class="description">
-        Asks controller to delete entity corresponding to element with `elementId` id.
-If element with `elementId` id shold not be deleted, it will be wiggled.
+        <p>Asks controller to delete entity corresponding to element with <code>elementId</code> id.
+If element with <code>elementId</code> id shold not be deleted, it will be wiggled.</p>
     </div>
     
 
@@ -702,7 +702,7 @@ If element with `elementId` id shold not be deleted, it will be wiggled.
 
   
 
-  <td class="description last">Value of element "id" property</td>
+  <td class="description last"><p>Value of element &quot;id&quot; property</p></td>
 </tr>
 
 
@@ -791,7 +791,7 @@ If element with `elementId` id shold not be deleted, it will be wiggled.
     
     
     <div class="description">
-        Serializes an `obj` to stringified JSON.
+        <p>Serializes an <code>obj</code> to stringified JSON.</p>
     </div>
     
 
@@ -845,7 +845,7 @@ If element with `elementId` id shold not be deleted, it will be wiggled.
 
   
 
-  <td class="description last">Obj to serialize</td>
+  <td class="description last"><p>Obj to serialize</p></td>
 </tr>
 
 
@@ -957,7 +957,7 @@ If element with `elementId` id shold not be deleted, it will be wiggled.
     
     
     <div class="description">
-        Immediatly focuses `element`.
+        <p>Immediatly focuses <code>element</code>.</p>
     </div>
     
 
@@ -1011,7 +1011,7 @@ If element with `elementId` id shold not be deleted, it will be wiggled.
 
   
 
-  <td class="description last">Element to focus.</td>
+  <td class="description last"><p>Element to focus.</p></td>
 </tr>
 
 
@@ -1100,9 +1100,9 @@ If element with `elementId` id shold not be deleted, it will be wiggled.
     
     
     <div class="description">
-        Parses element indices with IDs shaped as
+        <p>Parses element indices with IDs shaped as
 elementType-parentIndex-childIndex or
-elementType-childIndex.
+elementType-childIndex.</p>
     </div>
     
 
@@ -1156,7 +1156,7 @@ elementType-childIndex.
 
   
 
-  <td class="description last">Element with id containing indices</td>
+  <td class="description last"><p>Element with id containing indices</p></td>
 </tr>
 
 
@@ -1268,8 +1268,8 @@ elementType-childIndex.
     
     
     <div class="description">
-        Constructs an object with Boards corresponding to their indices
-and Wall corresponding to null.
+        <p>Constructs an object with Boards corresponding to their indices
+and Wall corresponding to null.</p>
     </div>
     
 
@@ -1385,7 +1385,7 @@ and Wall corresponding to null.
     
     
     <div class="description">
-        Retreives EntityManager with `parentIndex` index.
+        <p>Retreives EntityManager with <code>parentIndex</code> index.</p>
     </div>
     
 
@@ -1501,7 +1501,7 @@ and Wall corresponding to null.
     
     
     <div class="description">
-        Determines whether `obj`, has property `propertyName`.
+        <p>Determines whether <code>obj</code>, has property <code>propertyName</code>.</p>
     </div>
     
 
@@ -1555,7 +1555,7 @@ and Wall corresponding to null.
 
   
 
-  <td class="description last">String to be parsed</td>
+  <td class="description last"><p>String to be parsed</p></td>
 </tr>
 
 
@@ -1670,7 +1670,7 @@ and Wall corresponding to null.
     
     
     <div class="description">
-        Incerts `childEntity` into childEntities at `index` position.
+        <p>Incerts <code>childEntity</code> into childEntities at <code>index</code> position.</p>
     </div>
     
 
@@ -1740,8 +1740,8 @@ and Wall corresponding to null.
       </td>
   
 
-  <td class="description last">Instance of managers's childEntityClass
-to be incerted into managers's childEntities array</td>
+  <td class="description last"><p>Instance of managers's childEntityClass
+to be incerted into managers's childEntities array</p></td>
 </tr>
 
 
@@ -1782,8 +1782,8 @@ to be incerted into managers's childEntities array</td>
       </td>
   
 
-  <td class="description last">Index at which an entity will be inserted
-(null coresponds to inserting as a last member of array)</td>
+  <td class="description last"><p>Index at which an entity will be inserted
+(null coresponds to inserting as a last member of array)</p></td>
 </tr>
 
 
@@ -1872,8 +1872,8 @@ to be incerted into managers's childEntities array</td>
     
     
     <div class="description">
-        Computes index of the last child of entityMagader
-with `parentIndex` index.
+        <p>Computes index of the last child of entityMagader
+with <code>parentIndex</code> index.</p>
     </div>
     
 
@@ -1981,6 +1981,149 @@ with `parentIndex` index.
     <h4 class="name" id="loadState">
         
         <span class="code-name">
+            loadState<span class="signature">(state)</span><span class="type-signature"></span>
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Loads <code>state</code> into model.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        
+<tr class="deep-level-0">
+  
+      <td class="name"><code>state</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">State</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>New state</p></td>
+</tr>
+
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="mvc_controller.js.html" class="button">View Source</a>
+            <span>
+                <a href="mvc_controller.js.html">mvc/controller.js</a>, <a href="mvc_controller.js.html#line44">line 44</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    
+    <h4 class="name" id="loadState">
+        
+        <span class="code-name">
             loadState<span class="signature">()</span><span class="type-signature"> &rarr; {State}</span>
         </span>
     </h4>
@@ -1989,7 +2132,7 @@ with `parentIndex` index.
     
     
     <div class="description">
-        Retreives a State instance from localStorage.
+        <p>Retreives a State instance from localStorage.</p>
     </div>
     
 
@@ -2094,149 +2237,6 @@ with `parentIndex` index.
                 <div class="member">
 
     
-    <h4 class="name" id="loadState">
-        
-        <span class="code-name">
-            loadState<span class="signature">(state)</span><span class="type-signature"></span>
-        </span>
-    </h4>
-    
-
-    
-    
-    <div class="description">
-        Loads `state` into model.
-    </div>
-    
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        
-<tr class="deep-level-0">
-  
-      <td class="name"><code>state</code></td>
-  
-
-  <td class="type">
-  
-      
-<span class="param-type">State</span>
-
-
-  
-  </td>
-
-  
-
-  
-
-  <td class="description last">New state</td>
-</tr>
-
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    
-
-    
-
-    
-
-    
-        <p class="tag-source">
-            <a href="mvc_controller.js.html" class="button">View Source</a>
-            <span>
-                <a href="mvc_controller.js.html">mvc/controller.js</a>, <a href="mvc_controller.js.html#line44">line 44</a>
-            </span>
-        </p>
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
-            
-                <div class="member">
-
-    
     <h4 class="name" id="makeAddSectionInsidesListItem">
         
         <span class="code-name">
@@ -2248,8 +2248,8 @@ with `parentIndex` index.
     
     
     <div class="description">
-        Makes <li> element with addTitle and cross buttons and corresponding to
-`entityManager` with `index`.
+        <p>Makes <li> element with addTitle and cross buttons and corresponding to
+<code>entityManager</code> with <code>index</code>.</p>
     </div>
     
 
@@ -2313,7 +2313,7 @@ with `parentIndex` index.
 
   
 
-  <td class="description last">Parent entityManager</td>
+  <td class="description last"><p>Parent entityManager</p></td>
 </tr>
 
 
@@ -2348,7 +2348,7 @@ with `parentIndex` index.
 
   
 
-  <td class="description last">Index of parent entityManager (null corresponds to the Wall)</td>
+  <td class="description last"><p>Index of parent entityManager (null corresponds to the Wall)</p></td>
 </tr>
 
 
@@ -2460,7 +2460,7 @@ with `parentIndex` index.
     
     
     <div class="description">
-        Makes HTML representation of `entityManager` with `index`.
+        <p>Makes HTML representation of <code>entityManager</code> with <code>index</code>.</p>
     </div>
     
 
@@ -2524,7 +2524,7 @@ with `parentIndex` index.
 
   
 
-  <td class="description last">Parent entityManager</td>
+  <td class="description last"><p>Parent entityManager</p></td>
 </tr>
 
 
@@ -2559,7 +2559,7 @@ with `parentIndex` index.
 
   
 
-  <td class="description last">Index of parent entityManager (null corresponds to the Wall)</td>
+  <td class="description last"><p>Index of parent entityManager (null corresponds to the Wall)</p></td>
 </tr>
 
 
@@ -2671,8 +2671,8 @@ with `parentIndex` index.
     
     
     <div class="description">
-        Makes <ol> cards element of `cards` array corresponding to
-`entityManager` with `index`.
+        <p>Makes <ol> cards element of <code>cards</code> array corresponding to
+<code>entityManager</code> with <code>index</code>.</p>
     </div>
     
 
@@ -2736,7 +2736,7 @@ with `parentIndex` index.
 
   
 
-  <td class="description last">Array of Card instances to be placed as elements</td>
+  <td class="description last"><p>Array of Card instances to be placed as elements</p></td>
 </tr>
 
 
@@ -2769,7 +2769,7 @@ with `parentIndex` index.
 
   
 
-  <td class="description last">Parent entityManager</td>
+  <td class="description last"><p>Parent entityManager</p></td>
 </tr>
 
 
@@ -2804,7 +2804,7 @@ with `parentIndex` index.
 
   
 
-  <td class="description last">Index of parent entityManager (null corresponds to the Wall)</td>
+  <td class="description last"><p>Index of parent entityManager (null corresponds to the Wall)</p></td>
 </tr>
 
 
@@ -2916,7 +2916,7 @@ with `parentIndex` index.
     
     
     <div class="description">
-        Constructs a childEntityClass instance with a title set to `title`.
+        <p>Constructs a childEntityClass instance with a title set to <code>title</code>.</p>
     </div>
     
 
@@ -2982,7 +2982,7 @@ with `parentIndex` index.
 
   
 
-  <td class="description last">Title of an entity</td>
+  <td class="description last"><p>Title of an entity</p></td>
 </tr>
 
 
@@ -3094,8 +3094,8 @@ with `parentIndex` index.
     
     
     <div class="description">
-        Makes <div> element corresponding to `entityManager` with `index`,
-which reveals addSection on click.
+        <p>Makes <div> element corresponding to <code>entityManager</code> with <code>index</code>,
+which reveals addSection on click.</p>
     </div>
     
 
@@ -3159,7 +3159,7 @@ which reveals addSection on click.
 
   
 
-  <td class="description last">Parent entityManager</td>
+  <td class="description last"><p>Parent entityManager</p></td>
 </tr>
 
 
@@ -3194,7 +3194,7 @@ which reveals addSection on click.
 
   
 
-  <td class="description last">Index of parent entityManager (null corresponds to the Wall)</td>
+  <td class="description last"><p>Index of parent entityManager (null corresponds to the Wall)</p></td>
 </tr>
 
 
@@ -3306,8 +3306,8 @@ which reveals addSection on click.
     
     
     <div class="description">
-        Makes <li> element with textarea for title input corresponding to
-`entityManager` with `index`.
+        <p>Makes <li> element with textarea for title input corresponding to
+<code>entityManager</code> with <code>index</code>.</p>
     </div>
     
 
@@ -3371,7 +3371,7 @@ which reveals addSection on click.
 
   
 
-  <td class="description last">Parent entityManager</td>
+  <td class="description last"><p>Parent entityManager</p></td>
 </tr>
 
 
@@ -3406,7 +3406,7 @@ which reveals addSection on click.
 
   
 
-  <td class="description last">Index of parent entityManager (null corresponds to the Wall)</td>
+  <td class="description last"><p>Index of parent entityManager (null corresponds to the Wall)</p></td>
 </tr>
 
 
@@ -3518,7 +3518,7 @@ which reveals addSection on click.
     
     
     <div class="description">
-        Updates all registered Observers.
+        <p>Updates all registered Observers.</p>
     </div>
     
 
@@ -3611,7 +3611,7 @@ which reveals addSection on click.
     
     
     <div class="description">
-        Behaves as parseInt called on `str`, but parces 'null' as null.
+        <p>Behaves as parseInt called on <code>str</code>, but parces 'null' as null.</p>
     </div>
     
 
@@ -3665,7 +3665,7 @@ which reveals addSection on click.
 
   
 
-  <td class="description last">String to be parsed</td>
+  <td class="description last"><p>String to be parsed</p></td>
 </tr>
 
 
@@ -3780,7 +3780,7 @@ which reveals addSection on click.
     
     
     <div class="description">
-        Adds `observer` to array of corresponding Observers.
+        <p>Adds <code>observer</code> to array of corresponding Observers.</p>
     </div>
     
 
@@ -3834,7 +3834,7 @@ which reveals addSection on click.
 
   
 
-  <td class="description last">Observer to be registered</td>
+  <td class="description last"><p>Observer to be registered</p></td>
 </tr>
 
 
@@ -3923,7 +3923,7 @@ which reveals addSection on click.
     
     
     <div class="description">
-        Removes saved state from localStorage.
+        <p>Removes saved state from localStorage.</p>
     </div>
     
 
@@ -4016,7 +4016,7 @@ which reveals addSection on click.
     
     
     <div class="description">
-        Saves a serialized State instance to localStorage.
+        <p>Saves a serialized State instance to localStorage.</p>
     </div>
     
 
@@ -4070,7 +4070,7 @@ which reveals addSection on click.
 
   
 
-  <td class="description last">State to be saved</td>
+  <td class="description last"><p>State to be saved</p></td>
 </tr>
 
 
@@ -4159,7 +4159,7 @@ which reveals addSection on click.
     
     
     <div class="description">
-        Scrolls down scrollable `element` all the way down.
+        <p>Scrolls down scrollable <code>element</code> all the way down.</p>
     </div>
     
 
@@ -4213,7 +4213,7 @@ which reveals addSection on click.
 
   
 
-  <td class="description last">Element to scroll.</td>
+  <td class="description last"><p>Element to scroll.</p></td>
 </tr>
 
 
@@ -4302,7 +4302,7 @@ which reveals addSection on click.
     
     
     <div class="description">
-        Sets multiple attributes of `element` to their corresponding values.
+        <p>Sets multiple attributes of <code>element</code> to their corresponding values.</p>
     </div>
     
 
@@ -4356,7 +4356,7 @@ which reveals addSection on click.
 
   
 
-  <td class="description last">Element which attributes will be set.</td>
+  <td class="description last"><p>Element which attributes will be set.</p></td>
 </tr>
 
 
@@ -4381,7 +4381,7 @@ which reveals addSection on click.
 
   
 
-  <td class="description last">Attr-value map.</td>
+  <td class="description last"><p>Attr-value map.</p></td>
 </tr>
 
 
@@ -4470,7 +4470,7 @@ which reveals addSection on click.
     
     
     <div class="description">
-        Updates internal state.
+        <p>Updates internal state.</p>
     </div>
     
 
@@ -4563,7 +4563,7 @@ which reveals addSection on click.
     
     
     <div class="description">
-        Renders application state into HTML.
+        <p>Renders application state into HTML.</p>
     </div>
     
 
@@ -4617,7 +4617,7 @@ which reveals addSection on click.
 
   
 
-  <td class="description last">Model with updated application state.</td>
+  <td class="description last"><p>Model with updated application state.</p></td>
 </tr>
 
 
@@ -4706,7 +4706,7 @@ which reveals addSection on click.
     
     
     <div class="description">
-        Shakes `element` a bit.
+        <p>Shakes <code>element</code> a bit.</p>
     </div>
     
 
@@ -4760,7 +4760,7 @@ which reveals addSection on click.
 
   
 
-  <td class="description last">Element to wiggle.</td>
+  <td class="description last"><p>Element to wiggle.</p></td>
 </tr>
 
 
@@ -4856,7 +4856,7 @@ which reveals addSection on click.
 
 <footer class="footer">
     <div class="content has-text-centered">
-        <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.2</a> on Sat May 18 2019 01:54:26 GMT+0400 (+04)</p>
+        <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.2</a></p>
         <p class="sidebar-created-by">
             <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
             <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers</a>

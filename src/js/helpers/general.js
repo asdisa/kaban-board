@@ -1,3 +1,5 @@
+/** @module general */
+
 /**
  * Behaves as parseInt called on `str`, but parces 'null' as null.
  *

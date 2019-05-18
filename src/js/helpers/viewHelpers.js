@@ -1,3 +1,5 @@
+/** @module viewHelpers */
+
 /**
  * Immediatly focuses `element`.
  *
