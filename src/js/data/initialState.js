@@ -36,10 +36,7 @@ const initialState = {
         title: 'Нереализованный функционал',
         _childEntities: [
           {
-            title: 'Непрозрачная наклоненная перемещаемая карточка',
-          },
-          {
-            title: 'Mobile-first адаптив',
+            title: 'Непрозрачноть и наклон перемещаемой карточки',
           },
         ],
         insidesShown: false,
@@ -48,7 +45,7 @@ const initialState = {
         title: 'Сделано',
         _childEntities: [
           {
-            title: 'Сделать тестовое',
+            title: 'Сделать рабочий скелет без стронних библиотек',
           },
           {
             title: 'Проверить метрики Lighthouse',
@@ -57,7 +54,10 @@ const initialState = {
             title: 'Залить на гитхаб, захостить на Pages',
           },
           {
-            title: 'Написать CV',
+            title: 'Сгенерить документацию к коду',
+          },
+          {
+            title: 'Собрать все в вебпаковый бандл',
           },
         ],
         insidesShown: false,
