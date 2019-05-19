@@ -92,17 +92,6 @@ class View extends Observer {
     cardsElement.appendChild(titleTextarea);
     cardsElement.appendChild(addSectionInsides);
 
-    // A dirty hack to make cards scroll consistently
-    setTimeout(() => {
-      cardsElement.style.height = '100%';
-      cardsElement.style.height = 'auto';
-    }, 0);
-    cardsElement.addEventListener('scroll', (e) => {
-      e.preventDefault();
-      cardsElement.style.height = '100%';
-      cardsElement.style.height = 'auto';
-    }, true);
-    // A dirty hack to make cards scroll consistently
 
     return cardsElement;
   }

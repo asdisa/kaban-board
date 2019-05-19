@@ -112,6 +112,7 @@ p,
   flex-direction: column;
   align-content: start;
   overflow-y: scroll;
+  transform:translate3d(0,0,0);
 }
 
 .cards::-webkit-scrollbar {
