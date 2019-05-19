@@ -51,10 +51,20 @@ const initialState = {
             title: 'Проверить метрики Lighthouse',
           },
           {
-            title: 'Залить на гитхаб, захостить на Pages',
+            title: 'Залить на гитхаб',
+            href: 'https://github.com/asdisa/kaban-board',
+          },
+          {
+            title: 'Захостить на Pages',
+            href: 'https://asdisa.github.io/kaban-board',
+          },
+          {
+            title: 'Написать резюме',
+            href: 'https://vk.com/doc173489181_503203154?hash=76fea4cb1709e39b9d&dl=26e87c3bdbc1e210d4',
           },
           {
             title: 'Сгенерить документацию к коду',
+            href: 'https://asdisa.github.io/kaban-board/docs/',
           },
           {
             title: 'Собрать все в вебпаковый бандл',

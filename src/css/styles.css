@@ -256,3 +256,19 @@ p,
   -ms-user-select: none; 
   user-select: none; 
 }
+
+.link {
+  color: rgb(0, 0, 255);
+}
+
+.link:hover {
+  color: rgb(52, 82, 253);
+}
+
+.link:active {
+  color: rgb(83, 106, 235);
+}
+
+.link:visited {
+  color: rgb(88, 110, 236);
+}

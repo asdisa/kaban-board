@@ -44,12 +44,20 @@ class View extends Observer {
 
     for (let j = 0; j < cards.length; j += 1) {
       const cardElement = document.createElement('LI');
-      setAttributes(cardElement, new Map([
+      const isLastVisibleCard = j === cards.length - 1 && !entityManager.insidesShown;
+      const attrMap = new Map([
         ['id', `entity-${index}-${j}`],
-        ['class', `card${j === cards.length - 1 && !entityManager.insidesShown ? ' last-card' : ''}`],
+        ['class', `card${isLastVisibleCard ? ' last-card' : ''}`],
         ['draggable', 'true'],
         ['tabindex', '-1'],
-      ]));
+      ]);
+      if (cards[j].href != null) {
+        attrMap.set('onclick', `location.href='${cards[j].href}'`);
+        attrMap.set('class', `${attrMap.get('class')} link`);
+      }
+      setAttributes(cardElement, attrMap);
+      cardElement.innerText = cards[j].title;
+
       cardElement.addEventListener('click', (e) => {
         e.stopPropagation();
         e.target.focus();
@@ -60,7 +68,6 @@ class View extends Observer {
           this._controller.handleDeleteKeydown(e);
         }
       });
-
       cardElement.addEventListener('dragstart',
         e => this._controller.handleDragStart(e), false);
       cardElement.addEventListener('dragenter',
@@ -73,7 +80,6 @@ class View extends Observer {
         e => this._controller.handleDrop(e), false);
       cardElement.addEventListener('dragend',
         e => this._controller.handleDragEnd(e), false);
-      cardElement.innerText = cards[j].title;
 
       cardsElement.appendChild(cardElement);
     }
@@ -177,7 +183,7 @@ class View extends Observer {
     const insidesElement = document.createElement('li');
     setAttributes(insidesElement, new Map([
       ['id', `insides-${index}`],
-      ['class', 'add-section-insides last-card unselectable'],
+      ['class', 'add-section-insides unselectable'],
       ['style', !entityManager.insidesShown ? 'display:none;' : ''],
     ]));
     insidesElement.appendChild(addButtonElement);
