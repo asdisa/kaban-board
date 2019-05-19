@@ -18,6 +18,10 @@ class Board extends TitledEntityManager {
     super(title, cards, Card);
     this.insidesShown = false;
   }
+
+  get cards() {
+    return this.childEntities;
+  }
 }
 
 export default Board;

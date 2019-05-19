@@ -62,13 +62,15 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import Model from './model';
+            <pre class="prettyprint source linenums"><code>/* eslint-disable max-len */
+import Model from './model';
 import LocalStorageManager from '../helpers/localStorageManager';
 import TitledEntityManager from '../components/titledEntityManager';
 import State from '../components/state';
 import { parseIntOrNull, getElementIndices, has } from '../helpers/general';
 import { scrollToBottom, wiggleElement, focusElement } from '../helpers/viewHelpers';
 import initialState from '../data/initialState';
+import TitledEntity from '../components/titledEntity';
 
 
 /* eslint-disable class-methods-use-this */
@@ -161,14 +163,19 @@ class Controller {
     return this.getEntityManagersDict()[parentIndex].childEntities.length - 1;
   }
 
+  focusEntityElementWithIndices(parentIndex, childIndex) {
+    childIndex = childIndex != null ? childIndex : this.lastChildIndex(parentIndex);
+    focusElement(document.getElementById(`entity-${String(parentIndex)}-${childIndex}`));
+  }
+
+
   /**
-   * Asks controller to add appropriate TitledEntity with `title`
-   * to entityManager with `parentIndex` index then focuses added entity.
+   * Adds appropriate TitledEntity with `title` to entityManager with `parentIndex` index
+   * then focuses added entity.
    * If `title` consists entierly of whitspace characters, corresponding to `parentIndex`
    * titleInput will be wiggled.
    *
-   *
-   * @param {?number} parentIndex Index of the entityManager (null corresponds to the Wall)
+   * @param {number|null} parentIndex Index of the parent entityManager (null corresponds to the Wall)
    * @param {string} title Title of added entity
    */
   addChildEntity(parentIndex, title) {
@@ -177,10 +184,43 @@ class Controller {
       wiggleElement(document.getElementById(`titleInput-${parentIndex}`));
     } else {
       this.updatePreviousState();
-      this.incertEntity(parentIndex, null, title);
+      this.incertEntity(parentIndex, null, this.createEntity(parentIndex, title));
       this.model.notifyAll();
       const addedChildIndex = this.lastChildIndex(parentIndex);
-      focusElement(document.getElementById(`entity-${String(parentIndex)}-${addedChildIndex}`));
+      this.focusEntityElementWithIndices(parentIndex, addedChildIndex);
+      if (parentIndex != null) {
+        scrollToBottom(document.getElementById(`cards-${parentIndex}`));
+      }
+    }
+  }
+
+  deleteEntity(parentIndex, childIndex) {
+    this.updatePreviousState();
+    this.getEntityManagerWithIndex(parentIndex).deleteChildEntityWithIndex(childIndex);
+  }
+
+  /**
+   * Creates TitledEntity with `title` corresponing to entityManager with `parentIndex` index.
+   *
+   * @param {number|null} parentIndex Index of the parent entityManager (null corresponds to the Wall)
+   * @param {string} title Created entity title.
+   */
+  createEntity(parentIndex, title) {
+    return this.getEntityManagerWithIndex(parentIndex).makeChildEntity(title);
+  }
+
+  /**
+   * Incerts `entity` to `childIndex` position in entityManager with index `parentIndex` children list.
+   *
+   * @param {number|null} parentIndex Index of the parent entityManager (null corresponds to the Wall)
+   * @param {number|null} childIndex Position in parent's children list (null corresponds to the last posotion)
+   * @param {TitledEntity} entity Entity to be incerted
+   */
+  incertEntity(parentIndex, childIndex, entity) {
+    const entityManager = this.getEntityManagerWithIndex(parentIndex);
+    entityManager.incertChildEntity(entity, childIndex);
+    if (has(entityManager, 'insidesShown')) {
+      entityManager.insidesShown = false;
     }
   }
 
@@ -199,22 +239,6 @@ class Controller {
       this.model.notifyAll();
     } else {
       wiggleElement(document.getElementById(elementId));
-    }
-  }
-
-
-  deleteEntity(parentIndex, childIndex) {
-    this.updatePreviousState();
-    const entityManager = this.getEntityManagerWithIndex(parentIndex);
-    entityManager.deleteChildEntityWithIndex(childIndex);
-  }
-
-  incertEntity(parentIndex, childIndex, title) {
-    const entityManager = this.getEntityManagerWithIndex(parentIndex);
-    const entity = entityManager.makeChildEntity(title);
-    entityManager.incertChildEntity(entity, childIndex);
-    if (has(entityManager, 'insidesShown')) {
-      entityManager.insidesShown = false;
     }
   }
 
@@ -282,12 +306,12 @@ class Controller {
         [targetParentIndex, targetChildIndex] = [targetChildIndex, null];
       }
       const [draggedParentIndex, draggedChildIndex] = getElementIndices(this._draggedElement);
-      const draggedTitle = this._draggedElement.innerHTML;
+      const draggedEntity = this.model.getEntityWithIndices(draggedParentIndex, draggedChildIndex);
 
       this.deleteEntity(draggedParentIndex, draggedChildIndex);
-      this.incertEntity(targetParentIndex, targetChildIndex, draggedTitle);
+      this.incertEntity(targetParentIndex, targetChildIndex, draggedEntity);
       this.model.notifyAll();
-      scrollToBottom(document.getElementById(`cards-${targetParentIndex}`));
+      this.focusEntityElementWithIndices(targetParentIndex, targetChildIndex);
     }
 
     return false;

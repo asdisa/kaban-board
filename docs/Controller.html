@@ -192,7 +192,7 @@ via changing the state inside Model.</p></div>
         <p class="tag-source">
             <a href="mvc_controller.js.html" class="button">View Source</a>
             <span>
-                <a href="mvc_controller.js.html">mvc/controller.js</a>, <a href="mvc_controller.js.html#line21">line 21</a>
+                <a href="mvc_controller.js.html">mvc/controller.js</a>, <a href="mvc_controller.js.html#line23">line 23</a>
             </span>
         </p>
     
@@ -250,7 +250,7 @@ via changing the state inside Model.</p></div>
     <h4 class="name" id="addChildEntity">
         
         <span class="code-name">
-            addChildEntity<span class="signature">(parentIndex<span class="signature-attributes">nullable</span>, title)</span><span class="type-signature"></span>
+            addChildEntity<span class="signature">(parentIndex, title)</span><span class="type-signature"></span>
         </span>
     </h4>
     
@@ -258,8 +258,8 @@ via changing the state inside Model.</p></div>
     
     
     <div class="description">
-        <p>Asks controller to add appropriate TitledEntity with <code>title</code>
-to entityManager with <code>parentIndex</code> index then focuses added entity.
+        <p>Adds appropriate TitledEntity with <code>title</code> to entityManager with <code>parentIndex</code> index
+then focuses added entity.
 If <code>title</code> consists entierly of whitspace characters, corresponding to <code>parentIndex</code>
 titleInput will be wiggled.</p>
     </div>
@@ -286,8 +286,6 @@ titleInput will be wiggled.</p>
         <th>Type</th>
 
         
-        <th>Attributes</th>
-        
 
         
 
@@ -308,26 +306,19 @@ titleInput will be wiggled.</p>
   
       
 <span class="param-type">number</span>
+|
+
+<span class="param-type">null</span>
 
 
   
   </td>
 
   
-      <td class="attributes">
-      
-
-      
-          &lt;nullable><br>
-      
-
-      
-      </td>
-  
 
   
 
-  <td class="description last"><p>Index of the entityManager (null corresponds to the Wall)</p></td>
+  <td class="description last"><p>Index of the parent entityManager (null corresponds to the Wall)</p></td>
 </tr>
 
 
@@ -348,14 +339,6 @@ titleInput will be wiggled.</p>
   
   </td>
 
-  
-      <td class="attributes">
-      
-
-      
-
-      
-      </td>
   
 
   
@@ -407,7 +390,178 @@ titleInput will be wiggled.</p>
         <p class="tag-source">
             <a href="mvc_controller.js.html" class="button">View Source</a>
             <span>
-                <a href="mvc_controller.js.html">mvc/controller.js</a>, <a href="mvc_controller.js.html#line110">line 110</a>
+                <a href="mvc_controller.js.html">mvc/controller.js</a>, <a href="mvc_controller.js.html#line117">line 117</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    
+    <h4 class="name" id="createEntity">
+        
+        <span class="code-name">
+            createEntity<span class="signature">(parentIndex, title)</span><span class="type-signature"></span>
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Creates TitledEntity with <code>title</code> corresponing to entityManager with <code>parentIndex</code> index.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        
+<tr class="deep-level-0">
+  
+      <td class="name"><code>parentIndex</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">number</span>
+|
+
+<span class="param-type">null</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>Index of the parent entityManager (null corresponds to the Wall)</p></td>
+</tr>
+
+
+    
+
+        
+<tr class="deep-level-0">
+  
+      <td class="name"><code>title</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>Created entity title.</p></td>
+</tr>
+
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="mvc_controller.js.html" class="button">View Source</a>
+            <span>
+                <a href="mvc_controller.js.html">mvc/controller.js</a>, <a href="mvc_controller.js.html#line144">line 144</a>
             </span>
         </p>
     
@@ -501,7 +655,7 @@ and Wall corresponding to null.</p>
         <p class="tag-source">
             <a href="mvc_controller.js.html" class="button">View Source</a>
             <span>
-                <a href="mvc_controller.js.html">mvc/controller.js</a>, <a href="mvc_controller.js.html#line71">line 71</a>
+                <a href="mvc_controller.js.html">mvc/controller.js</a>, <a href="mvc_controller.js.html#line73">line 73</a>
             </span>
         </p>
     
@@ -670,7 +824,7 @@ and Wall corresponding to null.</p>
         <p class="tag-source">
             <a href="mvc_controller.js.html" class="button">View Source</a>
             <span>
-                <a href="mvc_controller.js.html">mvc/controller.js</a>, <a href="mvc_controller.js.html#line85">line 85</a>
+                <a href="mvc_controller.js.html">mvc/controller.js</a>, <a href="mvc_controller.js.html#line87">line 87</a>
             </span>
         </p>
     
@@ -837,7 +991,206 @@ If such entity should not be deleted, it's element be wiggled.</p>
         <p class="tag-source">
             <a href="mvc_controller.js.html" class="button">View Source</a>
             <span>
-                <a href="mvc_controller.js.html">mvc/controller.js</a>, <a href="mvc_controller.js.html#line129">line 129</a>
+                <a href="mvc_controller.js.html">mvc/controller.js</a>, <a href="mvc_controller.js.html#line169">line 169</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    
+    <h4 class="name" id="incertEntity">
+        
+        <span class="code-name">
+            incertEntity<span class="signature">(parentIndex, childIndex, entity)</span><span class="type-signature"></span>
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Incerts <code>entity</code> to <code>childIndex</code> position in entityManager with index <code>parentIndex</code> children list.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        
+<tr class="deep-level-0">
+  
+      <td class="name"><code>parentIndex</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">number</span>
+|
+
+<span class="param-type">null</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>Index of the parent entityManager (null corresponds to the Wall)</p></td>
+</tr>
+
+
+    
+
+        
+<tr class="deep-level-0">
+  
+      <td class="name"><code>childIndex</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">number</span>
+|
+
+<span class="param-type">null</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>Position in parent's children list (null corresponds to the last posotion)</p></td>
+</tr>
+
+
+    
+
+        
+<tr class="deep-level-0">
+  
+      <td class="name"><code>entity</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type"><a href="TitledEntity.html">TitledEntity</a></span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>Entity to be incerted</p></td>
+</tr>
+
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="mvc_controller.js.html" class="button">View Source</a>
+            <span>
+                <a href="mvc_controller.js.html">mvc/controller.js</a>, <a href="mvc_controller.js.html#line155">line 155</a>
             </span>
         </p>
     
@@ -984,7 +1337,7 @@ with <code>parentIndex</code> index.</p>
         <p class="tag-source">
             <a href="mvc_controller.js.html" class="button">View Source</a>
             <span>
-                <a href="mvc_controller.js.html">mvc/controller.js</a>, <a href="mvc_controller.js.html#line96">line 96</a>
+                <a href="mvc_controller.js.html">mvc/controller.js</a>, <a href="mvc_controller.js.html#line98">line 98</a>
             </span>
         </p>
     
@@ -1150,7 +1503,7 @@ with <code>parentIndex</code> index.</p>
         <p class="tag-source">
             <a href="mvc_controller.js.html" class="button">View Source</a>
             <span>
-                <a href="mvc_controller.js.html">mvc/controller.js</a>, <a href="mvc_controller.js.html#line44">line 44</a>
+                <a href="mvc_controller.js.html">mvc/controller.js</a>, <a href="mvc_controller.js.html#line46">line 46</a>
             </span>
         </p>
     

@@ -23,6 +23,13 @@ class Model extends Observable {
   get boards() {
     return this.wall.boards;
   }
+
+  getEntityWithIndices(parentIndex, childIndex) {
+    if (parentIndex == null) {
+      return this.boards[childIndex];
+    }
+    return this.boards[parentIndex].cards[childIndex];
+  }
 }
 
 export default Model;
