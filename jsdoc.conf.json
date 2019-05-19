@@ -9,7 +9,7 @@
             ".git",
             "node_modules"
         ],
-        "includePattern": ".+\\.js(doc|x)?$"
+        "includePattern": ".+(\\.js(doc|x)?)$"
     },
     "plugins": [
         "plugins/markdown"
@@ -19,7 +19,10 @@
         "monospaceLinks": true,
         "default": {
             "outputSourceFiles": true,
-            "includeDate": false
+            "includeDate": false,
+            "staticFiles": {
+                "paths": ["./src/img/"]
+            }
         }
     },
     "opts": {
