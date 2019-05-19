@@ -315,7 +315,7 @@ class View extends Observer {
 
     wallElement.appendChild(this.makeBoardElement(model.wall, null));
 
-    document.onkeydown = (e) => {
+    document.addEventListener('keydown', (e) => {
       if ((window.navigator.platform.match('Mac') ? e.metaKey : e.ctrlKey)) {
         switch (e.keyCode) {
           case 83:
@@ -338,7 +338,7 @@ class View extends Observer {
             break;
         }
       }
-    };
+    }, true);
   }
 }
 

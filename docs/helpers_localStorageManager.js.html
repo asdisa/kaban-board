@@ -106,7 +106,7 @@ class LocalStorageManager {
     (parsedObj.wall._childEntities.forEach((serializedBoard) => {
       const cards = [];
       serializedBoard._childEntities.forEach((serializedCard) => {
-        cards.push(new Card(serializedCard.title));
+        cards.push(new Card(serializedCard.title, serializedCard.href || null));
       });
       boards.push(new Board(serializedBoard.title, cards));
     }));
