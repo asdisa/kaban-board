@@ -1,5 +1,5 @@
 import './css/styles.css';
-import vkIcon from './img/vk-icon.webp';
+import kIcon from './img/k-20.webp';
 import LocalStorageManager from './js/helpers/localStorageManager';
 import Model from './js/mvc/model';
 import Controller from './js/mvc/controller';
@@ -9,7 +9,7 @@ import initialState from './js/data/initialState';
 function main() {
   const favicon = document.createElement('link');
   favicon.setAttribute('rel', 'shortcut icon');
-  favicon.setAttribute('href', vkIcon);
+  favicon.setAttribute('href', kIcon);
 
   const head = document.querySelector('head');
   head.appendChild(favicon);

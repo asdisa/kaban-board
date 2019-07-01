@@ -1,7 +1,7 @@
 {
   "name": "kaban-boards",
   "version": "1.0.0",
-  "description": "Test project for vk internship",
+  "description": "Vanilla JS version of a kaban bord",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
