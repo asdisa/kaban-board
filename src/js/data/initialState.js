@@ -44,7 +44,7 @@ const initialState = {
           },
           {
             title: 'Write a CV (ENG)',
-            href: 'https://vk.com/doc173489181_508478074?hash=a5237d31dd3a91e2a2&dl=bbb5e8db698c78f01d',
+            href: 'https://vk.com/doc173489181_508514396?hash=8ef04d44d5b39b2457&dl=d86b3ee4b362ecbab9',
           },
           {
             title: 'Generate documentation',
