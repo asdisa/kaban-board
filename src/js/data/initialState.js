@@ -3,104 +3,71 @@ const initialState = {
     title: null,
     _childEntities: [
       {
-        title: 'Неочевидный реализованный функционал',
+        title: 'Help',
         _childEntities: [
           {
-            title: 'Tab как средство перемещения по кнопкам',
+            title: 'Tab focuses buttons and input fields',
           },
           {
-            title: 'Скролл мыши с зажатым Stift позволяет перемещаться горизонтально',
+            title: 'Stift + Scroll to move horisontally',
           },
           {
-            title: 'Клик по Доске/Карточке выделяет соответвующий объект',
+            title: 'Click on a Card/Board to select it',
           },
           {
-            title: 'Delete удаляет выделенный объект',
+            title: 'Delete deletes a selected object',
           },
           {
-            title: 'Ctrl+Z отменяет одно последнее действие',
+            title: 'Ctrl+Z undoes one latest action',
           },
           {
-            title: 'Ctrl+S сохраняет текущее состояние Досок в LocalStorage',
+            title: 'Ctrl+S saves board state',
           },
           {
-            title: 'Ctrl+L загружет последнее сохраненное состояние Досок',
+            title: 'Ctrl+L loads saved board state',
           },
           {
-            title: 'Ctrl+I загружает исходное состояние Досок',
+            title: 'Ctrl+I loads initial board state',
           },
         ],
         insidesShown: false,
       },
       {
-        title: 'Нереализованный функционал',
+        title: 'Done',
         _childEntities: [
           {
-            title: 'Непрозрачноть и наклон перемещаемой карточки',
-          },
-        ],
-        insidesShown: false,
-      },
-      {
-        title: 'Сделано',
-        _childEntities: [
-          {
-            title: 'Сделать рабочий скелет без стронних библиотек',
+            title: 'Check Lighthouse metrics',
           },
           {
-            title: 'Проверить метрики Lighthouse',
-          },
-          {
-            title: 'Залить на гитхаб',
-            href: 'https://github.com/asdisa/kaban-board',
-          },
-          {
-            title: 'Захостить на Pages',
-            href: 'https://asdisa.github.io/kaban-board',
-          },
-          {
-            title: 'Написать резюме',
+            title: 'Write a CV (RUS)',
             href: 'https://vk.com/doc173489181_503250356?hash=f9ece956e9e18a81b2&dl=f759ba65e934c923af',
           },
           {
-            title: 'Сгенерить документацию к коду',
-            href: 'https://asdisa.github.io/kaban-board/docs/',
+            title: 'Write a CV (ENG)',
+            href: 'https://vk.com/doc173489181_508478074?hash=a5237d31dd3a91e2a2&dl=bbb5e8db698c78f01d',
           },
           {
-            title: 'Собрать все в вебпаковый бандл',
+            title: 'Generate documentation',
+            href: 'https://asdisa.github.io/kaban-board/docs/',
           },
         ],
         insidesShown: false,
       },
       {
-        title: 'Не сделано',
+        title: 'In progress',
         _childEntities: [
+
           {
-            title: 'Диплом',
+            title: 'Brush up on data structures and algorithmes',
           },
           {
-            title: 'Повторить структуры данных',
+            title: 'Complete courses on React',
           },
           {
-            title: 'Повторить алгоритмы',
+            title: 'Finish the "Secrets of the JavaScript Ninja"',
           },
           {
-            title: 'Порешать Codeforces',
-          },
-          {
-            title: 'Зарашить курсик по реакту',
-          },
-          {
-            title: 'Поверстать без бутстрапов',
-          },
-          {
-            title: 'Дочитать Secrets of the JavaScript Ninja',
-          },
-          {
-            title: 'Понять кложур',
-          },
-          {
-            title: 'Понять дзен',
+            title: 'SICP',
           },
         ],
         insidesShown: false,
